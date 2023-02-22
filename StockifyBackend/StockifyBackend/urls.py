@@ -15,10 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from ..Stockify import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login', views.loginUser, name="login"),
-    path('logout', views.logoutUser, name="logout"),
+    path('', include('Stockify.urls')),
 ]
