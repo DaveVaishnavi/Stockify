@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Home from "./pages";
 import LogInPage from "./pages/LogIn";
 import Register from "./pages/Register";
+import Market from "./pages/Market";
+import Portfolio from "./pages/Portfolio";
 import Logout from "./pages/Logout";
 import { useSelector } from 'react-redux';
 function App() {
@@ -13,6 +15,8 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/LogIn" element={!access_token? <LogInPage />: <Navigate to='/'/>} />
         <Route exact path="/Register" element={!access_token? <Register />: <Navigate to='/'/>} />
+        <Route exact path="/Market" element={<Market />} />
+        <Route exact path="/Portfolio" element={<Portfolio />} />
         <Route exact path="/Logout" element={<Logout />} />
       </Routes>
     </Router>

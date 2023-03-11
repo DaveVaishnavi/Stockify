@@ -9,7 +9,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useLoginUserMutation } from "../services/userAuthApi";
 import { getToken, storeToken } from "../services/LocalStorageService";
 import { setUserToken } from "../features/authSlice";
-
 const UserLogin = () => {
   const [server_error, setServerError] = useState({})
   const navigate = useNavigate();
@@ -32,7 +31,6 @@ const UserLogin = () => {
       console.log(typeof (res.data))
       console.log(res.data)
       storeToken(res.data.token)
-  
       let { access_token } = getToken()
       dispatch(setUserToken({ access_token: access_token }))
       navigate('/')
