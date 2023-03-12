@@ -1,5 +1,7 @@
 import React from "react";
 import "../components/Portfolio/Portfolio.css";
+import Navbar from "../components/Navbar";
+
 
 export const Portfolio = () => {
   return (
@@ -8,12 +10,11 @@ export const Portfolio = () => {
         <a href="#" className="portfolio-logo">
           Stockify
         </a>
-        <nav className="portfolio-navbar">
-          <a href="/">Home</a>
+         <nav className="portfolio-navbar">
+         <a href="/">Home</a>
           <a href="/Market">Trade</a>
-          <a href="#">Search</a>
-          <a href="#">|</a>
-          <a href="/Portfolio">My Profile</a>
+          <a href="/Portfolio">Portfolio</a>
+          <a href="/Logout">Logout</a>
         </nav>
       </header>
       <section className="your_portfolio">

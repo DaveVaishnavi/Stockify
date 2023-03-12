@@ -25,12 +25,10 @@ const Market = () => {
           Stockify{" "}
         </a>
         <nav className="navbar">
-          <a href="/">Home</a>
+         <a href="/">Home</a>
           <a href="/Market">Trade</a>
-          <a href="#">Search</a>
-          {/* <!-- <a href="#">Games</a>                                -->
-        <a href="#">|</a> */}
-          <a href="/Portfolio">My Profile</a>
+          <a href="/Portfolio">Portfolio</a>
+          <a href="/Logout">Logout</a>
         </nav>
       </header>
       <div className="overview">

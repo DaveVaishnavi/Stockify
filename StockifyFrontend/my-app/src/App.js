@@ -13,8 +13,8 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/LogIn" element={!access_token? <LogInPage />: <Navigate to='/'/>} />
-        <Route exact path="/Register" element={!access_token? <Register />: <Navigate to='/'/>} />
+        <Route exact path="/LogIn" element={!access_token? <LogInPage />: <Navigate to='/Portfolio'/>} />
+        <Route exact path="/Register" element={!access_token? <Register />: <Navigate to='/LogIn'/>} />
         <Route exact path="/Market" element={<Market />} />
         <Route exact path="/Portfolio" element={<Portfolio />} />
         <Route exact path="/Logout" element={<Logout />} />

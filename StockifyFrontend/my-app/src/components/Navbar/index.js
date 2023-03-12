@@ -52,9 +52,6 @@ const Navbar = () => {
             <div className="NavItem">
               <NavLinkss to="register">Register</NavLinkss>
             </div>
-            <div className="NavItem">
-              <NavLinkss to="logout">Logout</NavLinkss>
-            </div>
           </div>
           {access_token ? <div className="NavBtn">
             <div className="Navbtnlink">
