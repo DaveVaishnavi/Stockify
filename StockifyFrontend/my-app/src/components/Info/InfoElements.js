@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const InfoContainer = styled.div`
-  color: #fff;
-  background: ${({ lightBg }) => (lightBg ? "#f9f9f9" : "#010606")};
+  color: rgba(17, 22, 34, 1);
+  background: ${({ lightBg }) =>
+    lightBg ? "rgba(17, 22, 34, 1)" : "rgba(17, 22, 34, 1)"};
   @media screen and (max-width: 768px) {
     padding: 100px 0;
   }
@@ -45,7 +46,13 @@ export const TextWrapper = styled.div`
   padding-bottom: 60px;
 `;
 export const TopLine = styled.p`
-  color: #01bf71;
+  background: -webkit-linear-gradient(
+    rgba(29, 205, 254, 1),
+    rgba(33, 208, 179, 1),
+    rgba(52, 245, 198, 1)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 16px;
   line-height: 16px;
   font-weight: 700;

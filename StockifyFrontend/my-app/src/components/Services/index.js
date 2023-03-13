@@ -10,67 +10,71 @@ import { ServicesCard } from "./ServicesElements";
 const Services = () => {
   return (
     <div className="ServicesContainer" id="discover">
-      <div className="ServicesH1">Know more about Stockify</div>
-      <div className="ServicesWrapper">
-        <ServicesCard>
-          <div className="ServicesCard">
-            <img className="ServicesIcon" src={Icon1} alt="icon1" />
-            {/* <ServicesH2>Reduce expenses</ServicesH2> */}
-            <div className="ServicesP">
-              Provided with a fixed amount of virtual money that you can use for
-              trading.
+      <div className="Services-Elements">
+        <div className="ServicesH1" align="center">
+          Know more about Stockify
+        </div>
+        <div className="ServicesWrapper">
+          <ServicesCard>
+            <div className="ServicesCard">
+              <img className="ServicesIcon" src={Icon1} alt="icon1" />
+
+              <div className="ServicesP">
+                Provided with a fixed amount of virtual money that you can use
+                for trading.
+              </div>
             </div>
-          </div>
-        </ServicesCard>
-        <ServicesCard>
-          <div className="ServicesCard">
-            <img className="ServicesIcon" src={Icon2} alt="icon1" />
-            {/* <ServicesH2>Virtual Offices</ServicesH2> */}
-            <div className="ServicesP">
-              Look at different indicators and decide which stock to buy and
-              which ones to sell.
+          </ServicesCard>
+          <ServicesCard>
+            <div className="ServicesCard">
+              <img className="ServicesIcon" src={Icon2} alt="icon1" />
+
+              <div className="ServicesP">
+                Look at different indicators and decide which stock to buy and
+                which ones to sell.
+              </div>
             </div>
-          </div>
-        </ServicesCard>
-        <ServicesCard>
-          <div className="ServicesCard">
-            <img className="ServicesIcon" src={Icon3} alt="icon1" />
-            {/* <ServicesH2>Reduce expenses</ServicesH2> */}
-            <div className="ServicesP">
-              Explore different stocks on the Market page.
+          </ServicesCard>
+          <ServicesCard>
+            <div className="ServicesCard">
+              <img className="ServicesIcon" src={Icon3} alt="icon1" />
+
+              <div className="ServicesP">
+                Explore different stocks on the Market page.
+              </div>
             </div>
-          </div>
-        </ServicesCard>
-        <ServicesCard>
-          <div className="ServicesCard">
-            <img className="ServicesIcon" src={Icon4} alt="icon1" />
-            {/* <ServicesH2>Reduce expenses</ServicesH2> */}
-            <div className="ServicesP">
-              User's portfolio display watchlist, orders, position, profile,
-              total investment, net profit or loss.
+          </ServicesCard>
+          <ServicesCard>
+            <div className="ServicesCard">
+              <img className="ServicesIcon" src={Icon4} alt="icon1" />
+
+              <div className="ServicesP">
+                User's portfolio display watchlist, orders, position, profile,
+                total investment, net profit or loss.
+              </div>
             </div>
-          </div>
-        </ServicesCard>
-        <ServicesCard>
-          <div className="ServicesCard">
-            <img className="ServicesIcon" src={Icon5} alt="icon1" />
-            {/* <ServicesH2>Reduce expenses</ServicesH2> */}
-            <div className="ServicesP">
-              Demonstrate your ability of making sound investment decisions in a
-              real scenario without losing real money.
+          </ServicesCard>
+          <ServicesCard>
+            <div className="ServicesCard">
+              <img className="ServicesIcon" src={Icon5} alt="icon1" />
+
+              <div className="ServicesP">
+                Demonstrate your ability of making sound investment decisions in
+                a real scenario without losing real money.
+              </div>
             </div>
-          </div>
-        </ServicesCard>
-        <ServicesCard>
-          <div className="ServicesCard">
-            <img className="ServicesIcon" src={Icon6} alt="icon1" />
-            {/* <ServicesH2>Reduce expenses</ServicesH2> */}
-            <div className="ServicesP">
-              Stock prices will change in real-time. Graphs displayed for each
-              ticker along with some indicators for fundamental analysis.
+          </ServicesCard>
+          <ServicesCard>
+            <div className="ServicesCard">
+              <img className="ServicesIcon" src={Icon6} alt="icon1" />
+
+              <div className="ServicesP">
+                Stock prices will change in real-time. Graphs displayed for each
+                ticker along with some indicators for fundamental analysis.
+              </div>
             </div>
-          </div>
-        </ServicesCard>
+          </ServicesCard>
+        </div>
       </div>
     </div>
   );
