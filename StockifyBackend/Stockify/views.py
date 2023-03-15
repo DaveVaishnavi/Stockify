@@ -92,3 +92,22 @@ class UserPasswordResetView(APIView):
         serializer = UserPasswordResetSerializer(data=request.data, context={'uid': uid, 'token': token})
         serializer.is_valid(raise_exception=True)
         return Response({'msg': 'Password Reset Successfully'}, status=status.HTTP_200_OK)
+
+
+class UserMarketView(APIView):
+    renderer_classes = [UserRenderer]
+
+    def market(self, request):
+        import requests
+        import json
+        if request.method == 'POST':
+            ticker = request.POST['ticker']
+            api_request = requests.get("https://api.iex.cloud/v1/data/CORE/QUOTE/"+ticker+"TWTR?token=pk_00366a0765ce48"
+                                                                                          "c8b0143cb428fa0d84")
+            try:
+                api = json.loads(api_request.content)
+
+            except Exception as e:
+                api = "Error..."
+
+            return Response({'msg': 'Market Data sent'}, status=status.HTTP_200_OK)

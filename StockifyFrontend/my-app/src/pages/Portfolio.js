@@ -30,7 +30,7 @@ export const Portfolio = () => {
 
             <div className="portfolio-card">
               <div className="portfolio-container-card bg-white-box">
-                <p className="portfolio-card-title">Cash</p>
+                <p className="portfolio-card-title">USD</p>
                 <p className="portfolio-card-description">Rs 100,000</p>
               </div>
             </div>
