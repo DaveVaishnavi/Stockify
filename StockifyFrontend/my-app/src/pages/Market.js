@@ -1,7 +1,88 @@
 import React from "react";
 import "../components/Marketpg/market.css";
+import { useState } from 'react';
+import image from '../images/stock.png';
+import { useEffect } from 'react';
 // import "../components/Marketpg/events";
-const Market = () => {
+
+
+ function App ({list})  {
+
+  const [data1, setData1] = useState([]);
+  const [data2, setData2] = useState([]);
+  const [data3, setData3] = useState([]);
+  const [data4, setData4] = useState([]);
+  const [data5, setData5] = useState([]);
+  const [data6, setData6] = useState([]);
+  const [data7, setData7] = useState([]);
+  const [data8, setData8] = useState([]);
+  const [data9, setData9] = useState([]);
+  const [data10, setData10] = useState([]);
+  const [data11, setData11] = useState([]);
+  const [data12, setData12] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/AAPL?token=pk_00366a0765ce48c8b0143cb428fa0d84")
+      .then(response => response.json())
+      .then(data1 => setData1(data1));
+  }, []);
+  useEffect(() => {
+    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/TWTR?token=pk_00366a0765ce48c8b0143cb428fa0d84")
+      .then(response => response.json())
+      .then(data2 => setData2(data2));
+  }, []);
+  useEffect(() => {
+    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/AMZN?token=pk_00366a0765ce48c8b0143cb428fa0d84")
+      .then(response => response.json())
+      .then(data3 => setData3(data3));
+  }, []);
+  useEffect(() => {
+    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/TSLA?token=pk_00366a0765ce48c8b0143cb428fa0d84")
+      .then(response => response.json())
+      .then(data4 => setData4(data4));
+  }, []);
+  useEffect(() => {
+    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/BAC?token=pk_00366a0765ce48c8b0143cb428fa0d84")
+      .then(response => response.json())
+      .then(data5 => setData5(data5));
+  }, []);
+  useEffect(() => {
+    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/ORCL?token=pk_00366a0765ce48c8b0143cb428fa0d84")
+      .then(response => response.json())
+      .then(data6 => setData6(data6));
+  }, []);
+  useEffect(() => {
+    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/GOOG?token=pk_00366a0765ce48c8b0143cb428fa0d84")
+      .then(response => response.json())
+      .then(data7 => setData7(data7));
+  }, []);
+  useEffect(() => {
+    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/NKE?token=pk_00366a0765ce48c8b0143cb428fa0d84")
+      .then(response => response.json())
+      .then(data8 => setData8(data8));
+  }, []);
+  useEffect(() => {
+    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/JPM?token=pk_00366a0765ce48c8b0143cb428fa0d84")
+      .then(response => response.json())
+      .then(data9 => setData9(data9));
+  }, []);
+  useEffect(() => {
+    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/MSFT?token=pk_00366a0765ce48c8b0143cb428fa0d84")
+      .then(response => response.json())
+      .then(data10 => setData10(data10));
+  }, []);
+  useEffect(() => {
+    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/NVDA?token=pk_00366a0765ce48c8b0143cb428fa0d84")
+      .then(response => response.json())
+      .then(data11 => setData11(data11));
+  }, []);
+  useEffect(() => {
+    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/V?token=pk_00366a0765ce48c8b0143cb428fa0d84")
+      .then(response => response.json())
+      .then(data12 => setData12(data12));
+  }, []);
+
+
   function addclasses() {
     let slider = document.querySelector(".slider");
     let formSection = document.querySelector(".form-section");
@@ -31,313 +112,538 @@ const Market = () => {
           <a href="/Logout">Logout</a>
         </nav>
       </header>
-      <div className="overview">
-        <p>Account Value: Rs100,000</p>
-        {/* <!-- <p>|</p> --> */}
-        <p>Cash: Rs100,000</p>
-        <p></p>
-      </div>
-
       <div className="all">
         <div className="searchstock">
-          <h5>Stock Screener</h5>
-          <div className="search-wrapper">
-            <input
-              type="search"
-              name="search-stock"
-              id="search-stock"
-              placeholder="Search"
-              style={{ color: "white" }}
-            />
-          </div>
-          <div className="temp">
-            <div
-              className="table-wrapper table-wrapper-scroll-y my-custom-scrollbar"
-              style={{ width: "25%" }}
-            >
-              <table className="fl-table">
-                <thead>
-                  <tr>
-                    <th>Symbol</th>
-                    <th>Current Price</th>
-                    <th>Change</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>AAPL</td>
-                    <td>156</td>
-                    <td>0.00</td>
-                  </tr>
-                  <tr>
-                    <td>Content 2</td>
-                    <td>Content 2</td>
-                    <td>Content 2</td>
-                  </tr>
-                  <tr>
-                    <td>Content 3</td>
-                    <td>Content 3</td>
-                    <td>Content 3</td>
-                  </tr>
-                  <tr>
-                    <td>Content 4</td>
-                    <td>Content 4</td>
-                    <td>Content 4</td>
-                  </tr>
-                  <tr>
-                    <td>Content 5</td>
-                    <td>Content 5</td>
-                    <td>Content 5</td>
-                  </tr>
-                  <tr>
-                    <td>Content 6</td>
-                    <td>Content 6</td>
-                    <td>Content 6</td>
-                  </tr>
-                  <tr>
-                    <td>Content 7</td>
-                    <td>Content 7</td>
-                    <td>Content 7</td>
-                  </tr>
-                  <tr>
-                    <td>Content 8</td>
-                    <td>Content 8</td>
-                    <td>Content 8</td>
-                  </tr>
-                  <tr>
-                    <td>Content 9</td>
-                    <td>Content 9</td>
-                    <td>Content 9</td>
-                  </tr>
-                  <tr>
-                    <td>Content 10</td>
-                    <td>Content 10</td>
-                    <td>Content 10</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="trade" style={{ width: "50%" }}>
-              <div className="main-card">
-                <h1 className="mytitle">APPLE INC</h1>
-                <p className="undertitle">AAPL</p>
-                <div className="gradient-cards">
-                  <div className="card-content">
-                    <p className="card-title">Account Value</p>
-                    <p className="card-description">Rs100,000</p>
-                  </div>
-                  <div className="card-content">
-                    <p className="card-title">Change</p>
-                    <p className="card-description">Rs0.00 (0.00%)</p>
-                  </div>
-                  <div className="card-content">
-                    <p className="card-title">Volume</p>
-                    <p className="card-description">55.65M</p>
-                  </div>
-                  <div className="card-content">
-                    <p className="card-title">Market Cap</p>
-                    <p className="card-description">2.321T</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {data1.map((item) => (
+         <div className="stock-card-container">
+         <div className="stock-card-information">
+           <h2 className="company-name">{item.companyName}</h2>
+           <div className="company-values">
+             <table>
+               <tbody>
+                 <tr>
+                   <td className="bold">Price:</td>
+                   <td className="stockDetails">$ {item.latestPrice}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Change:</td>
+                   <td className="stockDetails">
+                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
+                   </td>
+                 </tr>
+                 {/* <tr>
+                   <td className="bold">High:</td>
+                   <td className="stockDetails">{item.high}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Low:</td>
+                   <td className="stockDetails">{item.low}</td>
+                 </tr> */}
+                 <tr>
+                   <td className="bold">Market Capitalisation:</td>
+                   <td className="stockDetails">$ {item.marketCap}</td>
+                 </tr>
+               </tbody>
+             </table>
+             <div className="add-minus-button-container">
+               <button className="btn3">
+                Buy</button>
+                <button className="btn1">
+                Sell</button>
+             </div>
+           </div>
+         </div>
+       </div>
 
-            <div
-              className="table-wrapper table-wrapper-scroll-y my-custom-scrollbar"
-              style={{ width: "25%" }}
-            >
-              {/* <!-- <div className="table-btn">
-              <button className="open-order">open order</button>
-              <button className="complete">completed order</button>
-          </div> --> */}
-              <table className="fl-table">
-                <thead>
-                  <tr>
-                    <th>Pair</th>
-                    <th>Amount</th>
-                    <th>Price</th>
-                    <th>Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Content 2</td>
-                    <td>Content 2</td>
-                    <td>Content 2</td>
-                    <td>Content 2</td>
-                  </tr>
-                  <tr>
-                    <td>Content 3</td>
-                    <td>Content 3</td>
-                    <td>Content 3</td>
-                    <td>Content 3</td>
-                  </tr>
-                  <tr>
-                    <td>Content 4</td>
-                    <td>Content 4</td>
-                    <td>Content 4</td>
-                    <td>Content 4</td>
-                  </tr>
-                  <tr>
-                    <td>Content 5</td>
-                    <td>Content 5</td>
-                    <td>Content 5</td>
-                    <td>Content 5</td>
-                  </tr>
-                  <tr>
-                    <td>Content 6</td>
-                    <td>Content 6</td>
-                    <td>Content 6</td>
-                    <td>Content 6</td>
-                  </tr>
-                  <tr>
-                    <td>Content 7</td>
-                    <td>Content 7</td>
-                    <td>Content 7</td>
-                    <td>Content 7</td>
-                  </tr>
-                  <tr>
-                    <td>Content 8</td>
-                    <td>Content 8</td>
-                    <td>Content 8</td>
-                    <td>Content 8</td>
-                  </tr>
-                  <tr>
-                    <td>Content 9</td>
-                    <td>Content 9</td>
-                    <td>Content 9</td>
-                    <td>Content 9</td>
-                  </tr>
-                  <tr>
-                    <td>Content 10</td>
-                    <td>Content 10</td>
-                    <td>Content 10</td>
-                    <td>Content 10</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          {/* <!-- new  --> */}
+        ))}
+        
+        {data2.map((item) => (
+         <div className="stock-card-container">
+         <div className="stock-card-information">
+           <h2 className="company-name">{item.companyName}</h2>
+           <div className="company-values">
+             <table>
+               <tbody>
+                 <tr>
+                   <td className="bold">Price:</td>
+                   <td className="stockDetails">$ {item.latestPrice}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Change:</td>
+                   <td className="stockDetails">
+                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
+                   </td>
+                 </tr>
+                 {/* <tr>
+                   <td className="bold">High:</td>
+                   <td className="stockDetails">$ {item.high}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Low:</td>
+                   <td className="stockDetails">$ {item.low}</td>
+                 </tr> */}
+                 <tr>
+                   <td className="bold">Market Capitalisation:</td>
+                   <td className="stockDetails">${item.marketCap}</td>
+                 </tr>
+               </tbody>
+             </table>
+             <div className="add-minus-button-container">
+               <button className="btn3">
+                Buy</button>
+                <button className="btn1">
+                Sell</button>
+             </div>
+           </div>
+         </div>
+         <div className="stock-card-chart"></div>
+       </div>
 
-          <div className="container">
-            <div className="slider"></div>
-            <div className="btn">
-              <button className="buy" onClick={removeclasses}>
-                BUY
-              </button>
-              <button className="sell" onClick={addclasses}>
-                SELL
-              </button>
-            </div>
-            <div className="form-section">
-              <div className="buy-box">
-                <div className="row">
-                  <div className="in_field">
-                    <label for="Qty">Quantity</label>
-                  </div>
-                  <div className="out_field">
-                    <input
-                      className="market-input-text"
-                      type="text"
-                      id="qty"
-                      name="Quantity"
-                      placeholder="Quantity"
-                    />
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="in_field">
-                    <label for="Duration">Duration</label>
-                  </div>
-                  <div className="out_field">
-                    <input
-                      className="market-input-text"
-                      type="text"
-                      id="dur"
-                      name="Duration"
-                      placeholder="Duration"
-                    />
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="in_field">
-                    <label for="order_type">Order Type</label>
-                  </div>
-                  <div className="out_field">
-                    <input
-                      className="market-input-text"
-                      type="text"
-                      id="order"
-                      name="Order"
-                      placeholder="Order Type"
-                    />
-                  </div>
-                </div>
-                <div className="row">
-                  <input
-                    className="market-input-submit"
-                    type="submit"
-                    value="BUY"
-                  />
-                </div>
-              </div>
-              <div className="sell-box">
-                <div className="row">
-                  <div className="in_field">
-                    <label for="Qty">Quantity</label>
-                  </div>
-                  <div className="out_field">
-                    <input
-                      className="market-input-text"
-                      type="text"
-                      id="qty"
-                      name="Quantity"
-                      placeholder="Quantity"
-                    />
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="in_field">
-                    <label for="Duration">Duration</label>
-                  </div>
-                  <div className="out_field">
-                    <input
-                      className="market-input-text"
-                      type="text"
-                      id="dur"
-                      name="Duration"
-                      placeholder="Duration"
-                    />
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="in_field">
-                    <label for="order_type">Order Type</label>
-                  </div>
-                  <div className="out_field">
-                    <input
-                      className="market-input-text"
-                      type="text"
-                      id="order"
-                      name="Order"
-                      placeholder="Order Type"
-                    />
-                  </div>
-                </div>
-                <div className="row">
-                  <input
-                    className="market-input-submit"
-                    type="submit"
-                    value="SELL"
-                  />
-                </div>
-              </div>
-            </div>
+        ))}
+        {data3.map((item) => (
+         <div className="stock-card-container">
+         <div className="stock-card-information">
+           <h2 className="company-name">{item.companyName}</h2>
+           <div className="company-values">
+             <table>
+               <tbody>
+                 <tr>
+                   <td className="bold">Price:</td>
+                   <td className="stockDetails">$ {item.latestPrice}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Change:</td>
+                   <td className="stockDetails">
+                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
+                   </td>
+                 </tr>
+                 {/* <tr>
+                   <td className="bold">High:</td>
+                   <td className="stockDetails">{item.high}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Low:</td>
+                   <td className="stockDetails">{item.low}</td>
+                 </tr> */}
+                 <tr>
+                   <td className="bold">Market Capitalisation:</td>
+                   <td className="stockDetails">{item.marketCap}</td>
+                 </tr>
+               </tbody>
+             </table>
+             <div className="add-minus-button-container">
+               <button className="btn3">
+                Buy</button>
+                <button className="btn1">
+                Sell</button>
+             </div>
+           </div>
+         </div>
+         <div className="stock-card-chart"></div>
+       </div>
+
+        ))}
+        {data4.map((item) => (
+         <div className="stock-card-container">
+         <div className="stock-card-information">
+           <h2 className="company-name">{item.companyName}</h2>
+           <div className="company-values">
+             <table>
+               <tbody>
+                 <tr>
+                   <td className="bold">Price:</td>
+                   <td className="stockDetails">$ {item.latestPrice}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Change:</td>
+                   <td className="stockDetails">
+                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
+                   </td>
+                 </tr>
+                 {/* <tr>
+                   <td className="bold">High:</td>
+                   <td className="stockDetails">{item.high}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Low:</td>
+                   <td className="stockDetails">{item.low}</td>
+                 </tr> */}
+                 <tr>
+                   <td className="bold">Market Capitalisation:</td>
+                   <td className="stockDetails">{item.marketCap}</td>
+                 </tr>
+               </tbody>
+             </table>
+             <div className="add-minus-button-container">
+               <button className="btn3">
+                Buy</button>
+                <button className="btn1">
+                Sell</button>
+             </div>
+           </div>
+         </div>
+         <div className="stock-card-chart"></div>
+       </div>
+
+        ))}
+        {data5.map((item) => (
+         <div className="stock-card-container">
+         <div className="stock-card-information">
+           <h2 className="company-name">{item.companyName}</h2>
+           <div className="company-values">
+             <table>
+               <tbody>
+                 <tr>
+                   <td className="bold">Price:</td>
+                   <td className="stockDetails">$ {item.latestPrice}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Change:</td>
+                   <td className="stockDetails">
+                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
+                   </td>
+                 </tr>
+                 {/* <tr>
+                   <td className="bold">High:</td>
+                   <td className="stockDetails">{item.high}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Low:</td>
+                   <td className="stockDetails">{item.low}</td>
+                 </tr> */}
+                 <tr>
+                   <td className="bold">Market Capitalisation:</td>
+                   <td className="stockDetails">{item.marketCap}</td>
+                 </tr>
+               </tbody>
+             </table>
+             <div className="add-minus-button-container">
+               <button className="btn3">
+                Buy</button>
+                <button className="btn1">
+                Sell</button>
+             </div>
+           </div>
+         </div>
+         <div className="stock-card-chart"></div>
+       </div>
+
+        ))}
+        {data6.map((item) => (
+         <div className="stock-card-container">
+         <div className="stock-card-information">
+           <h2 className="company-name">{item.companyName}</h2>
+           <div className="company-values">
+             <table>
+               <tbody>
+                 <tr>
+                   <td className="bold">Price:</td>
+                   <td className="stockDetails">$ {item.latestPrice}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Change:</td>
+                   <td className="stockDetails">
+                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
+                   </td>
+                 </tr>
+                 {/* <tr>
+                   <td className="bold">High:</td>
+                   <td className="stockDetails">{item.high}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Low:</td>
+                   <td className="stockDetails">{item.low}</td>
+                 </tr> */}
+                 <tr>
+                   <td className="bold">Market Capitalisation:</td>
+                   <td className="stockDetails">{item.marketCap}</td>
+                 </tr>
+               </tbody>
+             </table>
+             <div className="add-minus-button-container">
+               <button className="btn3">
+                Buy</button>
+                <button className="btn1">
+                Sell</button>
+             </div>
+           </div>
+         </div>
+         <div className="stock-card-chart"></div>
+       </div>
+
+        ))}
+        {data7.map((item) => (
+         <div className="stock-card-container">
+         <div className="stock-card-information">
+           <h2 className="company-name">{item.companyName}</h2>
+           <div className="company-values">
+             <table>
+               <tbody>
+                 <tr>
+                   <td className="bold">Price:</td>
+                   <td className="stockDetails">$ {item.latestPrice}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Change:</td>
+                   <td className="stockDetails">
+                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
+                   </td>
+                 </tr>
+                 {/* <tr>
+                   <td className="bold">High:</td>
+                   <td className="stockDetails">{item.high}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Low:</td>
+                   <td className="stockDetails">{item.low}</td>
+                 </tr> */}
+                 <tr>
+                   <td className="bold">Market Capitalisation:</td>
+                   <td className="stockDetails">{item.marketCap}</td>
+                 </tr>
+               </tbody>
+             </table>
+             <div className="add-minus-button-container">
+               <button className="btn3">
+                Buy</button>
+                <button className="btn1">
+                Sell</button>
+             </div>
+           </div>
+         </div>
+         <div className="stock-card-chart"></div>
+       </div>
+
+        ))}
+        {data8.map((item) => (
+         <div className="stock-card-container">
+         <div className="stock-card-information">
+           <h2 className="company-name">{item.companyName}</h2>
+           <div className="company-values">
+             <table>
+               <tbody>
+                 <tr>
+                   <td className="bold">Price:</td>
+                   <td className="stockDetails">$ {item.latestPrice}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Change:</td>
+                   <td className="stockDetails">
+                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
+                   </td>
+                 </tr>
+                 {/* <tr>
+                   <td className="bold">High:</td>
+                   <td className="stockDetails">{item.high}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Low:</td>
+                   <td className="stockDetails">{item.low}</td>
+                 </tr> */}
+                 <tr>
+                   <td className="bold">Market Capitalisation:</td>
+                   <td className="stockDetails">{item.marketCap}</td>
+                 </tr>
+               </tbody>
+             </table>
+             <div className="add-minus-button-container">
+               <button className="btn3">
+                Buy</button>
+                <button className="btn1">
+                Sell</button>
+             </div>
+           </div>
+         </div>
+         <div className="stock-card-chart"></div>
+       </div>
+
+        ))}
+        {data9.map((item) => (
+         <div className="stock-card-container">
+         <div className="stock-card-information">
+           <h2 className="company-name">{item.companyName}</h2>
+           <div className="company-values">
+             <table>
+               <tbody>
+                 <tr>
+                   <td className="bold">Price:</td>
+                   <td className="stockDetails">$ {item.latestPrice}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Change:</td>
+                   <td className="stockDetails">
+                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
+                   </td>
+                 </tr>
+                 {/* <tr>
+                   <td className="bold">High:</td>
+                   <td className="stockDetails">{item.high}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Low:</td>
+                   <td className="stockDetails">{item.low}</td>
+                 </tr> */}
+                 <tr>
+                   <td className="bold">Market Capitalisation:</td>
+                   <td className="stockDetails">{item.marketCap}</td>
+                 </tr>
+               </tbody>
+             </table>
+             <div className="add-minus-button-container">
+               <button className="btn3">
+                Buy</button>
+                <button className="btn1">
+                Sell</button>
+             </div>
+           </div>
+         </div>
+         <div className="stock-card-chart"></div>
+       </div>
+
+        ))}
+        {data10.map((item) => (
+         <div className="stock-card-container">
+         <div className="stock-card-information">
+           <h2 className="company-name">{item.companyName}</h2>
+           <div className="company-values">
+             <table>
+               <tbody>
+                 <tr>
+                   <td className="bold">Price:</td>
+                   <td className="stockDetails">$ {item.latestPrice}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Change:</td>
+                   <td className="stockDetails">
+                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
+                   </td>
+                 </tr>
+                 {/* <tr>
+                   <td className="bold">High:</td>
+                   <td className="stockDetails">{item.high}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Low:</td>
+                   <td className="stockDetails">{item.low}</td>
+                 </tr> */}
+                 <tr>
+                   <td className="bold">Market Capitalisation:</td>
+                   <td className="stockDetails">{item.marketCap}</td>
+                 </tr>
+               </tbody>
+             </table>
+             <div className="add-minus-button-container">
+               <button className="btn3">
+                Buy</button>
+                <button className="btn1">
+                Sell</button>
+             </div>
+           </div>
+         </div>
+         <div className="stock-card-chart"></div>
+       </div>
+
+        ))}
+                    {data11.map((item) => (
+         <div className="stock-card-container">
+         <div className="stock-card-information">
+           <h2 className="company-name">{item.companyName}</h2>
+           <div className="company-values">
+             <table>
+               <tbody>
+                 <tr>
+                   <td className="bold">Price:</td>
+                   <td className="stockDetails">$ {item.latestPrice}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Change:</td>
+                   <td className="stockDetails">
+                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
+                   </td>
+                 </tr>
+                 {/* <tr>
+                   <td className="bold">High:</td>
+                   <td className="stockDetails">{item.high}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Low:</td>
+                   <td className="stockDetails">{item.low}</td>
+                 </tr> */}
+                 <tr>
+                   <td className="bold">Market Capitalisation:</td>
+                   <td className="stockDetails">$ {item.marketCap}</td>
+                 </tr>
+               </tbody>
+             </table>
+             <div className="add-minus-button-container">
+               <button className="btn3">
+                Buy</button>
+                <button className="btn1">
+                Sell</button>
+             </div>
+           </div>
+         </div>
+       </div>
+
+        ))}
+        {data12.map((item) => (
+         <div className="stock-card-container">
+         <div className="stock-card-information">
+           <h2 className="company-name">{item.companyName}</h2>
+           <div className="company-values">
+             <table>
+               <tbody>
+                 <tr>
+                   <td className="bold">Price:</td>
+                   <td className="stockDetails">$ {item.latestPrice}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Change:</td>
+                   <td className="stockDetails">
+                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
+                   </td>
+                 </tr>
+                 {/* <tr>
+                   <td className="bold">High:</td>
+                   <td className="stockDetails">{item.high}</td>
+                 </tr>
+                 <tr>
+                   <td className="bold">Low:</td>
+                   <td className="stockDetails">{item.low}</td>
+                 </tr> */}
+                 <tr>
+                   <td className="bold">Market Capitalisation:</td>
+                   <td className="stockDetails">{item.marketCap}</td>
+                 </tr>
+               </tbody>
+             </table>
+             <div className="add-minus-button-container">
+               <button className="btn3">
+                Buy</button>
+                <button className="btn1">
+                Sell</button>
+             </div>
+           </div>
+         </div>
+         <div className="stock-card-chart"></div>
+       </div>
+
+        ))}
           </div>
+
         </div>
       </div>
-    </div>
   );
 };
+
+function Market() {
+  const list = ["AAPL", "TWTR", "AMZN", "TSLA", "BAC", "SPY", "GOOG", "META", "JPM", "MSFT"];
+
+  return (
+    <div>
+      <App list={list} />
+    </div>
+  );
+}
+
 export default Market;
