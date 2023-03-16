@@ -185,6 +185,128 @@ export const Portfolio = () => {
           </table>
         </div>
       </section>
+
+      <section className="portfolio-orders">
+        <h2 className="portfolio-orders-h2">Orders</h2>
+                    {/* orders table */}
+              <div className="wrapper">
+              <input type="radio" name="slider" checked id="home"></input>
+              <input type="radio" name="slider" id="blog"></input>
+              <nav>
+                <label for="home" className="home">Open Orders</label>
+                <label for="blog" className="blog">Completed Orders</label>
+              </nav>
+              <section className="order-section">
+                {/* open orders */}
+                <div className="content content-1">
+                  <div className="table-wrapper2 table-wrapper-scroll-y my-custom-scrollbar">
+                      <table className="fl-table2">
+                        <thead>
+                          <tr>
+                            <th>Pair</th>
+                            <th>Amount</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>AAPL</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+                {/* completed orders */}
+                <div className="content content-2">
+                  <div className="table-wrapper2 table-wrapper-scroll-y my-custom-scrollbar">
+                      <table className="fl-table2">
+                        <thead>
+                          <tr>
+                            <th>Pair</th>
+                            <th>Amount</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                          </tr>
+                          <tr>
+                            <td>13</td>
+                            <td>14</td>
+                            <td>15</td>
+                            <td>16</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+              </section>
+            </div>
+            {/* orders table end */}
+      </section>
     </div>
   );
 };
