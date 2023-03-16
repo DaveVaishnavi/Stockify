@@ -75,6 +75,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
   padding: 30px;
+  justify-content: center;
 }
 
 .portfolio-container-title {

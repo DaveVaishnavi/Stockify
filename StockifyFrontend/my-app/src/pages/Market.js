@@ -96,11 +96,84 @@ import { unsetUserInfo } from '../features/userSlice';
 
   };
   const [show, setShow] = useState(false);
+  const [buy_apple, setBuyApple] = useState(false);
+  const [sell_apple, setSellApple] = useState(false);
+  const [buy_visa, setBuyVisa] = useState(false);
+  const [sell_visa, setSellVisa] = useState(false);
+  const [buy_twitter, setBuyTwitter] = useState(false);
+  const [sell_twitter, setSellTwitter] = useState(false);
+  const [buy_amazon, setBuyAmazon] = useState(false);
+  const [sell_amazon, setSellAmazon] = useState(false);
+  const [buy_tesla, setBuyTesla] = useState(false);
+  const [sell_tesla, setSellTesla] = useState(false);
+  const [buy_boc, setBuyBOC] = useState(false);
+  const [sell_boc, setSellBOC] = useState(false);
+  const [buy_oracle, setBuyOracle] = useState(false);
+  const [sell_oracle, setSellOracle] = useState(false);
+  const [buy_alphabet, setBuyAlphabet] = useState(false);
+  const [sell_alphabet, setSellAlphabet] = useState(false);
+  const [buy_nike, setBuyNike] = useState(false);
+  const [sell_nike, setSellNike] = useState(false);
+  const [buy_jpmc, setBuyJPMC] = useState(false);
+  const [sell_jpmc, setSellJPMC] = useState(false);
+  const [buy_microsoft, setBuyMicrosoft] = useState(false);
+  const [sell_microsoft, setSellMicrosoft] = useState(false);
+  const [buy_nvidia, setBuyNvidia] = useState(false);
+  const [sell_nvidia, setSellNvidia] = useState(false);
+  const handleBuyApple = () => setBuyApple(true);
+  const handleSellApple = () => setSellApple(true);
+  const handleBuyVisa = () => setBuyVisa(true);
+  const handleSellVisa = () => setSellVisa(true);
+  const handleBuyTwitter = () => setBuyTwitter(true);
+  const handleSellTwitter = () => setSellTwitter(true);
+  const handleBuyAmazon = () => setBuyAmazon(true);
+  const handleSellAmazon = () => setSellAmazon(true);
+  const handleBuyTesla = () => setBuyTesla(true);
+  const handleSellTesla = () => setSellTesla(true);
+  const handleBuyBOC = () => setBuyBOC(true);
+  const handleSellBOC = () => setSellBOC(true);
+  const handleBuyOracle = () => setBuyOracle(true);
+  const handleSellOracle = () => setSellOracle(true);
+  const handleBuyAlphabet = () => setBuyAlphabet(true);
+  const handleSellAlphabet = () => setSellAlphabet(true);
+  const handleBuyNike = () => setBuyNike(true);
+  const handleSellNike = () => setSellNike(true);
+  const handleBuyJPMC = () => setBuyJPMC(true);
+  const handleSellJPMC = () => setSellJPMC(true);
+  const handleBuyMicrosoft = () => setBuyMicrosoft(true);
+  const handleSellMicrosoft = () => setSellMicrosoft(true);
+  const handleBuyNvidia = () => setBuyNvidia(true);
+  const handleSellNvidia = () => setSellNvidia(true);
   const handleClose = () => setShow(false);
+  const handleClose1 = () => setBuyApple(false);
+  const handleClose2 = () => setSellApple(false);
+  const handleClose3 = () => setBuyTwitter(false);
+  const handleClose4 = () => setSellTwitter(false);
+  const handleClose5 = () => setBuyAmazon(false);
+  const handleClose6 = () => setSellAmazon(false);
+  const handleClose7 = () => setBuyTesla(false);
+  const handleClose8 = () => setSellTesla(false);
+  const handleClose9 = () => setBuyBOC(false);
+  const handleClose10 = () => setSellBOC(false);
+  const handleClose11 = () => setBuyOracle(false);
+  const handleClose12 = () => setSellOracle(false);
+  const handleClose13 = () => setBuyAlphabet(false);
+  const handleClose14 = () => setSellAlphabet(false);
+  const handleClose15 = () => setBuyNike(false);
+  const handleClose16 = () => setSellNike(false);
+  const handleClose17 = () => setBuyJPMC(false);
+  const handleClose18 = () => setSellJPMC(false);
+  const handleClose19 = () => setBuyMicrosoft(false);
+  const handleClose20 = () => setSellMicrosoft(false);
+  const handleClose21 = () => setBuyNvidia(false);
+  const handleClose22 = () => setSellNvidia(false);
+  const handleClose23 = () => setBuyVisa(false);
+  const handleClose24 = () => setSellVisa(false);
   const handleShow = () => setShow(true);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
 
   return (
     <div className="market_container">
@@ -166,10 +239,54 @@ import { unsetUserInfo } from '../features/userSlice';
                </tbody>
              </table>
              <div className="add-minus-button-container">
-               <button className="btn3">
+               <button className="btn3" onClick={handleBuyApple}>
                 Buy</button>
-                <button className="btn1">
+                <Modal show={buy_apple} onHide={handleClose1}>
+        <Modal.Header>
+          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Buy</font>
+          </Button>
+          <Button color="danger" onClick={handleClose1}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
+                <button className="btn1" onClick={handleSellApple}>
                 Sell</button>
+                <Modal show={sell_apple} onHide={handleClose2}>
+        <Modal.Header>
+          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Sell</font>
+          </Button>
+          <Button color="danger" onClick={handleClose2}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
              </div>
            </div>
          </div>
@@ -209,10 +326,54 @@ import { unsetUserInfo } from '../features/userSlice';
                </tbody>
              </table>
              <div className="add-minus-button-container">
-               <button className="btn3">
+               <button className="btn3" onClick={handleBuyTwitter}>
                 Buy</button>
-                <button className="btn1">
+                <Modal show={buy_twitter} onHide={handleClose3}>
+        <Modal.Header>
+          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Buy</font>
+          </Button>
+          <Button color="danger" onClick={handleClose3}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
+                <button className="btn1" onClick={handleSellTwitter}>
                 Sell</button>
+                <Modal show={sell_twitter} onHide={handleClose4}>
+        <Modal.Header>
+          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Sell</font>
+          </Button>
+          <Button color="danger" onClick={handleClose4}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
              </div>
            </div>
          </div>
@@ -252,10 +413,54 @@ import { unsetUserInfo } from '../features/userSlice';
                </tbody>
              </table>
              <div className="add-minus-button-container">
-               <button className="btn3">
+               <button className="btn3" onClick={handleBuyAmazon}>
                 Buy</button>
-                <button className="btn1">
+                <Modal show={buy_amazon} onHide={handleClose5}>
+        <Modal.Header>
+          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Buy</font>
+          </Button>
+          <Button color="danger" onClick={handleClose5}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
+                <button className="btn1" onClick={handleSellAmazon}>
                 Sell</button>
+                <Modal show={sell_amazon} onHide={handleClose6}>
+        <Modal.Header>
+          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Sell</font>
+          </Button>
+          <Button color="danger" onClick={handleClose6}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
              </div>
            </div>
          </div>
@@ -295,10 +500,54 @@ import { unsetUserInfo } from '../features/userSlice';
                </tbody>
              </table>
              <div className="add-minus-button-container">
-               <button className="btn3">
+               <button className="btn3" onClick={handleBuyTesla}>
                 Buy</button>
-                <button className="btn1">
+                <Modal show={buy_tesla} onHide={handleClose7}>
+        <Modal.Header>
+          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Buy</font>
+          </Button>
+          <Button color="danger" onClick={handleClose7}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
+                <button className="btn1" onClick={handleSellTesla}>
                 Sell</button>
+                <Modal show={sell_tesla} onHide={handleClose8}>
+        <Modal.Header>
+          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Sell</font>
+          </Button>
+          <Button color="danger" onClick={handleClose8}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
              </div>
            </div>
          </div>
@@ -338,10 +587,54 @@ import { unsetUserInfo } from '../features/userSlice';
                </tbody>
              </table>
              <div className="add-minus-button-container">
-               <button className="btn3">
+               <button className="btn3" onClick={handleBuyBOC}>
                 Buy</button>
-                <button className="btn1">
+                <Modal show={buy_boc} onHide={handleClose9}>
+        <Modal.Header>
+          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Buy</font>
+          </Button>
+          <Button color="danger" onClick={handleClose9}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
+                <button className="btn1" onClick={handleSellBOC}>
                 Sell</button>
+                <Modal show={sell_boc} onHide={handleClose10}>
+        <Modal.Header>
+          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Sell</font>
+          </Button>
+          <Button color="danger" onClick={handleClose10}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
              </div>
            </div>
          </div>
@@ -381,10 +674,54 @@ import { unsetUserInfo } from '../features/userSlice';
                </tbody>
              </table>
              <div className="add-minus-button-container">
-               <button className="btn3">
+               <button className="btn3" onClick={handleBuyOracle}>
                 Buy</button>
-                <button className="btn1">
+                <Modal show={buy_oracle} onHide={handleClose11}>
+        <Modal.Header>
+          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Buy</font>
+          </Button>
+          <Button color="danger" onClick={handleClose11}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
+                <button className="btn1" onClick={handleSellOracle}>
                 Sell</button>
+                <Modal show={sell_oracle} onHide={handleClose12}>
+        <Modal.Header>
+          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Sell</font>
+          </Button>
+          <Button color="danger" onClick={handleClose12}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
              </div>
            </div>
          </div>
@@ -424,10 +761,54 @@ import { unsetUserInfo } from '../features/userSlice';
                </tbody>
              </table>
              <div className="add-minus-button-container">
-               <button className="btn3">
+               <button className="btn3" onClick={handleBuyAlphabet}>
                 Buy</button>
-                <button className="btn1">
+                <Modal show={buy_alphabet} onHide={handleClose13}>
+        <Modal.Header>
+          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Buy</font>
+          </Button>
+          <Button color="danger" onClick={handleClose13}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
+                <button className="btn1" onClick={handleSellAlphabet}>
                 Sell</button>
+                <Modal show={sell_alphabet} onHide={handleClose14}>
+        <Modal.Header>
+          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Sell</font>
+          </Button>
+          <Button color="danger" onClick={handleClose14}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
              </div>
            </div>
          </div>
@@ -467,10 +848,54 @@ import { unsetUserInfo } from '../features/userSlice';
                </tbody>
              </table>
              <div className="add-minus-button-container">
-               <button className="btn3">
+               <button className="btn3" onClick={handleBuyNike}>
                 Buy</button>
-                <button className="btn1">
+                <Modal show={buy_nike} onHide={handleClose15}>
+        <Modal.Header>
+          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Buy</font>
+          </Button>
+          <Button color="danger" onClick={handleClose15}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
+                <button className="btn1" onClick={handleSellNike}>
                 Sell</button>
+                <Modal show={sell_nike} onHide={handleClose16}>
+        <Modal.Header>
+          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Sell</font>
+          </Button>
+          <Button color="danger" onClick={handleClose16}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
              </div>
            </div>
          </div>
@@ -510,10 +935,54 @@ import { unsetUserInfo } from '../features/userSlice';
                </tbody>
              </table>
              <div className="add-minus-button-container">
-               <button className="btn3">
+               <button className="btn3" onClick={handleBuyJPMC}>
                 Buy</button>
-                <button className="btn1">
+                <Modal show={buy_jpmc} onHide={handleClose17}>
+        <Modal.Header>
+          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Buy</font>
+          </Button>
+          <Button color="danger" onClick={handleClose17}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
+                <button className="btn1" onClick={handleSellJPMC}>
                 Sell</button>
+                <Modal show={sell_jpmc} onHide={handleClose18}>
+        <Modal.Header>
+          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Sell</font>
+          </Button>
+          <Button color="danger" onClick={handleClose18}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
              </div>
            </div>
          </div>
@@ -553,10 +1022,54 @@ import { unsetUserInfo } from '../features/userSlice';
                </tbody>
              </table>
              <div className="add-minus-button-container">
-               <button className="btn3">
+               <button className="btn3" onClick={handleBuyMicrosoft}>
                 Buy</button>
-                <button className="btn1">
+                <Modal show={buy_microsoft} onHide={handleClose19}>
+        <Modal.Header>
+          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Buy</font>
+          </Button>
+          <Button color="danger" onClick={handleClose19}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
+                <button className="btn1" onClick={handleSellMicrosoft}>
                 Sell</button>
+                <Modal show={sell_microsoft} onHide={handleClose20}>
+        <Modal.Header>
+          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Sell</font>
+          </Button>
+          <Button color="danger" onClick={handleClose20}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
              </div>
            </div>
          </div>
@@ -596,10 +1109,54 @@ import { unsetUserInfo } from '../features/userSlice';
                </tbody>
              </table>
              <div className="add-minus-button-container">
-               <button className="btn3">
+               <button className="btn3" onClick={handleBuyNvidia}>
                 Buy</button>
-                <button className="btn1">
+                <Modal show={buy_nvidia} onHide={handleClose21}>
+        <Modal.Header>
+          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Buy</font>
+          </Button>
+          <Button color="danger" onClick={handleClose21}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
+                <button className="btn1" onClick={handleSellNvidia}>
                 Sell</button>
+                <Modal show={sell_nvidia} onHide={handleClose22}>
+        <Modal.Header>
+          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Sell</font>
+          </Button>
+          <Button color="danger" onClick={handleClose22}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
              </div>
            </div>
          </div>
@@ -638,10 +1195,54 @@ import { unsetUserInfo } from '../features/userSlice';
                </tbody>
              </table>
              <div className="add-minus-button-container">
-               <button className="btn3">
+               <button className="btn3" onClick={handleBuyVisa}>
                 Buy</button>
-                <button className="btn1">
+                <Modal show={buy_visa} onHide={handleClose23}>
+        <Modal.Header>
+          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Buy</font>
+          </Button>
+          <Button color="danger" onClick={handleClose23}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
+                <button className="btn1" onClick={handleSellVisa}>
                 Sell</button>
+                <Modal show={sell_visa} onHide={handleClose24}>
+        <Modal.Header>
+          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <label for="quantity">Quantity</label>
+            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <br></br>
+            <label for="bidPrice">Bid-Price</label>
+            <input type="number" name="bidPrice" value="At what price"></input>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="success">
+            <font color="black">Sell</font>
+          </Button>
+          <Button color="danger" onClick={handleClose24}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
              </div>
            </div>
          </div>
