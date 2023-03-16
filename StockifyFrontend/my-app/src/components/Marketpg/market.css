@@ -620,6 +620,7 @@ img{
 .btn4{
   border: rgba(46, 52, 69, 1);
   text-decoration: underline;
+  --bs-btn-hover-bg: rgba(46, 52, 69, 1);
 }
 
 /* .btn4 button:hover {
