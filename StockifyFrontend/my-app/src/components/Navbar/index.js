@@ -58,12 +58,19 @@ const Navbar = () => {
               <NavLinkss to="register">Register</NavLinkss>
             </div>
           </div>
-<div className="NavBtn">
-            <div className="Navbtnlink">
-              <NavBtnLink to="login">Log In</NavBtnLink>
+          {access_token ? (
+            <div className="NavBtn">
+              <div className="Navbtnlink">
+                <NavBtnLink to="login">{userData.name}</NavBtnLink>
+              </div>
             </div>
-          </div>
-          
+          ) : (
+            <div className="NavBtn">
+              <div className="Navbtnlink">
+                <NavBtnLink to="login">Log In</NavBtnLink>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>
