@@ -1,8 +1,14 @@
 import React from "react";
 import "../components/Marketpg/market.css";
 import { useState } from 'react';
-import image from '../images/stock.png';
 import { useEffect } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { removeToken } from '../services/LocalStorageService';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { unSetUserToken } from '../features/authSlice';
+import { unsetUserInfo } from '../features/userSlice';
 // import "../components/Marketpg/events";
 
 
@@ -81,22 +87,20 @@ import { useEffect } from 'react';
       .then(response => response.json())
       .then(data12 => setData12(data12));
   }, []);
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    dispatch(unsetUserInfo({ name: "", email: "" }))
+    dispatch(unSetUserToken({ access_token: null }))
+    removeToken()
+    navigate('/')
 
-
-  function addclasses() {
-    let slider = document.querySelector(".slider");
-    let formSection = document.querySelector(".form-section");
-
-    slider.classList.add("moveslider");
-    formSection.classList.add("form-section-move");
-  }
-  function removeclasses() {
-    let slider = document.querySelector(".slider");
-    let formSection = document.querySelector(".form-section");
-
-    slider.classList.remove("moveslider");
-    formSection.classList.remove("form-section-move");
-  }
+  };
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   return (
     <div className="market_container">
@@ -107,9 +111,25 @@ import { useEffect } from 'react';
         </a>
         <nav className="navbar">
          <a href="/">Home</a>
-          <a href="/Market">Trade</a>
+          <a href="/Market">Market</a>
           <a href="/Portfolio">Portfolio</a>
-          <a href="/Logout">Logout</a>
+          <Button className="btn4" color="rgba(46, 52, 69, 1)" onClick={handleShow}>
+        <u>Logout</u>
+      </Button>
+      <Modal show={show} onHide={handleClose}>
+        {/* <Modal.Header closeButton>
+          <Modal.Title>Confirm</Modal.Title>
+        </Modal.Header> */}
+        <Modal.Body>Are you sure you want to logout?</Modal.Body>
+        <Modal.Footer>
+          <Button color="success" onClick={handleLogout}>
+            <font color="black">Logout</font>
+          </Button>
+          <Button color="danger" onClick={handleClose}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
         </nav>
       </header>
       <div className="all">

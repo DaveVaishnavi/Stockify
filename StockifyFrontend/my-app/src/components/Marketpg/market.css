@@ -80,9 +80,9 @@ h5 {
 }
 .header .btn {
   background: transparent;
-  color: tomato;
-  border: 1px solid tomato;
-  font-size: 12px;
+  /* color: tomato; */
+  /* border: 1px solid tomato; */
+  font-size: 1.1rem;
   padding: 8px;
 }
 
@@ -440,12 +440,12 @@ label {
 
 /* more stylling in login signup */
 .btn {
-  height: 30px;
-  width: 150px;
-  margin: 20px auto;
-  box-shadow: 10px 10px 30px rgb(254, 215, 188);
+  /* height: 30px; */
+  /* width: 150px; */
+  /* margin: 20px auto; */
+  /* box-shadow: 10px 10px 30px rgb(254, 215, 188); */
   border-radius: 10px;
-  display: flex;
+  /* display: flex; */
   justify-content: space-around;
   align-items: center;
 }
@@ -616,3 +616,12 @@ img{
   display: flex;
   flex-direction:row;
 }
+
+.btn4{
+  border: rgba(46, 52, 69, 1);
+  text-decoration: underline;
+}
+
+/* .btn4 button:hover {
+  color: #baa6cf;
+} */

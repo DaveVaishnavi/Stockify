@@ -1,5 +1,5 @@
 .Nav {
-  background: #000;
+  background: rgba(46, 52, 69, 1);
   height: 80px;
   margin-top: -80px;
   display: flex;
@@ -7,6 +7,9 @@
   position: sticky;
   top: 0;
   z-index: 10;
+}
+.NavLogo {
+  font-weight: bold !important;
 }
 .NavbarContainer {
   display: flex;
@@ -36,7 +39,7 @@
 
 .Navbtnlink {
   border-radius: 50px;
-  background: burlywood;
+  background: rgba(33, 208, 179, 1);
   white-space: nowrap;
   padding: 10px 22px;
   color: #010606;
@@ -56,5 +59,14 @@
 @media screen and(max-width: 960px) {
   .Nav {
     transition: 0.8s all ease;
+  }
+}
+/* @media (min-width: 200px) and (max-width: 480px) {
+  NavLogo {
+  }
+} */
+@media screen and (max-width: 768px) {
+  .Nav-responsive {
+    display: none;
   }
 }

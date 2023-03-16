@@ -1,9 +1,36 @@
 import React from "react";
 import "../components/Portfolio/Portfolio.css";
 import Navbar from "../components/Navbar";
+import "../components/Marketpg/market.css";
+import { useState } from 'react';
+import { useEffect } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { removeToken } from '../services/LocalStorageService';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { unSetUserToken } from '../features/authSlice';
+import { unsetUserInfo } from '../features/userSlice';
+
+
 
 
 export const Portfolio = () => {
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    dispatch(unsetUserInfo({ name: "", email: "" }))
+    dispatch(unSetUserToken({ access_token: null }))
+    removeToken()
+    navigate('/')
+
+  };
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   return (
     <div className="Portfolio-container">
       <header className="portfolio-header">
@@ -12,9 +39,25 @@ export const Portfolio = () => {
         </a>
          <nav className="portfolio-navbar">
          <a href="/">Home</a>
-          <a href="/Market">Trade</a>
+          <a href="/Market">Market</a>
           <a href="/Portfolio">Portfolio</a>
-          <a href="/Logout">Logout</a>
+          <Button className="btn4" color="rgba(46, 52, 69, 1)" onClick={handleShow}>
+        Logout
+      </Button>
+      <Modal show={show} onHide={handleClose}>
+        {/* <Modal.Header closeButton>
+          <Modal.Title>Confirm</Modal.Title>
+        </Modal.Header> */}
+        <Modal.Body>Are you sure you want to logout?</Modal.Body>
+        <Modal.Footer>
+          <Button color="success" onClick={handleLogout}>
+            <font color="black">Logout</font>
+          </Button>
+          <Button color="danger" onClick={handleClose}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
         </nav>
       </header>
       <section className="your_portfolio">

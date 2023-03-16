@@ -54,10 +54,10 @@
 }
 .btn {
   background: transparent;
-  color: tomato;
-  border: 1px solid tomato;
-  font-size: 12px;
-  padding: 8px;
+  /* color: tomato;
+  border: 1px solid tomato; */
+  font-size: 1.1rem;
+  /* padding: 8px; */
 }
 .your_portfolio {
   padding: 70px 0 50px 0;
@@ -322,4 +322,10 @@
     display: block;
     text-align: center;
   }
+}
+
+.btn4{
+  border: rgba(46, 52, 69, 1);
+  text-decoration: underline;
+  --bs-btn-hover-bg: rgba(46, 52, 69, 1);
 }

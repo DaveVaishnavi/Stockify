@@ -7,34 +7,35 @@ import { useGetLoggedUserQuery } from "../../services/userAuthApi";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "../../features/userSlice";
 const Navbar = () => {
-  const { access_token } = getToken()
-  const {data,isSuccess} = useGetLoggedUserQuery(access_token)
- 
+  const { access_token } = getToken();
+  const { data, isSuccess } = useGetLoggedUserQuery(access_token);
 
   const [userData, setUserData] = useState({
     email: "",
-    name: ""
-  })
+    name: "",
+  });
   // Store User Data in Local State
   useEffect(() => {
     if (data && isSuccess) {
       setUserData({
         email: data.email,
         name: data.name,
-      })
+      });
     }
-  }, [data, isSuccess])
+  }, [data, isSuccess]);
 
- // Store User Data in Redux Store
- const dispatch = useDispatch()
- useEffect(() => {
-  if (data && isSuccess) {
-    dispatch(setUserInfo({
-      email: data.email,
-      name: data.name
-    }))
-  }
-}, [data, isSuccess, dispatch])
+  // Store User Data in Redux Store
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (data && isSuccess) {
+      dispatch(
+        setUserInfo({
+          email: data.email,
+          name: data.name,
+        })
+      );
+    }
+  }, [data, isSuccess, dispatch]);
   return (
     <>
       <div className="Nav">
@@ -43,11 +44,15 @@ const Navbar = () => {
             Stockify
           </NavLogo>
           <div className="NavMenu">
-            <div className="NavItem">
-              <NavLinks to="about"> About</NavLinks>
+            <div className="Nav-responsive">
+              <div className="NavItem">
+                <NavLinks to="about"> About</NavLinks>
+              </div>
             </div>
-            <div className="NavItem">
-              <NavLinks to="discover">Discover</NavLinks>
+            <div className="Nav-responsive">
+              <div className="NavItem">
+                <NavLinks to="discover">Discover</NavLinks>
+              </div>
             </div>
             <div className="NavItem">
               <NavLinkss to="register">Register</NavLinkss>
