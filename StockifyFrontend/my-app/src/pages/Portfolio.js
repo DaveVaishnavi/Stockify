@@ -11,12 +11,18 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { unSetUserToken } from '../features/authSlice';
 import { unsetUserInfo } from '../features/userSlice';
-
+import { useLocation } from 'react-router-dom';
 
 
 
 export const Portfolio = () => {
-
+  const [openOrders, setOpenOrders] = useState([]);
+  const location = useLocation();
+  useEffect(() => {
+    if (location.state && location.state.newOrder) {
+      setOpenOrders([...openOrders, location.state.newOrder]);
+    }
+  }, [location.state]);
   const handleLogout = async (e) => {
     e.preventDefault();
     dispatch(unsetUserInfo({ name: "", email: "" }))
@@ -207,69 +213,23 @@ export const Portfolio = () => {
                             <th>Amount</th>
                             <th>Price</th>
                             <th>Total</th>
+                            <th>Type of Bid</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>AAPL</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                          </tr>
-                          <tr>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                          </tr>
-                          <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                          </tr>
-                          <tr>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                          </tr>
-                          <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                          </tr>
-                          <tr>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                          </tr>
-                          <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                          </tr>
-                          <tr>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                          </tr>
-                          <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                          </tr>
-                          <tr>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                          </tr>
+                        
+      {openOrders.map((order, index) => (
+        <tr>
+        <td key={index}>
+          {order.symbol}
+        </td>
+        <td>{order.quantity}</td>
+        <td>{order.bidPrice}</td>
+        <td>{order.quantity*order.bidPrice}</td>
+        <td>{order.type}</td>
+        </tr>
+      ))}
+    
                         </tbody>
                       </table>
                     </div>

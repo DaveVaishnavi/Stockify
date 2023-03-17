@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { unSetUserToken } from '../features/authSlice';
 import { unsetUserInfo } from '../features/userSlice';
+import { useHistory } from 'react-router-dom';
 // import "../components/Marketpg/events";
 
 
@@ -171,9 +172,305 @@ import { unsetUserInfo } from '../features/userSlice';
   const handleClose24 = () => setSellVisa(false);
   const handleShow = () => setShow(true);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const [quantity, setQuantity] = useState(0);
+  const [bidPrice, setBidPrice] = useState(0);
+  const handleQuantityChange = (event) => {
+    setQuantity(event.target.value);
+  };
 
+  const handleBidPriceChange = (event) => {
+    setBidPrice(event.target.value);
+  };
+  const dispatch = useDispatch();
+  const handleSubmit1 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"AAPL",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Bought",
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit2 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"AAPL",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type: "Sold"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit3 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"TWTR",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Bought"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit4 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"TWTR",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Sold"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit5 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"AMZN",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Bought"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit6 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"AMZN",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Sold"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit7 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"TSLA",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Bought"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit8 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"TSLA",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Sold"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit9 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"BAC",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Bought"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit10 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"BAC",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Sold"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit11 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"ORC",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Bought"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit12 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"ORC",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Sold"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit13 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"GOOG",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Bought"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit14 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"GOOG",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Sold"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit15 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"NKE",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Bought"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit16 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"NKE",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Sold"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit17 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"JPM",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Bought"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit18 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"JPM",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Sold"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit19 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"MSFT",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Bought"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit20 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"MSFT",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Sold"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit21 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"NVDA",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Bought"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit22 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"NVDA",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Sold"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit23 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"V",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Bought"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
+  const handleSubmit24 = (event) => {
+    event.preventDefault();
+    const newOrder = {
+      symbol:"AAPL",
+      quantity:quantity,
+      bidPrice:bidPrice,
+      type:"Sold"
+    };
+    navigate('/Portfolio',{state: { newOrder }})
+    setQuantity(0);
+    setBidPrice(0);
+  };
 
   return (
     <div className="market_container">
@@ -248,14 +545,16 @@ import { unsetUserInfo } from '../features/userSlice';
         <Modal.Body>
           <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+        <script>
+       </script>
+          <Button color="success" onClick={handleSubmit1}>
             <font color="black">Buy</font>
           </Button>
           <Button color="danger" onClick={handleClose1}>
@@ -270,16 +569,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit2}>
             <font color="black">Sell</font>
           </Button>
           <Button color="danger" onClick={handleClose2}>
@@ -342,7 +641,7 @@ import { unsetUserInfo } from '../features/userSlice';
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit3}>
             <font color="black">Buy</font>
           </Button>
           <Button color="danger" onClick={handleClose3}>
@@ -366,7 +665,7 @@ import { unsetUserInfo } from '../features/userSlice';
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit4}>
             <font color="black">Sell</font>
           </Button>
           <Button color="danger" onClick={handleClose4}>
@@ -420,16 +719,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit5}>
             <font color="black">Buy</font>
           </Button>
           <Button color="danger" onClick={handleClose5}>
@@ -444,16 +743,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit6}>
             <font color="black">Sell</font>
           </Button>
           <Button color="danger" onClick={handleClose6}>
@@ -507,16 +806,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit7}>
             <font color="black">Buy</font>
           </Button>
           <Button color="danger" onClick={handleClose7}>
@@ -531,16 +830,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit8}>
             <font color="black">Sell</font>
           </Button>
           <Button color="danger" onClick={handleClose8}>
@@ -594,16 +893,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit9}>
             <font color="black">Buy</font>
           </Button>
           <Button color="danger" onClick={handleClose9}>
@@ -618,16 +917,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit10}>
             <font color="black">Sell</font>
           </Button>
           <Button color="danger" onClick={handleClose10}>
@@ -681,16 +980,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit11}>
             <font color="black">Buy</font>
           </Button>
           <Button color="danger" onClick={handleClose11}>
@@ -705,16 +1004,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit12}>
             <font color="black">Sell</font>
           </Button>
           <Button color="danger" onClick={handleClose12}>
@@ -768,16 +1067,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit13}>
             <font color="black">Buy</font>
           </Button>
           <Button color="danger" onClick={handleClose13}>
@@ -792,16 +1091,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit14}>
             <font color="black">Sell</font>
           </Button>
           <Button color="danger" onClick={handleClose14}>
@@ -855,16 +1154,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit15}>
             <font color="black">Buy</font>
           </Button>
           <Button color="danger" onClick={handleClose15}>
@@ -879,16 +1178,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit16}>
             <font color="black">Sell</font>
           </Button>
           <Button color="danger" onClick={handleClose16}>
@@ -942,16 +1241,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit17}>
             <font color="black">Buy</font>
           </Button>
           <Button color="danger" onClick={handleClose17}>
@@ -966,16 +1265,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit18}>
             <font color="black">Sell</font>
           </Button>
           <Button color="danger" onClick={handleClose18}>
@@ -1029,16 +1328,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit19}>
             <font color="black">Buy</font>
           </Button>
           <Button color="danger" onClick={handleClose19}>
@@ -1053,16 +1352,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success"onClick={handleSubmit20}>
             <font color="black">Sell</font>
           </Button>
           <Button color="danger" onClick={handleClose20}>
@@ -1116,16 +1415,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit21}>
             <font color="black">Buy</font>
           </Button>
           <Button color="danger" onClick={handleClose21}>
@@ -1140,16 +1439,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit22}>
             <font color="black">Sell</font>
           </Button>
           <Button color="danger" onClick={handleClose22}>
@@ -1202,16 +1501,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit23}>
             <font color="black">Buy</font>
           </Button>
           <Button color="danger" onClick={handleClose23}>
@@ -1226,16 +1525,16 @@ import { unsetUserInfo } from '../features/userSlice';
           <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        <form>
             <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
+            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
             <br></br>
             <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
+            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success">
+          <Button color="success" onClick={handleSubmit24}>
             <font color="black">Sell</font>
           </Button>
           <Button color="danger" onClick={handleClose24}>
