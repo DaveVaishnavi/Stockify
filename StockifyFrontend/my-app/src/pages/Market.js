@@ -1,20 +1,19 @@
 import React from "react";
 import "../components/Marketpg/market.css";
-import { useState } from 'react';
-import { useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import { removeToken } from '../services/LocalStorageService';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { unSetUserToken } from '../features/authSlice';
-import { unsetUserInfo } from '../features/userSlice';
-import { useHistory } from 'react-router-dom';
+import { useState } from "react";
+import { useEffect } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import { removeToken } from "../services/LocalStorageService";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { unSetUserToken } from "../features/authSlice";
+import { unsetUserInfo } from "../features/userSlice";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 // import "../components/Marketpg/events";
 
-
- function App ({list})  {
-
+function App({ list }) {
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
   const [data3, setData3] = useState([]);
@@ -29,72 +28,95 @@ import { useHistory } from 'react-router-dom';
   const [data12, setData12] = useState([]);
 
   useEffect(() => {
-    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/AAPL?token=pk_00366a0765ce48c8b0143cb428fa0d84")
-      .then(response => response.json())
-      .then(data1 => setData1(data1));
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/AAPL?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data1) => setData1(data1));
   }, []);
   useEffect(() => {
-    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/TWTR?token=pk_00366a0765ce48c8b0143cb428fa0d84")
-      .then(response => response.json())
-      .then(data2 => setData2(data2));
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/TWTR?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data2) => setData2(data2));
   }, []);
   useEffect(() => {
-    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/AMZN?token=pk_00366a0765ce48c8b0143cb428fa0d84")
-      .then(response => response.json())
-      .then(data3 => setData3(data3));
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/AMZN?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data3) => setData3(data3));
   }, []);
   useEffect(() => {
-    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/TSLA?token=pk_00366a0765ce48c8b0143cb428fa0d84")
-      .then(response => response.json())
-      .then(data4 => setData4(data4));
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/TSLA?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data4) => setData4(data4));
   }, []);
   useEffect(() => {
-    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/BAC?token=pk_00366a0765ce48c8b0143cb428fa0d84")
-      .then(response => response.json())
-      .then(data5 => setData5(data5));
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/BAC?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data5) => setData5(data5));
   }, []);
   useEffect(() => {
-    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/ORCL?token=pk_00366a0765ce48c8b0143cb428fa0d84")
-      .then(response => response.json())
-      .then(data6 => setData6(data6));
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/ORCL?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data6) => setData6(data6));
   }, []);
   useEffect(() => {
-    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/GOOG?token=pk_00366a0765ce48c8b0143cb428fa0d84")
-      .then(response => response.json())
-      .then(data7 => setData7(data7));
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/GOOG?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data7) => setData7(data7));
   }, []);
   useEffect(() => {
-    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/NKE?token=pk_00366a0765ce48c8b0143cb428fa0d84")
-      .then(response => response.json())
-      .then(data8 => setData8(data8));
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/NKE?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data8) => setData8(data8));
   }, []);
   useEffect(() => {
-    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/JPM?token=pk_00366a0765ce48c8b0143cb428fa0d84")
-      .then(response => response.json())
-      .then(data9 => setData9(data9));
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/JPM?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data9) => setData9(data9));
   }, []);
   useEffect(() => {
-    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/MSFT?token=pk_00366a0765ce48c8b0143cb428fa0d84")
-      .then(response => response.json())
-      .then(data10 => setData10(data10));
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/MSFT?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data10) => setData10(data10));
   }, []);
   useEffect(() => {
-    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/NVDA?token=pk_00366a0765ce48c8b0143cb428fa0d84")
-      .then(response => response.json())
-      .then(data11 => setData11(data11));
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/NVDA?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data11) => setData11(data11));
   }, []);
   useEffect(() => {
-    fetch("https://api.iex.cloud/v1/data/CORE/QUOTE/V?token=pk_00366a0765ce48c8b0143cb428fa0d84")
-      .then(response => response.json())
-      .then(data12 => setData12(data12));
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/V?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data12) => setData12(data12));
   }, []);
   const handleLogout = async (e) => {
     e.preventDefault();
-    dispatch(unsetUserInfo({ name: "", email: "" }))
-    dispatch(unSetUserToken({ access_token: null }))
-    removeToken()
-    navigate('/')
-
+    dispatch(unsetUserInfo({ name: "", email: "" }));
+    dispatch(unSetUserToken({ access_token: null }));
+    removeToken();
+    navigate("/");
   };
   const [show, setShow] = useState(false);
   const [buy_apple, setBuyApple] = useState(false);
@@ -121,6 +143,9 @@ import { useHistory } from 'react-router-dom';
   const [sell_microsoft, setSellMicrosoft] = useState(false);
   const [buy_nvidia, setBuyNvidia] = useState(false);
   const [sell_nvidia, setSellNvidia] = useState(false);
+
+  const [error, setError] = useState("");
+
   const handleBuyApple = () => setBuyApple(true);
   const handleSellApple = () => setSellApple(true);
   const handleBuyVisa = () => setBuyVisa(true);
@@ -182,294 +207,539 @@ import { useHistory } from 'react-router-dom';
   const handleBidPriceChange = (event) => {
     setBidPrice(event.target.value);
   };
+
   const dispatch = useDispatch();
-  const handleSubmit1 = (event) => {
+  const handleSubmit1 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"AAPL",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Bought",
+      symbol: "AAPL",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Bought",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    // console.log("something")
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Buy failed");
   };
-  const handleSubmit2 = (event) => {
+
+  const handleSubmit2 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"AAPL",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type: "Sold"
+      symbol: "AAPL",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Sold",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/sellStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Sell failed");
   };
-  const handleSubmit3 = (event) => {
+  const handleSubmit3 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"TWTR",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Bought"
+      symbol: "TWTR",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Bought",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Buy failed");
   };
-  const handleSubmit4 = (event) => {
+  const handleSubmit4 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"TWTR",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Sold"
+      symbol: "TWTR",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Sold",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/sellStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Sell failed");
   };
-  const handleSubmit5 = (event) => {
+  const handleSubmit5 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"AMZN",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Bought"
+      symbol: "AMZN",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Bought",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Buy failed");
   };
-  const handleSubmit6 = (event) => {
+
+  const handleSubmit6 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"AMZN",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Sold"
+      symbol: "AMZN",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Sold",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/sellStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Sell failed");
   };
-  const handleSubmit7 = (event) => {
+  const handleSubmit7 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"TSLA",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Bought"
+      symbol: "TSLA",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Bought",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Buy failed");
   };
-  const handleSubmit8 = (event) => {
+  const handleSubmit8 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"TSLA",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Sold"
+      symbol: "TSLA",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Sold",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/sellStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Sell failed");
   };
-  const handleSubmit9 = (event) => {
+  const handleSubmit9 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"BAC",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Bought"
+      symbol: "BAC",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Bought",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Buy failed");
   };
-  const handleSubmit10 = (event) => {
+  const handleSubmit10 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"BAC",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Sold"
+      symbol: "BAC",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Sold",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/sellStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Sell failed");
   };
-  const handleSubmit11 = (event) => {
+  const handleSubmit11 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"ORC",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Bought"
+      symbol: "ORC",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Bought",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Buy failed");
   };
-  const handleSubmit12 = (event) => {
+  const handleSubmit12 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"ORC",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Sold"
+      symbol: "ORC",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Sold",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/sellStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Sell failed");
   };
-  const handleSubmit13 = (event) => {
+  const handleSubmit13 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"GOOG",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Bought"
+      symbol: "GOOG",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Bought",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Buy failed");
   };
-  const handleSubmit14 = (event) => {
+  const handleSubmit14 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"GOOG",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Sold"
+      symbol: "GOOG",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Sold",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/sellStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Sell failed");
   };
-  const handleSubmit15 = (event) => {
+  const handleSubmit15 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"NKE",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Bought"
+      symbol: "NKE",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Bought",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Buy failed");
   };
-  const handleSubmit16 = (event) => {
+  const handleSubmit16 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"NKE",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Sold"
+      symbol: "NKE",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Sold",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/sellStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Sell failed");
   };
-  const handleSubmit17 = (event) => {
+  const handleSubmit17 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"JPM",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Bought"
+      symbol: "JPM",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Bought",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Buy failed");
   };
-  const handleSubmit18 = (event) => {
+  const handleSubmit18 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"JPM",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Sold"
+      symbol: "JPM",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Sold",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/sellStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Sell failed");
   };
-  const handleSubmit19 = (event) => {
+  const handleSubmit19 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"MSFT",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Bought"
+      symbol: "MSFT",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Bought",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Buy failed");
   };
-  const handleSubmit20 = (event) => {
+  const handleSubmit20 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"MSFT",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Sold"
+      symbol: "MSFT",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Sold",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/sellStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Sell failed");
   };
-  const handleSubmit21 = (event) => {
+  const handleSubmit21 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"NVDA",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Bought"
+      symbol: "NVDA",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Bought",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Buy failed");
   };
-  const handleSubmit22 = (event) => {
+  const handleSubmit22 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"NVDA",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Sold"
+      symbol: "NVDA",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Sold",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/sellStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Sell failed");
   };
-  const handleSubmit23 = (event) => {
+  const handleSubmit23 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"V",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Bought"
+      symbol: "V",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Bought",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Buy failed");
   };
-  const handleSubmit24 = (event) => {
+  const handleSubmit24 = async (event) => {
     event.preventDefault();
     const newOrder = {
-      symbol:"AAPL",
-      quantity:quantity,
-      bidPrice:bidPrice,
-      type:"Sold"
+      symbol: "AAPL",
+      quantity: quantity,
+      bidPrice: bidPrice,
+      type: "Sold",
     };
-    navigate('/Portfolio',{state: { newOrder }})
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/sellStock`,
+      newOrder,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
     setQuantity(0);
     setBidPrice(0);
+    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    else setError("Sell failed");
   };
 
   return (
@@ -480,48 +750,53 @@ import { useHistory } from 'react-router-dom';
           Stockify{" "}
         </a>
         <nav className="navbar">
-         <a href="/">Home</a>
+          <a href="/">Home</a>
           <a href="/Market">Market</a>
           <a href="/Portfolio">Portfolio</a>
-          <Button className="btn4" color="rgba(46, 52, 69, 1)" onClick={handleShow}>
-        <u>Logout</u>
-      </Button>
-      <Modal show={show} onHide={handleClose}>
-        {/* <Modal.Header closeButton>
+          <Button
+            className="btn4"
+            color="rgba(46, 52, 69, 1)"
+            onClick={handleShow}
+          >
+            <u>Logout</u>
+          </Button>
+          <Modal show={show} onHide={handleClose}>
+            {/* <Modal.Header closeButton>
           <Modal.Title>Confirm</Modal.Title>
         </Modal.Header> */}
-        <Modal.Body>Are you sure you want to logout?</Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleLogout}>
-            <font color="black">Logout</font>
-          </Button>
-          <Button color="danger" onClick={handleClose}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
+            <Modal.Body>Are you sure you want to logout?</Modal.Body>
+            <Modal.Footer>
+              <Button color="success" onClick={handleLogout}>
+                <font color="black">Logout</font>
+              </Button>
+              <Button color="danger" onClick={handleClose}>
+                <font color="black">Cancel</font>
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </nav>
       </header>
       <div className="all">
         <div className="searchstock">
-            {data1.map((item) => (
-         <div className="stock-card-container">
-         <div className="stock-card-information">
-           <h2 className="company-name">{item.companyName}</h2>
-           <div className="company-values">
-             <table>
-               <tbody>
-                 <tr>
-                   <td className="bold">Price:</td>
-                   <td className="stockDetails">$ {item.latestPrice}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Change:</td>
-                   <td className="stockDetails">
-                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
-                   </td>
-                 </tr>
-                 {/* <tr>
+          {data1.map((item) => (
+            <div className="stock-card-container">
+              <div className="stock-card-information">
+                <h2 className="company-name">{item.companyName}</h2>
+                <div className="company-values">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="bold">Price:</td>
+                        <td className="stockDetails">$ {item.latestPrice}</td>
+                      </tr>
+                      <tr>
+                        <td className="bold">Change:</td>
+                        <td className="stockDetails">
+                          $ {item.change} ({item.changePercent}%) &nbsp;
+                          <i className="icon-arrow-up"></i>
+                        </td>
+                      </tr>
+                      {/* <tr>
                    <td className="bold">High:</td>
                    <td className="stockDetails">{item.high}</td>
                  </tr>
@@ -529,88 +804,119 @@ import { useHistory } from 'react-router-dom';
                    <td className="bold">Low:</td>
                    <td className="stockDetails">{item.low}</td>
                  </tr> */}
-                 <tr>
-                   <td className="bold">Market Capitalisation:</td>
-                   <td className="stockDetails">$ {item.marketCap}</td>
-                 </tr>
-               </tbody>
-             </table>
-             <div className="add-minus-button-container">
-               <button className="btn3" onClick={handleBuyApple}>
-                Buy</button>
-                <Modal show={buy_apple} onHide={handleClose1}>
-        <Modal.Header>
-          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-        <script>
-       </script>
-          <Button color="success" onClick={handleSubmit1}>
-            <font color="black">Buy</font>
-          </Button>
-          <Button color="danger" onClick={handleClose1}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-                <button className="btn1" onClick={handleSellApple}>
-                Sell</button>
-                <Modal show={sell_apple} onHide={handleClose2}>
-        <Modal.Header>
-          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit2}>
-            <font color="black">Sell</font>
-          </Button>
-          <Button color="danger" onClick={handleClose2}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-             </div>
-           </div>
-         </div>
-       </div>
+                      <tr>
+                        <td className="bold">Market Capitalisation:</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className="add-minus-button-container">
+                    <button className="btn3" onClick={handleBuyApple}>
+                      Buy
+                    </button>
+                    <Modal show={buy_apple} onHide={handleClose1}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Buying {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <script></script>
+                        <Button color="success" onClick={handleSubmit1}>
+                          <font color="black">Buy</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose1}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                    <button className="btn1" onClick={handleSellApple}>
+                      Sell
+                    </button>
+                    <Modal show={sell_apple} onHide={handleClose2}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Selling {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit2}>
+                          <font color="black">Sell</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose2}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
 
-        ))}
-        
-        {data2.map((item) => (
-         <div className="stock-card-container">
-         <div className="stock-card-information">
-           <h2 className="company-name">{item.companyName}</h2>
-           <div className="company-values">
-             <table>
-               <tbody>
-                 <tr>
-                   <td className="bold">Price:</td>
-                   <td className="stockDetails">$ {item.latestPrice}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Change:</td>
-                   <td className="stockDetails">
-                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
-                   </td>
-                 </tr>
-                 {/* <tr>
+          {data2.map((item) => (
+            <div className="stock-card-container">
+              <div className="stock-card-information">
+                <h2 className="company-name">{item.companyName}</h2>
+                <div className="company-values">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="bold">Price:</td>
+                        <td className="stockDetails">$ {item.latestPrice}</td>
+                      </tr>
+                      <tr>
+                        <td className="bold">Change:</td>
+                        <td className="stockDetails">
+                          $ {item.change} ({item.changePercent}%) &nbsp;
+                          <i className="icon-arrow-up"></i>
+                        </td>
+                      </tr>
+                      {/* <tr>
                    <td className="bold">High:</td>
                    <td className="stockDetails">$ {item.high}</td>
                  </tr>
@@ -618,86 +924,118 @@ import { useHistory } from 'react-router-dom';
                    <td className="bold">Low:</td>
                    <td className="stockDetails">$ {item.low}</td>
                  </tr> */}
-                 <tr>
-                   <td className="bold">Market Capitalisation:</td>
-                   <td className="stockDetails">${item.marketCap}</td>
-                 </tr>
-               </tbody>
-             </table>
-             <div className="add-minus-button-container">
-               <button className="btn3" onClick={handleBuyTwitter}>
-                Buy</button>
-                <Modal show={buy_twitter} onHide={handleClose3}>
-        <Modal.Header>
-          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit3}>
-            <font color="black">Buy</font>
-          </Button>
-          <Button color="danger" onClick={handleClose3}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-                <button className="btn1" onClick={handleSellTwitter}>
-                Sell</button>
-                <Modal show={sell_twitter} onHide={handleClose4}>
-        <Modal.Header>
-          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" value="Number of shares"></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" value="At what price"></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit4}>
-            <font color="black">Sell</font>
-          </Button>
-          <Button color="danger" onClick={handleClose4}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-             </div>
-           </div>
-         </div>
-         <div className="stock-card-chart"></div>
-       </div>
-
-        ))}
-        {data3.map((item) => (
-         <div className="stock-card-container">
-         <div className="stock-card-information">
-           <h2 className="company-name">{item.companyName}</h2>
-           <div className="company-values">
-             <table>
-               <tbody>
-                 <tr>
-                   <td className="bold">Price:</td>
-                   <td className="stockDetails">$ {item.latestPrice}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Change:</td>
-                   <td className="stockDetails">
-                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
-                   </td>
-                 </tr>
-                 {/* <tr>
+                      <tr>
+                        <td className="bold">Market Capitalisation:</td>
+                        <td className="stockDetails">${item.marketCap}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className="add-minus-button-container">
+                    <button className="btn3" onClick={handleBuyTwitter}>
+                      Buy
+                    </button>
+                    <Modal show={buy_twitter} onHide={handleClose3}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Buying {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                      <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit3}>
+                          <font color="black">Buy</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose3}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                    <button className="btn1" onClick={handleSellTwitter}>
+                      Sell
+                    </button>
+                    <Modal show={sell_twitter} onHide={handleClose4}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Selling {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                      <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit4}>
+                          <font color="black">Sell</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose4}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </div>
+                </div>
+              </div>
+              <div className="stock-card-chart"></div>
+            </div>
+          ))}
+          {data3.map((item) => (
+            <div className="stock-card-container">
+              <div className="stock-card-information">
+                <h2 className="company-name">{item.companyName}</h2>
+                <div className="company-values">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="bold">Price:</td>
+                        <td className="stockDetails">$ {item.latestPrice}</td>
+                      </tr>
+                      <tr>
+                        <td className="bold">Change:</td>
+                        <td className="stockDetails">
+                          $ {item.change} ({item.changePercent}%) &nbsp;
+                          <i className="icon-arrow-up"></i>
+                        </td>
+                      </tr>
+                      {/* <tr>
                    <td className="bold">High:</td>
                    <td className="stockDetails">{item.high}</td>
                  </tr>
@@ -705,86 +1043,118 @@ import { useHistory } from 'react-router-dom';
                    <td className="bold">Low:</td>
                    <td className="stockDetails">{item.low}</td>
                  </tr> */}
-                 <tr>
-                   <td className="bold">Market Capitalisation:</td>
-                   <td className="stockDetails">{item.marketCap}</td>
-                 </tr>
-               </tbody>
-             </table>
-             <div className="add-minus-button-container">
-               <button className="btn3" onClick={handleBuyAmazon}>
-                Buy</button>
-                <Modal show={buy_amazon} onHide={handleClose5}>
-        <Modal.Header>
-          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit5}>
-            <font color="black">Buy</font>
-          </Button>
-          <Button color="danger" onClick={handleClose5}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-                <button className="btn1" onClick={handleSellAmazon}>
-                Sell</button>
-                <Modal show={sell_amazon} onHide={handleClose6}>
-        <Modal.Header>
-          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit6}>
-            <font color="black">Sell</font>
-          </Button>
-          <Button color="danger" onClick={handleClose6}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-             </div>
-           </div>
-         </div>
-         <div className="stock-card-chart"></div>
-       </div>
-
-        ))}
-        {data4.map((item) => (
-         <div className="stock-card-container">
-         <div className="stock-card-information">
-           <h2 className="company-name">{item.companyName}</h2>
-           <div className="company-values">
-             <table>
-               <tbody>
-                 <tr>
-                   <td className="bold">Price:</td>
-                   <td className="stockDetails">$ {item.latestPrice}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Change:</td>
-                   <td className="stockDetails">
-                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
-                   </td>
-                 </tr>
-                 {/* <tr>
+                      <tr>
+                        <td className="bold">Market Capitalisation:</td>
+                        <td className="stockDetails">{item.marketCap}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className="add-minus-button-container">
+                    <button className="btn3" onClick={handleBuyAmazon}>
+                      Buy
+                    </button>
+                    <Modal show={buy_amazon} onHide={handleClose5}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Buying {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit5}>
+                          <font color="black">Buy</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose5}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                    <button className="btn1" onClick={handleSellAmazon}>
+                      Sell
+                    </button>
+                    <Modal show={sell_amazon} onHide={handleClose6}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Selling {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit6}>
+                          <font color="black">Sell</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose6}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </div>
+                </div>
+              </div>
+              <div className="stock-card-chart"></div>
+            </div>
+          ))}
+          {data4.map((item) => (
+            <div className="stock-card-container">
+              <div className="stock-card-information">
+                <h2 className="company-name">{item.companyName}</h2>
+                <div className="company-values">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="bold">Price:</td>
+                        <td className="stockDetails">$ {item.latestPrice}</td>
+                      </tr>
+                      <tr>
+                        <td className="bold">Change:</td>
+                        <td className="stockDetails">
+                          $ {item.change} ({item.changePercent}%) &nbsp;
+                          <i className="icon-arrow-up"></i>
+                        </td>
+                      </tr>
+                      {/* <tr>
                    <td className="bold">High:</td>
                    <td className="stockDetails">{item.high}</td>
                  </tr>
@@ -792,86 +1162,118 @@ import { useHistory } from 'react-router-dom';
                    <td className="bold">Low:</td>
                    <td className="stockDetails">{item.low}</td>
                  </tr> */}
-                 <tr>
-                   <td className="bold">Market Capitalisation:</td>
-                   <td className="stockDetails">{item.marketCap}</td>
-                 </tr>
-               </tbody>
-             </table>
-             <div className="add-minus-button-container">
-               <button className="btn3" onClick={handleBuyTesla}>
-                Buy</button>
-                <Modal show={buy_tesla} onHide={handleClose7}>
-        <Modal.Header>
-          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit7}>
-            <font color="black">Buy</font>
-          </Button>
-          <Button color="danger" onClick={handleClose7}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-                <button className="btn1" onClick={handleSellTesla}>
-                Sell</button>
-                <Modal show={sell_tesla} onHide={handleClose8}>
-        <Modal.Header>
-          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit8}>
-            <font color="black">Sell</font>
-          </Button>
-          <Button color="danger" onClick={handleClose8}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-             </div>
-           </div>
-         </div>
-         <div className="stock-card-chart"></div>
-       </div>
-
-        ))}
-        {data5.map((item) => (
-         <div className="stock-card-container">
-         <div className="stock-card-information">
-           <h2 className="company-name">{item.companyName}</h2>
-           <div className="company-values">
-             <table>
-               <tbody>
-                 <tr>
-                   <td className="bold">Price:</td>
-                   <td className="stockDetails">$ {item.latestPrice}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Change:</td>
-                   <td className="stockDetails">
-                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
-                   </td>
-                 </tr>
-                 {/* <tr>
+                      <tr>
+                        <td className="bold">Market Capitalisation:</td>
+                        <td className="stockDetails">{item.marketCap}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className="add-minus-button-container">
+                    <button className="btn3" onClick={handleBuyTesla}>
+                      Buy
+                    </button>
+                    <Modal show={buy_tesla} onHide={handleClose7}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Buying {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit7}>
+                          <font color="black">Buy</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose7}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                    <button className="btn1" onClick={handleSellTesla}>
+                      Sell
+                    </button>
+                    <Modal show={sell_tesla} onHide={handleClose8}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Selling {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit8}>
+                          <font color="black">Sell</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose8}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </div>
+                </div>
+              </div>
+              <div className="stock-card-chart"></div>
+            </div>
+          ))}
+          {data5.map((item) => (
+            <div className="stock-card-container">
+              <div className="stock-card-information">
+                <h2 className="company-name">{item.companyName}</h2>
+                <div className="company-values">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="bold">Price:</td>
+                        <td className="stockDetails">$ {item.latestPrice}</td>
+                      </tr>
+                      <tr>
+                        <td className="bold">Change:</td>
+                        <td className="stockDetails">
+                          $ {item.change} ({item.changePercent}%) &nbsp;
+                          <i className="icon-arrow-up"></i>
+                        </td>
+                      </tr>
+                      {/* <tr>
                    <td className="bold">High:</td>
                    <td className="stockDetails">{item.high}</td>
                  </tr>
@@ -879,86 +1281,118 @@ import { useHistory } from 'react-router-dom';
                    <td className="bold">Low:</td>
                    <td className="stockDetails">{item.low}</td>
                  </tr> */}
-                 <tr>
-                   <td className="bold">Market Capitalisation:</td>
-                   <td className="stockDetails">{item.marketCap}</td>
-                 </tr>
-               </tbody>
-             </table>
-             <div className="add-minus-button-container">
-               <button className="btn3" onClick={handleBuyBOC}>
-                Buy</button>
-                <Modal show={buy_boc} onHide={handleClose9}>
-        <Modal.Header>
-          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit9}>
-            <font color="black">Buy</font>
-          </Button>
-          <Button color="danger" onClick={handleClose9}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-                <button className="btn1" onClick={handleSellBOC}>
-                Sell</button>
-                <Modal show={sell_boc} onHide={handleClose10}>
-        <Modal.Header>
-          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit10}>
-            <font color="black">Sell</font>
-          </Button>
-          <Button color="danger" onClick={handleClose10}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-             </div>
-           </div>
-         </div>
-         <div className="stock-card-chart"></div>
-       </div>
-
-        ))}
-        {data6.map((item) => (
-         <div className="stock-card-container">
-         <div className="stock-card-information">
-           <h2 className="company-name">{item.companyName}</h2>
-           <div className="company-values">
-             <table>
-               <tbody>
-                 <tr>
-                   <td className="bold">Price:</td>
-                   <td className="stockDetails">$ {item.latestPrice}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Change:</td>
-                   <td className="stockDetails">
-                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
-                   </td>
-                 </tr>
-                 {/* <tr>
+                      <tr>
+                        <td className="bold">Market Capitalisation:</td>
+                        <td className="stockDetails">{item.marketCap}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className="add-minus-button-container">
+                    <button className="btn3" onClick={handleBuyBOC}>
+                      Buy
+                    </button>
+                    <Modal show={buy_boc} onHide={handleClose9}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Buying {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit9}>
+                          <font color="black">Buy</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose9}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                    <button className="btn1" onClick={handleSellBOC}>
+                      Sell
+                    </button>
+                    <Modal show={sell_boc} onHide={handleClose10}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Selling {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit10}>
+                          <font color="black">Sell</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose10}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </div>
+                </div>
+              </div>
+              <div className="stock-card-chart"></div>
+            </div>
+          ))}
+          {data6.map((item) => (
+            <div className="stock-card-container">
+              <div className="stock-card-information">
+                <h2 className="company-name">{item.companyName}</h2>
+                <div className="company-values">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="bold">Price:</td>
+                        <td className="stockDetails">$ {item.latestPrice}</td>
+                      </tr>
+                      <tr>
+                        <td className="bold">Change:</td>
+                        <td className="stockDetails">
+                          $ {item.change} ({item.changePercent}%) &nbsp;
+                          <i className="icon-arrow-up"></i>
+                        </td>
+                      </tr>
+                      {/* <tr>
                    <td className="bold">High:</td>
                    <td className="stockDetails">{item.high}</td>
                  </tr>
@@ -966,86 +1400,118 @@ import { useHistory } from 'react-router-dom';
                    <td className="bold">Low:</td>
                    <td className="stockDetails">{item.low}</td>
                  </tr> */}
-                 <tr>
-                   <td className="bold">Market Capitalisation:</td>
-                   <td className="stockDetails">{item.marketCap}</td>
-                 </tr>
-               </tbody>
-             </table>
-             <div className="add-minus-button-container">
-               <button className="btn3" onClick={handleBuyOracle}>
-                Buy</button>
-                <Modal show={buy_oracle} onHide={handleClose11}>
-        <Modal.Header>
-          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit11}>
-            <font color="black">Buy</font>
-          </Button>
-          <Button color="danger" onClick={handleClose11}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-                <button className="btn1" onClick={handleSellOracle}>
-                Sell</button>
-                <Modal show={sell_oracle} onHide={handleClose12}>
-        <Modal.Header>
-          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit12}>
-            <font color="black">Sell</font>
-          </Button>
-          <Button color="danger" onClick={handleClose12}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-             </div>
-           </div>
-         </div>
-         <div className="stock-card-chart"></div>
-       </div>
-
-        ))}
-        {data7.map((item) => (
-         <div className="stock-card-container">
-         <div className="stock-card-information">
-           <h2 className="company-name">{item.companyName}</h2>
-           <div className="company-values">
-             <table>
-               <tbody>
-                 <tr>
-                   <td className="bold">Price:</td>
-                   <td className="stockDetails">$ {item.latestPrice}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Change:</td>
-                   <td className="stockDetails">
-                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
-                   </td>
-                 </tr>
-                 {/* <tr>
+                      <tr>
+                        <td className="bold">Market Capitalisation:</td>
+                        <td className="stockDetails">{item.marketCap}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className="add-minus-button-container">
+                    <button className="btn3" onClick={handleBuyOracle}>
+                      Buy
+                    </button>
+                    <Modal show={buy_oracle} onHide={handleClose11}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Buying {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit11}>
+                          <font color="black">Buy</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose11}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                    <button className="btn1" onClick={handleSellOracle}>
+                      Sell
+                    </button>
+                    <Modal show={sell_oracle} onHide={handleClose12}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Selling {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit12}>
+                          <font color="black">Sell</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose12}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </div>
+                </div>
+              </div>
+              <div className="stock-card-chart"></div>
+            </div>
+          ))}
+          {data7.map((item) => (
+            <div className="stock-card-container">
+              <div className="stock-card-information">
+                <h2 className="company-name">{item.companyName}</h2>
+                <div className="company-values">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="bold">Price:</td>
+                        <td className="stockDetails">$ {item.latestPrice}</td>
+                      </tr>
+                      <tr>
+                        <td className="bold">Change:</td>
+                        <td className="stockDetails">
+                          $ {item.change} ({item.changePercent}%) &nbsp;
+                          <i className="icon-arrow-up"></i>
+                        </td>
+                      </tr>
+                      {/* <tr>
                    <td className="bold">High:</td>
                    <td className="stockDetails">{item.high}</td>
                  </tr>
@@ -1053,86 +1519,118 @@ import { useHistory } from 'react-router-dom';
                    <td className="bold">Low:</td>
                    <td className="stockDetails">{item.low}</td>
                  </tr> */}
-                 <tr>
-                   <td className="bold">Market Capitalisation:</td>
-                   <td className="stockDetails">{item.marketCap}</td>
-                 </tr>
-               </tbody>
-             </table>
-             <div className="add-minus-button-container">
-               <button className="btn3" onClick={handleBuyAlphabet}>
-                Buy</button>
-                <Modal show={buy_alphabet} onHide={handleClose13}>
-        <Modal.Header>
-          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit13}>
-            <font color="black">Buy</font>
-          </Button>
-          <Button color="danger" onClick={handleClose13}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-                <button className="btn1" onClick={handleSellAlphabet}>
-                Sell</button>
-                <Modal show={sell_alphabet} onHide={handleClose14}>
-        <Modal.Header>
-          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit14}>
-            <font color="black">Sell</font>
-          </Button>
-          <Button color="danger" onClick={handleClose14}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-             </div>
-           </div>
-         </div>
-         <div className="stock-card-chart"></div>
-       </div>
-
-        ))}
-        {data8.map((item) => (
-         <div className="stock-card-container">
-         <div className="stock-card-information">
-           <h2 className="company-name">{item.companyName}</h2>
-           <div className="company-values">
-             <table>
-               <tbody>
-                 <tr>
-                   <td className="bold">Price:</td>
-                   <td className="stockDetails">$ {item.latestPrice}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Change:</td>
-                   <td className="stockDetails">
-                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
-                   </td>
-                 </tr>
-                 {/* <tr>
+                      <tr>
+                        <td className="bold">Market Capitalisation:</td>
+                        <td className="stockDetails">{item.marketCap}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className="add-minus-button-container">
+                    <button className="btn3" onClick={handleBuyAlphabet}>
+                      Buy
+                    </button>
+                    <Modal show={buy_alphabet} onHide={handleClose13}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Buying {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit13}>
+                          <font color="black">Buy</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose13}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                    <button className="btn1" onClick={handleSellAlphabet}>
+                      Sell
+                    </button>
+                    <Modal show={sell_alphabet} onHide={handleClose14}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Selling {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit14}>
+                          <font color="black">Sell</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose14}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </div>
+                </div>
+              </div>
+              <div className="stock-card-chart"></div>
+            </div>
+          ))}
+          {data8.map((item) => (
+            <div className="stock-card-container">
+              <div className="stock-card-information">
+                <h2 className="company-name">{item.companyName}</h2>
+                <div className="company-values">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="bold">Price:</td>
+                        <td className="stockDetails">$ {item.latestPrice}</td>
+                      </tr>
+                      <tr>
+                        <td className="bold">Change:</td>
+                        <td className="stockDetails">
+                          $ {item.change} ({item.changePercent}%) &nbsp;
+                          <i className="icon-arrow-up"></i>
+                        </td>
+                      </tr>
+                      {/* <tr>
                    <td className="bold">High:</td>
                    <td className="stockDetails">{item.high}</td>
                  </tr>
@@ -1140,86 +1638,118 @@ import { useHistory } from 'react-router-dom';
                    <td className="bold">Low:</td>
                    <td className="stockDetails">{item.low}</td>
                  </tr> */}
-                 <tr>
-                   <td className="bold">Market Capitalisation:</td>
-                   <td className="stockDetails">{item.marketCap}</td>
-                 </tr>
-               </tbody>
-             </table>
-             <div className="add-minus-button-container">
-               <button className="btn3" onClick={handleBuyNike}>
-                Buy</button>
-                <Modal show={buy_nike} onHide={handleClose15}>
-        <Modal.Header>
-          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit15}>
-            <font color="black">Buy</font>
-          </Button>
-          <Button color="danger" onClick={handleClose15}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-                <button className="btn1" onClick={handleSellNike}>
-                Sell</button>
-                <Modal show={sell_nike} onHide={handleClose16}>
-        <Modal.Header>
-          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit16}>
-            <font color="black">Sell</font>
-          </Button>
-          <Button color="danger" onClick={handleClose16}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-             </div>
-           </div>
-         </div>
-         <div className="stock-card-chart"></div>
-       </div>
-
-        ))}
-        {data9.map((item) => (
-         <div className="stock-card-container">
-         <div className="stock-card-information">
-           <h2 className="company-name">{item.companyName}</h2>
-           <div className="company-values">
-             <table>
-               <tbody>
-                 <tr>
-                   <td className="bold">Price:</td>
-                   <td className="stockDetails">$ {item.latestPrice}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Change:</td>
-                   <td className="stockDetails">
-                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
-                   </td>
-                 </tr>
-                 {/* <tr>
+                      <tr>
+                        <td className="bold">Market Capitalisation:</td>
+                        <td className="stockDetails">{item.marketCap}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className="add-minus-button-container">
+                    <button className="btn3" onClick={handleBuyNike}>
+                      Buy
+                    </button>
+                    <Modal show={buy_nike} onHide={handleClose15}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Buying {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit15}>
+                          <font color="black">Buy</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose15}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                    <button className="btn1" onClick={handleSellNike}>
+                      Sell
+                    </button>
+                    <Modal show={sell_nike} onHide={handleClose16}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Selling {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit16}>
+                          <font color="black">Sell</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose16}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </div>
+                </div>
+              </div>
+              <div className="stock-card-chart"></div>
+            </div>
+          ))}
+          {data9.map((item) => (
+            <div className="stock-card-container">
+              <div className="stock-card-information">
+                <h2 className="company-name">{item.companyName}</h2>
+                <div className="company-values">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="bold">Price:</td>
+                        <td className="stockDetails">$ {item.latestPrice}</td>
+                      </tr>
+                      <tr>
+                        <td className="bold">Change:</td>
+                        <td className="stockDetails">
+                          $ {item.change} ({item.changePercent}%) &nbsp;
+                          <i className="icon-arrow-up"></i>
+                        </td>
+                      </tr>
+                      {/* <tr>
                    <td className="bold">High:</td>
                    <td className="stockDetails">{item.high}</td>
                  </tr>
@@ -1227,86 +1757,118 @@ import { useHistory } from 'react-router-dom';
                    <td className="bold">Low:</td>
                    <td className="stockDetails">{item.low}</td>
                  </tr> */}
-                 <tr>
-                   <td className="bold">Market Capitalisation:</td>
-                   <td className="stockDetails">{item.marketCap}</td>
-                 </tr>
-               </tbody>
-             </table>
-             <div className="add-minus-button-container">
-               <button className="btn3" onClick={handleBuyJPMC}>
-                Buy</button>
-                <Modal show={buy_jpmc} onHide={handleClose17}>
-        <Modal.Header>
-          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit17}>
-            <font color="black">Buy</font>
-          </Button>
-          <Button color="danger" onClick={handleClose17}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-                <button className="btn1" onClick={handleSellJPMC}>
-                Sell</button>
-                <Modal show={sell_jpmc} onHide={handleClose18}>
-        <Modal.Header>
-          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit18}>
-            <font color="black">Sell</font>
-          </Button>
-          <Button color="danger" onClick={handleClose18}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-             </div>
-           </div>
-         </div>
-         <div className="stock-card-chart"></div>
-       </div>
-
-        ))}
-        {data10.map((item) => (
-         <div className="stock-card-container">
-         <div className="stock-card-information">
-           <h2 className="company-name">{item.companyName}</h2>
-           <div className="company-values">
-             <table>
-               <tbody>
-                 <tr>
-                   <td className="bold">Price:</td>
-                   <td className="stockDetails">$ {item.latestPrice}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Change:</td>
-                   <td className="stockDetails">
-                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
-                   </td>
-                 </tr>
-                 {/* <tr>
+                      <tr>
+                        <td className="bold">Market Capitalisation:</td>
+                        <td className="stockDetails">{item.marketCap}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className="add-minus-button-container">
+                    <button className="btn3" onClick={handleBuyJPMC}>
+                      Buy
+                    </button>
+                    <Modal show={buy_jpmc} onHide={handleClose17}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Buying {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit17}>
+                          <font color="black">Buy</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose17}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                    <button className="btn1" onClick={handleSellJPMC}>
+                      Sell
+                    </button>
+                    <Modal show={sell_jpmc} onHide={handleClose18}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Selling {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit18}>
+                          <font color="black">Sell</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose18}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </div>
+                </div>
+              </div>
+              <div className="stock-card-chart"></div>
+            </div>
+          ))}
+          {data10.map((item) => (
+            <div className="stock-card-container">
+              <div className="stock-card-information">
+                <h2 className="company-name">{item.companyName}</h2>
+                <div className="company-values">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="bold">Price:</td>
+                        <td className="stockDetails">$ {item.latestPrice}</td>
+                      </tr>
+                      <tr>
+                        <td className="bold">Change:</td>
+                        <td className="stockDetails">
+                          $ {item.change} ({item.changePercent}%) &nbsp;
+                          <i className="icon-arrow-up"></i>
+                        </td>
+                      </tr>
+                      {/* <tr>
                    <td className="bold">High:</td>
                    <td className="stockDetails">{item.high}</td>
                  </tr>
@@ -1314,86 +1876,118 @@ import { useHistory } from 'react-router-dom';
                    <td className="bold">Low:</td>
                    <td className="stockDetails">{item.low}</td>
                  </tr> */}
-                 <tr>
-                   <td className="bold">Market Capitalisation:</td>
-                   <td className="stockDetails">{item.marketCap}</td>
-                 </tr>
-               </tbody>
-             </table>
-             <div className="add-minus-button-container">
-               <button className="btn3" onClick={handleBuyMicrosoft}>
-                Buy</button>
-                <Modal show={buy_microsoft} onHide={handleClose19}>
-        <Modal.Header>
-          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit19}>
-            <font color="black">Buy</font>
-          </Button>
-          <Button color="danger" onClick={handleClose19}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-                <button className="btn1" onClick={handleSellMicrosoft}>
-                Sell</button>
-                <Modal show={sell_microsoft} onHide={handleClose20}>
-        <Modal.Header>
-          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success"onClick={handleSubmit20}>
-            <font color="black">Sell</font>
-          </Button>
-          <Button color="danger" onClick={handleClose20}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-             </div>
-           </div>
-         </div>
-         <div className="stock-card-chart"></div>
-       </div>
-
-        ))}
-                    {data11.map((item) => (
-         <div className="stock-card-container">
-         <div className="stock-card-information">
-           <h2 className="company-name">{item.companyName}</h2>
-           <div className="company-values">
-             <table>
-               <tbody>
-                 <tr>
-                   <td className="bold">Price:</td>
-                   <td className="stockDetails">$ {item.latestPrice}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Change:</td>
-                   <td className="stockDetails">
-                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
-                   </td>
-                 </tr>
-                 {/* <tr>
+                      <tr>
+                        <td className="bold">Market Capitalisation:</td>
+                        <td className="stockDetails">{item.marketCap}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className="add-minus-button-container">
+                    <button className="btn3" onClick={handleBuyMicrosoft}>
+                      Buy
+                    </button>
+                    <Modal show={buy_microsoft} onHide={handleClose19}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Buying {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit19}>
+                          <font color="black">Buy</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose19}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                    <button className="btn1" onClick={handleSellMicrosoft}>
+                      Sell
+                    </button>
+                    <Modal show={sell_microsoft} onHide={handleClose20}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Selling {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit20}>
+                          <font color="black">Sell</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose20}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </div>
+                </div>
+              </div>
+              <div className="stock-card-chart"></div>
+            </div>
+          ))}
+          {data11.map((item) => (
+            <div className="stock-card-container">
+              <div className="stock-card-information">
+                <h2 className="company-name">{item.companyName}</h2>
+                <div className="company-values">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="bold">Price:</td>
+                        <td className="stockDetails">$ {item.latestPrice}</td>
+                      </tr>
+                      <tr>
+                        <td className="bold">Change:</td>
+                        <td className="stockDetails">
+                          $ {item.change} ({item.changePercent}%) &nbsp;
+                          <i className="icon-arrow-up"></i>
+                        </td>
+                      </tr>
+                      {/* <tr>
                    <td className="bold">High:</td>
                    <td className="stockDetails">{item.high}</td>
                  </tr>
@@ -1401,85 +1995,117 @@ import { useHistory } from 'react-router-dom';
                    <td className="bold">Low:</td>
                    <td className="stockDetails">{item.low}</td>
                  </tr> */}
-                 <tr>
-                   <td className="bold">Market Capitalisation:</td>
-                   <td className="stockDetails">$ {item.marketCap}</td>
-                 </tr>
-               </tbody>
-             </table>
-             <div className="add-minus-button-container">
-               <button className="btn3" onClick={handleBuyNvidia}>
-                Buy</button>
-                <Modal show={buy_nvidia} onHide={handleClose21}>
-        <Modal.Header>
-          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit21}>
-            <font color="black">Buy</font>
-          </Button>
-          <Button color="danger" onClick={handleClose21}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-                <button className="btn1" onClick={handleSellNvidia}>
-                Sell</button>
-                <Modal show={sell_nvidia} onHide={handleClose22}>
-        <Modal.Header>
-          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit22}>
-            <font color="black">Sell</font>
-          </Button>
-          <Button color="danger" onClick={handleClose22}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-             </div>
-           </div>
-         </div>
-       </div>
-
-        ))}
-        {data12.map((item) => (
-         <div className="stock-card-container">
-         <div className="stock-card-information">
-           <h2 className="company-name">{item.companyName}</h2>
-           <div className="company-values">
-             <table>
-               <tbody>
-                 <tr>
-                   <td className="bold">Price:</td>
-                   <td className="stockDetails">$ {item.latestPrice}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Change:</td>
-                   <td className="stockDetails">
-                     $ {item.change} ({item.changePercent}%) &nbsp;<i className="icon-arrow-up"></i>
-                   </td>
-                 </tr>
-                 {/* <tr>
+                      <tr>
+                        <td className="bold">Market Capitalisation:</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className="add-minus-button-container">
+                    <button className="btn3" onClick={handleBuyNvidia}>
+                      Buy
+                    </button>
+                    <Modal show={buy_nvidia} onHide={handleClose21}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Buying {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit21}>
+                          <font color="black">Buy</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose21}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                    <button className="btn1" onClick={handleSellNvidia}>
+                      Sell
+                    </button>
+                    <Modal show={sell_nvidia} onHide={handleClose22}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Selling {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit22}>
+                          <font color="black">Sell</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose22}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+          {data12.map((item) => (
+            <div className="stock-card-container">
+              <div className="stock-card-information">
+                <h2 className="company-name">{item.companyName}</h2>
+                <div className="company-values">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="bold">Price:</td>
+                        <td className="stockDetails">$ {item.latestPrice}</td>
+                      </tr>
+                      <tr>
+                        <td className="bold">Change:</td>
+                        <td className="stockDetails">
+                          $ {item.change} ({item.changePercent}%) &nbsp;
+                          <i className="icon-arrow-up"></i>
+                        </td>
+                      </tr>
+                      {/* <tr>
                    <td className="bold">High:</td>
                    <td className="stockDetails">{item.high}</td>
                  </tr>
@@ -1487,77 +2113,118 @@ import { useHistory } from 'react-router-dom';
                    <td className="bold">Low:</td>
                    <td className="stockDetails">{item.low}</td>
                  </tr> */}
-                 <tr>
-                   <td className="bold">Market Capitalisation:</td>
-                   <td className="stockDetails">{item.marketCap}</td>
-                 </tr>
-               </tbody>
-             </table>
-             <div className="add-minus-button-container">
-               <button className="btn3" onClick={handleBuyVisa}>
-                Buy</button>
-                <Modal show={buy_visa} onHide={handleClose23}>
-        <Modal.Header>
-          <Modal.Title>Buying {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit23}>
-            <font color="black">Buy</font>
-          </Button>
-          <Button color="danger" onClick={handleClose23}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-                <button className="btn1" onClick={handleSellVisa}>
-                Sell</button>
-                <Modal show={sell_visa} onHide={handleClose24}>
-        <Modal.Header>
-          <Modal.Title>Selling {item.companyName} stocks?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form>
-            <label for="quantity">Quantity</label>
-            <input border="3px solid" type="number" name="quantity" placeholder="Number of shares" value={quantity} onChange={handleQuantityChange}></input>
-            <br></br>
-            <label for="bidPrice">Bid-Price</label>
-            <input type="number" name="bidPrice" placeholder="At what price" value={bidPrice} onChange={handleBidPriceChange}></input>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="success" onClick={handleSubmit24}>
-            <font color="black">Sell</font>
-          </Button>
-          <Button color="danger" onClick={handleClose24}>
-          <font color="black">Cancel</font>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-             </div>
-           </div>
-         </div>
-         <div className="stock-card-chart"></div>
-       </div>
-
-        ))}
-          </div>
-
+                      <tr>
+                        <td className="bold">Market Capitalisation:</td>
+                        <td className="stockDetails">{item.marketCap}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className="add-minus-button-container">
+                    <button className="btn3" onClick={handleBuyVisa}>
+                      Buy
+                    </button>
+                    <Modal show={buy_visa} onHide={handleClose23}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Buying {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit23}>
+                          <font color="black">Buy</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose23}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                    <button className="btn1" onClick={handleSellVisa}>
+                      Sell
+                    </button>
+                    <Modal show={sell_visa} onHide={handleClose24}>
+                      <Modal.Header>
+                        <Modal.Title>
+                          Selling {item.companyName} stocks?
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <form>
+                          <label for="quantity">Quantity</label>
+                          <input
+                            border="3px solid"
+                            type="number"
+                            name="quantity"
+                            placeholder="Number of shares"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                          ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
+                        </form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="success" onClick={handleSubmit24}>
+                          <font color="black">Sell</font>
+                        </Button>
+                        <Button color="danger" onClick={handleClose24}>
+                          <font color="black">Cancel</font>
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </div>
+                </div>
+              </div>
+              <div className="stock-card-chart"></div>
+            </div>
+          ))}
         </div>
       </div>
+    </div>
   );
-};
+}
 
 function Market() {
-  const list = ["AAPL", "TWTR", "AMZN", "TSLA", "BAC", "SPY", "GOOG", "META", "JPM", "MSFT"];
+  const list = [
+    "AAPL",
+    "TWTR",
+    "AMZN",
+    "TSLA",
+    "BAC",
+    "SPY",
+    "GOOG",
+    "META",
+    "JPM",
+    "MSFT",
+  ];
 
   return (
     <div>
