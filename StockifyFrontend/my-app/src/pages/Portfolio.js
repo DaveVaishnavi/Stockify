@@ -1,9 +1,42 @@
 import React from "react";
 import "../components/Portfolio/Portfolio.css";
 import Navbar from "../components/Navbar";
+import "../components/Marketpg/market.css";
+import { useState } from 'react';
+import { useEffect } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { removeToken } from '../services/LocalStorageService';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { unSetUserToken } from '../features/authSlice';
+import { unsetUserInfo } from '../features/userSlice';
+import { useLocation } from 'react-router-dom';
+
 
 
 export const Portfolio = () => {
+  const [openOrders, setOpenOrders] = useState([]);
+  const location = useLocation();
+  useEffect(() => {
+    if (location.state && location.state.newOrder) {
+      setOpenOrders([...openOrders, location.state.newOrder]);
+    }
+  }, [location.state]);
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    dispatch(unsetUserInfo({ name: "", email: "" }))
+    dispatch(unSetUserToken({ access_token: null }))
+    removeToken()
+    navigate('/')
+
+  };
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   return (
     <div className="Portfolio-container">
       <header className="portfolio-header">
@@ -12,9 +45,25 @@ export const Portfolio = () => {
         </a>
          <nav className="portfolio-navbar">
          <a href="/">Home</a>
-          <a href="/Market">Trade</a>
+          <a href="/Market">Market</a>
           <a href="/Portfolio">Portfolio</a>
-          <a href="/Logout">Logout</a>
+          <Button className="btn4" color="rgba(46, 52, 69, 1)" onClick={handleShow}>
+        Logout
+      </Button>
+      <Modal show={show} onHide={handleClose}>
+        {/* <Modal.Header closeButton>
+          <Modal.Title>Confirm</Modal.Title>
+        </Modal.Header> */}
+        <Modal.Body>Are you sure you want to logout?</Modal.Body>
+        <Modal.Footer>
+          <Button color="success" onClick={handleLogout}>
+            <font color="black">Logout</font>
+          </Button>
+          <Button color="danger" onClick={handleClose}>
+          <font color="black">Cancel</font>
+          </Button>
+        </Modal.Footer>
+      </Modal>
         </nav>
       </header>
       <section className="your_portfolio">
@@ -141,6 +190,82 @@ export const Portfolio = () => {
             <tbody></tbody>
           </table>
         </div>
+      </section>
+
+      <section className="portfolio-orders">
+        <h2 className="portfolio-orders-h2">Orders</h2>
+                    {/* orders table */}
+              <div className="wrapper">
+              <input type="radio" name="slider" checked id="home"></input>
+              <input type="radio" name="slider" id="blog"></input>
+              <nav>
+                <label for="home" className="home">Open Orders</label>
+                <label for="blog" className="blog">Completed Orders</label>
+              </nav>
+              <section className="order-section">
+                {/* open orders */}
+                <div className="content content-1">
+                  <div className="table-wrapper2 table-wrapper-scroll-y my-custom-scrollbar">
+                      <table className="fl-table2">
+                        <thead>
+                          <tr>
+                            <th>Pair</th>
+                            <th>Amount</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                            <th>Type of Bid</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        
+      {openOrders.map((order, index) => (
+        <tr>
+        <td key={index}>
+          {order.symbol}
+        </td>
+        <td>{order.quantity}</td>
+        <td>{order.bidPrice}</td>
+        <td>{order.quantity*order.bidPrice}</td>
+        <td>{order.type}</td>
+        </tr>
+      ))}
+    
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+                {/* completed orders */}
+                <div className="content content-2">
+                  <div className="table-wrapper2 table-wrapper-scroll-y my-custom-scrollbar">
+                      <table className="fl-table2">
+                        <thead>
+                          <tr>
+                            <th>Pair</th>
+                            <th>Amount</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                          </tr>
+                          <tr>
+                            <td>13</td>
+                            <td>14</td>
+                            <td>15</td>
+                            <td>16</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+              </section>
+            </div>
+            {/* orders table end */}
       </section>
     </div>
   );
