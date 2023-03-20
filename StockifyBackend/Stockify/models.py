@@ -132,3 +132,14 @@ class User(AbstractBaseUser):
       # Simplest possible answer: All admins are staff
       return self.is_admin
 
+class StockTransaction(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    symbol = models.CharField(max_length=30)
+    quantity = models.IntegerField()
+    bidPrice = models.FloatField()
+
+class Holdings(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    symbol = models.CharField(max_length=30)
+    bidPrice = models.FloatField(null=True)
+    holding_count = models.IntegerField()

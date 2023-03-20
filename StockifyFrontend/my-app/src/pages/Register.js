@@ -57,7 +57,7 @@ const Registration = () => {
       </div>
 
       <div className="div2">
-        <h1 classNmae="login-heading" style={{ color: "white" }}>
+        <h1 className="login-heading" style={{ color: "white" }}>
           SIGN UP
         </h1>
         <Box
