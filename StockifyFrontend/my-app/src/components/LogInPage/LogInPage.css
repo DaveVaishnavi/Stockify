@@ -117,7 +117,12 @@
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:invalid {
   box-shadow: none;
   background-color: white;
+  color: #222;
 }
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:focus {
+  outline: 0;
+}
+
 @media (max-width: 768px) {
   /* adjust layout for smaller screens */
   .div1 {
@@ -127,4 +132,9 @@
   .div2 {
     width: 100%;
   }
+}
+
+.login_textfield {
+  color: black;
+  background-color: white;
 }
