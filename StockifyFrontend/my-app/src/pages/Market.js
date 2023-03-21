@@ -28,88 +28,124 @@ function App({ list }) {
   const [data12, setData12] = useState([]);
 
   useEffect(() => {
-    fetch(
-      "https://api.iex.cloud/v1/data/CORE/QUOTE/AAPL?token=pk_00366a0765ce48c8b0143cb428fa0d84"
-    )
-      .then((response) => response.json())
-      .then((data1) => setData1(data1));
+    const interval = setInterval(()=>{
+      fetch(
+        "https://api.iex.cloud/v1/data/CORE/QUOTE/AAPL?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+      )
+        .then((response) => response.json())
+        .then((data1) => setData1(data1));
+    }, 1000);
+    return ()=>clearInterval(interval);
   }, []);
   useEffect(() => {
+    const interval = setInterval(()=>{
     fetch(
       "https://api.iex.cloud/v1/data/CORE/QUOTE/TWTR?token=pk_00366a0765ce48c8b0143cb428fa0d84"
     )
       .then((response) => response.json())
       .then((data2) => setData2(data2));
+    }, 1000);
+    return ()=>clearInterval(interval);
   }, []);
   useEffect(() => {
+    const interval = setInterval(()=>{
     fetch(
       "https://api.iex.cloud/v1/data/CORE/QUOTE/AMZN?token=pk_00366a0765ce48c8b0143cb428fa0d84"
     )
       .then((response) => response.json())
       .then((data3) => setData3(data3));
+    }, 1000);
+    return ()=>clearInterval(interval);
   }, []);
   useEffect(() => {
+    const interval = setInterval(()=>{
     fetch(
       "https://api.iex.cloud/v1/data/CORE/QUOTE/TSLA?token=pk_00366a0765ce48c8b0143cb428fa0d84"
     )
       .then((response) => response.json())
       .then((data4) => setData4(data4));
+    }, 1000);
+    return ()=>clearInterval(interval);
   }, []);
   useEffect(() => {
+    const interval = setInterval(()=>{
     fetch(
       "https://api.iex.cloud/v1/data/CORE/QUOTE/BAC?token=pk_00366a0765ce48c8b0143cb428fa0d84"
     )
       .then((response) => response.json())
       .then((data5) => setData5(data5));
+    }, 1000);
+    return ()=>clearInterval(interval);
   }, []);
   useEffect(() => {
+    const interval = setInterval(()=>{
     fetch(
       "https://api.iex.cloud/v1/data/CORE/QUOTE/ORCL?token=pk_00366a0765ce48c8b0143cb428fa0d84"
     )
       .then((response) => response.json())
       .then((data6) => setData6(data6));
+    }, 1000);
+    return ()=>clearInterval(interval);
   }, []);
   useEffect(() => {
+    const interval = setInterval(()=>{
     fetch(
       "https://api.iex.cloud/v1/data/CORE/QUOTE/GOOG?token=pk_00366a0765ce48c8b0143cb428fa0d84"
     )
       .then((response) => response.json())
       .then((data7) => setData7(data7));
+    }, 1000);
+    return ()=>clearInterval(interval);
   }, []);
   useEffect(() => {
+    const interval = setInterval(()=>{
     fetch(
       "https://api.iex.cloud/v1/data/CORE/QUOTE/NKE?token=pk_00366a0765ce48c8b0143cb428fa0d84"
     )
       .then((response) => response.json())
       .then((data8) => setData8(data8));
+    }, 1000);
+    return ()=>clearInterval(interval);
   }, []);
   useEffect(() => {
+    const interval = setInterval(()=>{
     fetch(
       "https://api.iex.cloud/v1/data/CORE/QUOTE/JPM?token=pk_00366a0765ce48c8b0143cb428fa0d84"
     )
       .then((response) => response.json())
       .then((data9) => setData9(data9));
+    }, 1000);
+    return ()=>clearInterval(interval);
   }, []);
   useEffect(() => {
+    const interval = setInterval(()=>{
     fetch(
       "https://api.iex.cloud/v1/data/CORE/QUOTE/MSFT?token=pk_00366a0765ce48c8b0143cb428fa0d84"
     )
       .then((response) => response.json())
       .then((data10) => setData10(data10));
+    }, 1000);
+    return ()=>clearInterval(interval);
   }, []);
   useEffect(() => {
+    const interval = setInterval(()=>{
     fetch(
       "https://api.iex.cloud/v1/data/CORE/QUOTE/NVDA?token=pk_00366a0765ce48c8b0143cb428fa0d84"
     )
       .then((response) => response.json())
       .then((data11) => setData11(data11));
+    }, 1000);
+    return ()=>clearInterval(interval);
   }, []);
   useEffect(() => {
+    const interval = setInterval(()=>{
     fetch(
       "https://api.iex.cloud/v1/data/CORE/QUOTE/V?token=pk_00366a0765ce48c8b0143cb428fa0d84"
     )
       .then((response) => response.json())
       .then((data12) => setData12(data12));
+    }, 1000);
+    return ()=>clearInterval(interval);
   }, []);
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -199,13 +235,8 @@ function App({ list }) {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(0);
-  const [bidPrice, setBidPrice] = useState(0);
   const handleQuantityChange = (event) => {
     setQuantity(event.target.value);
-  };
-
-  const handleBidPriceChange = (event) => {
-    setBidPrice(event.target.value);
   };
 
   const dispatch = useDispatch();
@@ -214,10 +245,9 @@ function App({ list }) {
     const newOrder = {
       symbol: "AAPL",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Bought",
     };
-    // console.log("something")
+    console.log("something")
     const response = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
       newOrder,
@@ -228,7 +258,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -238,7 +267,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "AAPL",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Sold",
     };
     
@@ -252,7 +280,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -261,7 +288,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "TWTR",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -274,7 +300,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -283,7 +308,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "TWTR",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -296,7 +320,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -305,7 +328,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "AMZN",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -318,7 +340,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -328,7 +349,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "AMZN",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -341,7 +361,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -350,7 +369,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "TSLA",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -363,7 +381,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -372,7 +389,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "TSLA",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -385,7 +401,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -394,7 +409,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "BAC",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -407,7 +421,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -416,7 +429,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "BAC",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -429,7 +441,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -438,7 +449,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "ORC",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -451,7 +461,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -460,7 +469,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "ORC",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -473,7 +481,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -482,7 +489,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "GOOG",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -495,7 +501,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -504,7 +509,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "GOOG",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -517,7 +521,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -526,7 +529,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "NKE",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -539,7 +541,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -548,7 +549,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "NKE",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -561,7 +561,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -570,7 +569,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "JPM",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -583,7 +581,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -592,7 +589,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "JPM",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -605,7 +601,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -614,7 +609,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "MSFT",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -627,7 +621,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -636,7 +629,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "MSFT",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -649,7 +641,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -658,7 +649,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "NVDA",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -671,7 +661,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -680,7 +669,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "NVDA",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -693,7 +681,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -702,7 +689,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "V",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -715,7 +701,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -724,7 +709,6 @@ function App({ list }) {
     const newOrder = {
       symbol: "AAPL",
       quantity: quantity,
-      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -737,7 +721,6 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -832,14 +815,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -873,14 +848,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -926,7 +893,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">${item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -952,14 +919,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -992,14 +951,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1045,7 +996,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1071,14 +1022,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1111,14 +1054,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1164,7 +1099,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1190,14 +1125,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1228,15 +1155,6 @@ function App({ list }) {
                             placeholder="Number of shares"
                             value={quantity}
                             onChange={handleQuantityChange}
-                          ></input>
-                          <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
@@ -1283,7 +1201,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1309,14 +1227,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1349,14 +1259,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1402,7 +1304,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1428,14 +1330,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1468,14 +1362,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1521,7 +1407,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1547,14 +1433,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1587,14 +1465,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1640,7 +1510,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1666,14 +1536,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1706,14 +1568,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1759,7 +1613,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1785,14 +1639,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1825,14 +1671,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1878,7 +1716,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1904,14 +1742,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1944,14 +1774,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -2023,14 +1845,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -2063,14 +1877,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -2115,7 +1921,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -2141,14 +1947,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -2181,14 +1979,6 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
-                          <label for="bidPrice">Bid-Price</label>
-                          <input
-                            type="number"
-                            name="bidPrice"
-                            placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
-                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
