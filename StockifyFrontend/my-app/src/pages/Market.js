@@ -15,6 +15,7 @@ import icon from "../images/graph.jpeg";
 // import "../components/Marketpg/events";
 
 function App({ list }) {
+  let cash=100000;
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
   const [data3, setData3] = useState([]);
@@ -180,6 +181,10 @@ function App({ list }) {
   const [sell_microsoft, setSellMicrosoft] = useState(false);
   const [buy_nvidia, setBuyNvidia] = useState(false);
   const [sell_nvidia, setSellNvidia] = useState(false);
+  const handleBidPriceChange = (event) => {
+    setBidPrice(event.target.value);
+  };
+  const [bidPrice, setBidPrice] = useState(0);
 
   const [error, setError] = useState("");
 
@@ -239,16 +244,16 @@ function App({ list }) {
   const handleQuantityChange = (event) => {
     setQuantity(event.target.value);
   };
-
   const dispatch = useDispatch();
   const handleSubmit1 = async (event) => {
     event.preventDefault();
     const newOrder = {
       symbol: "AAPL",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Bought",
     };
-    console.log("something")
+    // console.log("something")
     const response = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
       newOrder,
@@ -259,6 +264,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -268,6 +274,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "AAPL",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Sold",
     };
     
@@ -281,6 +288,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -289,6 +297,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "TWTR",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -301,6 +310,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -309,6 +319,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "TWTR",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -321,6 +332,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -329,6 +341,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "AMZN",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -341,6 +354,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -350,6 +364,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "AMZN",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -362,6 +377,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -370,6 +386,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "TSLA",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -382,6 +399,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -390,6 +408,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "TSLA",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -402,6 +421,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -410,6 +430,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "BAC",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -422,6 +443,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -430,6 +452,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "BAC",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -442,6 +465,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -450,6 +474,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "ORC",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -462,6 +487,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -470,6 +496,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "ORC",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -482,6 +509,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -490,6 +518,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "GOOG",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -502,6 +531,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -510,6 +540,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "GOOG",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -522,6 +553,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -530,6 +562,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "NKE",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -542,6 +575,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -550,6 +584,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "NKE",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -562,6 +597,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -570,6 +606,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "JPM",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -582,6 +619,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -590,6 +628,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "JPM",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -602,6 +641,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -610,6 +650,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "MSFT",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -622,6 +663,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -630,6 +672,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "MSFT",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -642,6 +685,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -650,6 +694,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "NVDA",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -662,6 +707,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -670,6 +716,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "NVDA",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -682,6 +729,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -690,6 +738,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "V",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -702,6 +751,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -710,6 +760,7 @@ function App({ list }) {
     const newOrder = {
       symbol: "AAPL",
       quantity: quantity,
+      bidPrice: bidPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -722,6 +773,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -819,6 +871,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -852,6 +912,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -900,7 +968,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">$ {item.marketCap}</td>
+                        <td className="stockDetails">${item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -926,6 +994,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -958,6 +1034,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1006,7 +1090,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">$ {item.marketCap}</td>
+                        <td className="stockDetails">{item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1032,6 +1116,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1064,6 +1156,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1085,7 +1185,7 @@ function App({ list }) {
             <div className="stock-card-container">
               <div className="stock-card-information">
                 <h2 className="company-name">{item.companyName}</h2>
-                <a href="https://finance.yahoo.com/chart/AAPL#eyJpbnRlcnZhbCI6ImRheSIsInBlcmlvZGljaXR5IjoxLCJ0aW1lVW5pdCI6bnVsbCwiY2FuZGxlV2lkdGgiOjcuODAxMjQyMjM2MDI0ODQ0LCJmbGlwcGVkIjpmYWxzZSwidm9sdW1lVW5kZXJsYXkiOnRydWUsImFkaiI6dHJ1ZSwiY3Jvc3NoYWlyIjp0cnVlLCJjaGFydFR5cGUiOiJsaW5lIiwiZXh0ZW5kZWQiOmZhbHNlLCJtYXJrZXRTZXNzaW9ucyI6e30sImFnZ3JlZ2F0aW9uVHlwZSI6Im9obGMiLCJjaGFydFNjYWxlIjoibGluZWFyIiwicGFuZWxzIjp7ImNoYXJ0Ijp7InBlcmNlbnQiOjEsImRpc3BsYXkiOiJBQVBMIiwiY2hhcnROYW1lIjoiY2hhcnQiLCJpbmRleCI6MCwieUF4aXMiOnsibmFtZSI6ImNoYXJ0IiwicG9zaXRpb24iOm51bGx9LCJ5YXhpc0xIUyI6W10sInlheGlzUkhTIjpbImNoYXJ0Iiwi4oCMdm9sIHVuZHLigIwiXX19LCJzZXRTcGFuIjpudWxsLCJsaW5lV2lkdGgiOjIsInN0cmlwZWRCYWNrZ3JvdW5kIjp0cnVlLCJldmVudHMiOnRydWUsImNvbG9yIjoiIzAwODFmMiIsInN0cmlwZWRCYWNrZ3JvdWQiOnRydWUsInJhbmdlIjpudWxsLCJldmVudE1hcCI6eyJjb3Jwb3JhdGUiOnsiZGl2cyI6dHJ1ZSwic3BsaXRzIjp0cnVlfSwic2lnRGV2Ijp7fX0sInN5bWJvbHMiOlt7InN5bWJvbCI6IkFBUEwiLCJzeW1ib2xPYmplY3QiOnsic3ltYm9sIjoiQUFQTCIsInF1b3RlVHlwZSI6IkVRVUlUWSIsImV4Y2hhbmdlVGltZVpvbmUiOiJBbWVyaWNhL05ld19Zb3JrIn0sInBlcmlvZGljaXR5IjoxLCJpbnRlcnZhbCI6ImRheSIsInRpbWVVbml0IjpudWxsLCJzZXRTcGFuIjpudWxsfV0sInN0dWRpZXMiOnsi4oCMdm9sIHVuZHLigIwiOnsidHlwZSI6InZvbCB1bmRyIiwiaW5wdXRzIjp7ImlkIjoi4oCMdm9sIHVuZHLigIwiLCJkaXNwbGF5Ijoi4oCMdm9sIHVuZHLigIwifSwib3V0cHV0cyI6eyJVcCBWb2x1bWUiOiIjMDBiMDYxIiwiRG93biBWb2x1bWUiOiIjZmYzMzNhIn0sInBhbmVsIjoiY2hhcnQiLCJwYXJhbWV0ZXJzIjp7IndpZHRoRmFjdG9yIjowLjQ1LCJjaGFydE5hbWUiOiJjaGFydCIsInBhbmVsTmFtZSI6ImNoYXJ0In19fX0-">
+                <a href="https://finance.yahoo.com/chart/TSLA#eyJpbnRlcnZhbCI6ImRheSIsInBlcmlvZGljaXR5IjoxLCJ0aW1lVW5pdCI6bnVsbCwiY2FuZGxlV2lkdGgiOjcuODAxMjQyMjM2MDI0ODQ0LCJmbGlwcGVkIjpmYWxzZSwidm9sdW1lVW5kZXJsYXkiOnRydWUsImFkaiI6dHJ1ZSwiY3Jvc3NoYWlyIjp0cnVlLCJjaGFydFR5cGUiOiJsaW5lIiwiZXh0ZW5kZWQiOmZhbHNlLCJtYXJrZXRTZXNzaW9ucyI6e30sImFnZ3JlZ2F0aW9uVHlwZSI6Im9obGMiLCJjaGFydFNjYWxlIjoibGluZWFyIiwicGFuZWxzIjp7ImNoYXJ0Ijp7InBlcmNlbnQiOjEsImRpc3BsYXkiOiJBQVBMIiwiY2hhcnROYW1lIjoiY2hhcnQiLCJpbmRleCI6MCwieUF4aXMiOnsibmFtZSI6ImNoYXJ0IiwicG9zaXRpb24iOm51bGx9LCJ5YXhpc0xIUyI6W10sInlheGlzUkhTIjpbImNoYXJ0Iiwi4oCMdm9sIHVuZHLigIwiXX19LCJzZXRTcGFuIjpudWxsLCJsaW5lV2lkdGgiOjIsInN0cmlwZWRCYWNrZ3JvdW5kIjp0cnVlLCJldmVudHMiOnRydWUsImNvbG9yIjoiIzAwODFmMiIsInN0cmlwZWRCYWNrZ3JvdWQiOnRydWUsInJhbmdlIjpudWxsLCJldmVudE1hcCI6eyJjb3Jwb3JhdGUiOnsiZGl2cyI6dHJ1ZSwic3BsaXRzIjp0cnVlfSwic2lnRGV2Ijp7fX0sInN5bWJvbHMiOlt7InN5bWJvbCI6IkFBUEwiLCJzeW1ib2xPYmplY3QiOnsic3ltYm9sIjoiQUFQTCIsInF1b3RlVHlwZSI6IkVRVUlUWSIsImV4Y2hhbmdlVGltZVpvbmUiOiJBbWVyaWNhL05ld19Zb3JrIn0sInBlcmlvZGljaXR5IjoxLCJpbnRlcnZhbCI6ImRheSIsInRpbWVVbml0IjpudWxsLCJzZXRTcGFuIjpudWxsfV0sInN0dWRpZXMiOnsi4oCMdm9sIHVuZHLigIwiOnsidHlwZSI6InZvbCB1bmRyIiwiaW5wdXRzIjp7ImlkIjoi4oCMdm9sIHVuZHLigIwiLCJkaXNwbGF5Ijoi4oCMdm9sIHVuZHLigIwifSwib3V0cHV0cyI6eyJVcCBWb2x1bWUiOiIjMDBiMDYxIiwiRG93biBWb2x1bWUiOiIjZmYzMzNhIn0sInBhbmVsIjoiY2hhcnQiLCJwYXJhbWV0ZXJzIjp7IndpZHRoRmFjdG9yIjowLjQ1LCJjaGFydE5hbWUiOiJjaGFydCIsInBhbmVsTmFtZSI6ImNoYXJ0In19fX0-">
                   <img src={icon} className="graph-icon" alt="graph" />
                   </a>
                 <div className="company-values">
@@ -1112,7 +1212,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">$ {item.marketCap}</td>
+                        <td className="stockDetails">{item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1138,6 +1238,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1169,6 +1277,15 @@ function App({ list }) {
                             value={quantity}
                             onChange={handleQuantityChange}
                           ></input>
+                          <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1190,6 +1307,9 @@ function App({ list }) {
             <div className="stock-card-container">
               <div className="stock-card-information">
                 <h2 className="company-name">{item.companyName}</h2>
+                <a href="https://finance.yahoo.com/chart/BAC#eyJpbnRlcnZhbCI6ImRheSIsInBlcmlvZGljaXR5IjoxLCJ0aW1lVW5pdCI6bnVsbCwiY2FuZGxlV2lkdGgiOjcuODAxMjQyMjM2MDI0ODQ0LCJmbGlwcGVkIjpmYWxzZSwidm9sdW1lVW5kZXJsYXkiOnRydWUsImFkaiI6dHJ1ZSwiY3Jvc3NoYWlyIjp0cnVlLCJjaGFydFR5cGUiOiJsaW5lIiwiZXh0ZW5kZWQiOmZhbHNlLCJtYXJrZXRTZXNzaW9ucyI6e30sImFnZ3JlZ2F0aW9uVHlwZSI6Im9obGMiLCJjaGFydFNjYWxlIjoibGluZWFyIiwicGFuZWxzIjp7ImNoYXJ0Ijp7InBlcmNlbnQiOjEsImRpc3BsYXkiOiJBQVBMIiwiY2hhcnROYW1lIjoiY2hhcnQiLCJpbmRleCI6MCwieUF4aXMiOnsibmFtZSI6ImNoYXJ0IiwicG9zaXRpb24iOm51bGx9LCJ5YXhpc0xIUyI6W10sInlheGlzUkhTIjpbImNoYXJ0Iiwi4oCMdm9sIHVuZHLigIwiXX19LCJzZXRTcGFuIjpudWxsLCJsaW5lV2lkdGgiOjIsInN0cmlwZWRCYWNrZ3JvdW5kIjp0cnVlLCJldmVudHMiOnRydWUsImNvbG9yIjoiIzAwODFmMiIsInN0cmlwZWRCYWNrZ3JvdWQiOnRydWUsInJhbmdlIjpudWxsLCJldmVudE1hcCI6eyJjb3Jwb3JhdGUiOnsiZGl2cyI6dHJ1ZSwic3BsaXRzIjp0cnVlfSwic2lnRGV2Ijp7fX0sInN5bWJvbHMiOlt7InN5bWJvbCI6IkFBUEwiLCJzeW1ib2xPYmplY3QiOnsic3ltYm9sIjoiQUFQTCIsInF1b3RlVHlwZSI6IkVRVUlUWSIsImV4Y2hhbmdlVGltZVpvbmUiOiJBbWVyaWNhL05ld19Zb3JrIn0sInBlcmlvZGljaXR5IjoxLCJpbnRlcnZhbCI6ImRheSIsInRpbWVVbml0IjpudWxsLCJzZXRTcGFuIjpudWxsfV0sInN0dWRpZXMiOnsi4oCMdm9sIHVuZHLigIwiOnsidHlwZSI6InZvbCB1bmRyIiwiaW5wdXRzIjp7ImlkIjoi4oCMdm9sIHVuZHLigIwiLCJkaXNwbGF5Ijoi4oCMdm9sIHVuZHLigIwifSwib3V0cHV0cyI6eyJVcCBWb2x1bWUiOiIjMDBiMDYxIiwiRG93biBWb2x1bWUiOiIjZmYzMzNhIn0sInBhbmVsIjoiY2hhcnQiLCJwYXJhbWV0ZXJzIjp7IndpZHRoRmFjdG9yIjowLjQ1LCJjaGFydE5hbWUiOiJjaGFydCIsInBhbmVsTmFtZSI6ImNoYXJ0In19fX0-">
+                  <img src={icon} className="graph-icon" alt="graph" />
+                  </a>
                 <div className="company-values">
                   <table>
                     <tbody>
@@ -1214,7 +1334,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">$ {item.marketCap}</td>
+                        <td className="stockDetails">{item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1240,6 +1360,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1272,6 +1400,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1293,6 +1429,9 @@ function App({ list }) {
             <div className="stock-card-container">
               <div className="stock-card-information">
                 <h2 className="company-name">{item.companyName}</h2>
+                <a href="https://finance.yahoo.com/chart/ORC#eyJpbnRlcnZhbCI6ImRheSIsInBlcmlvZGljaXR5IjoxLCJ0aW1lVW5pdCI6bnVsbCwiY2FuZGxlV2lkdGgiOjcuODAxMjQyMjM2MDI0ODQ0LCJmbGlwcGVkIjpmYWxzZSwidm9sdW1lVW5kZXJsYXkiOnRydWUsImFkaiI6dHJ1ZSwiY3Jvc3NoYWlyIjp0cnVlLCJjaGFydFR5cGUiOiJsaW5lIiwiZXh0ZW5kZWQiOmZhbHNlLCJtYXJrZXRTZXNzaW9ucyI6e30sImFnZ3JlZ2F0aW9uVHlwZSI6Im9obGMiLCJjaGFydFNjYWxlIjoibGluZWFyIiwicGFuZWxzIjp7ImNoYXJ0Ijp7InBlcmNlbnQiOjEsImRpc3BsYXkiOiJBQVBMIiwiY2hhcnROYW1lIjoiY2hhcnQiLCJpbmRleCI6MCwieUF4aXMiOnsibmFtZSI6ImNoYXJ0IiwicG9zaXRpb24iOm51bGx9LCJ5YXhpc0xIUyI6W10sInlheGlzUkhTIjpbImNoYXJ0Iiwi4oCMdm9sIHVuZHLigIwiXX19LCJzZXRTcGFuIjpudWxsLCJsaW5lV2lkdGgiOjIsInN0cmlwZWRCYWNrZ3JvdW5kIjp0cnVlLCJldmVudHMiOnRydWUsImNvbG9yIjoiIzAwODFmMiIsInN0cmlwZWRCYWNrZ3JvdWQiOnRydWUsInJhbmdlIjpudWxsLCJldmVudE1hcCI6eyJjb3Jwb3JhdGUiOnsiZGl2cyI6dHJ1ZSwic3BsaXRzIjp0cnVlfSwic2lnRGV2Ijp7fX0sInN5bWJvbHMiOlt7InN5bWJvbCI6IkFBUEwiLCJzeW1ib2xPYmplY3QiOnsic3ltYm9sIjoiQUFQTCIsInF1b3RlVHlwZSI6IkVRVUlUWSIsImV4Y2hhbmdlVGltZVpvbmUiOiJBbWVyaWNhL05ld19Zb3JrIn0sInBlcmlvZGljaXR5IjoxLCJpbnRlcnZhbCI6ImRheSIsInRpbWVVbml0IjpudWxsLCJzZXRTcGFuIjpudWxsfV0sInN0dWRpZXMiOnsi4oCMdm9sIHVuZHLigIwiOnsidHlwZSI6InZvbCB1bmRyIiwiaW5wdXRzIjp7ImlkIjoi4oCMdm9sIHVuZHLigIwiLCJkaXNwbGF5Ijoi4oCMdm9sIHVuZHLigIwifSwib3V0cHV0cyI6eyJVcCBWb2x1bWUiOiIjMDBiMDYxIiwiRG93biBWb2x1bWUiOiIjZmYzMzNhIn0sInBhbmVsIjoiY2hhcnQiLCJwYXJhbWV0ZXJzIjp7IndpZHRoRmFjdG9yIjowLjQ1LCJjaGFydE5hbWUiOiJjaGFydCIsInBhbmVsTmFtZSI6ImNoYXJ0In19fX0-">
+                  <img src={icon} className="graph-icon" alt="graph" />
+                  </a>
                 <div className="company-values">
                   <table>
                     <tbody>
@@ -1317,7 +1456,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">$ {item.marketCap}</td>
+                        <td className="stockDetails">{item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1343,6 +1482,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1375,6 +1522,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1396,6 +1551,9 @@ function App({ list }) {
             <div className="stock-card-container">
               <div className="stock-card-information">
                 <h2 className="company-name">{item.companyName}</h2>
+                <a href="https://finance.yahoo.com/chart/GOOG#eyJpbnRlcnZhbCI6ImRheSIsInBlcmlvZGljaXR5IjoxLCJ0aW1lVW5pdCI6bnVsbCwiY2FuZGxlV2lkdGgiOjcuODAxMjQyMjM2MDI0ODQ0LCJmbGlwcGVkIjpmYWxzZSwidm9sdW1lVW5kZXJsYXkiOnRydWUsImFkaiI6dHJ1ZSwiY3Jvc3NoYWlyIjp0cnVlLCJjaGFydFR5cGUiOiJsaW5lIiwiZXh0ZW5kZWQiOmZhbHNlLCJtYXJrZXRTZXNzaW9ucyI6e30sImFnZ3JlZ2F0aW9uVHlwZSI6Im9obGMiLCJjaGFydFNjYWxlIjoibGluZWFyIiwicGFuZWxzIjp7ImNoYXJ0Ijp7InBlcmNlbnQiOjEsImRpc3BsYXkiOiJBQVBMIiwiY2hhcnROYW1lIjoiY2hhcnQiLCJpbmRleCI6MCwieUF4aXMiOnsibmFtZSI6ImNoYXJ0IiwicG9zaXRpb24iOm51bGx9LCJ5YXhpc0xIUyI6W10sInlheGlzUkhTIjpbImNoYXJ0Iiwi4oCMdm9sIHVuZHLigIwiXX19LCJzZXRTcGFuIjpudWxsLCJsaW5lV2lkdGgiOjIsInN0cmlwZWRCYWNrZ3JvdW5kIjp0cnVlLCJldmVudHMiOnRydWUsImNvbG9yIjoiIzAwODFmMiIsInN0cmlwZWRCYWNrZ3JvdWQiOnRydWUsInJhbmdlIjpudWxsLCJldmVudE1hcCI6eyJjb3Jwb3JhdGUiOnsiZGl2cyI6dHJ1ZSwic3BsaXRzIjp0cnVlfSwic2lnRGV2Ijp7fX0sInN5bWJvbHMiOlt7InN5bWJvbCI6IkFBUEwiLCJzeW1ib2xPYmplY3QiOnsic3ltYm9sIjoiQUFQTCIsInF1b3RlVHlwZSI6IkVRVUlUWSIsImV4Y2hhbmdlVGltZVpvbmUiOiJBbWVyaWNhL05ld19Zb3JrIn0sInBlcmlvZGljaXR5IjoxLCJpbnRlcnZhbCI6ImRheSIsInRpbWVVbml0IjpudWxsLCJzZXRTcGFuIjpudWxsfV0sInN0dWRpZXMiOnsi4oCMdm9sIHVuZHLigIwiOnsidHlwZSI6InZvbCB1bmRyIiwiaW5wdXRzIjp7ImlkIjoi4oCMdm9sIHVuZHLigIwiLCJkaXNwbGF5Ijoi4oCMdm9sIHVuZHLigIwifSwib3V0cHV0cyI6eyJVcCBWb2x1bWUiOiIjMDBiMDYxIiwiRG93biBWb2x1bWUiOiIjZmYzMzNhIn0sInBhbmVsIjoiY2hhcnQiLCJwYXJhbWV0ZXJzIjp7IndpZHRoRmFjdG9yIjowLjQ1LCJjaGFydE5hbWUiOiJjaGFydCIsInBhbmVsTmFtZSI6ImNoYXJ0In19fX0-">
+                  <img src={icon} className="graph-icon" alt="graph" />
+                  </a>
                 <div className="company-values">
                   <table>
                     <tbody>
@@ -1420,7 +1578,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">$ {item.marketCap}</td>
+                        <td className="stockDetails">{item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1446,6 +1604,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1478,6 +1644,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1499,6 +1673,9 @@ function App({ list }) {
             <div className="stock-card-container">
               <div className="stock-card-information">
                 <h2 className="company-name">{item.companyName}</h2>
+                <a href="https://finance.yahoo.com/chart/NKE#eyJpbnRlcnZhbCI6ImRheSIsInBlcmlvZGljaXR5IjoxLCJ0aW1lVW5pdCI6bnVsbCwiY2FuZGxlV2lkdGgiOjcuODAxMjQyMjM2MDI0ODQ0LCJmbGlwcGVkIjpmYWxzZSwidm9sdW1lVW5kZXJsYXkiOnRydWUsImFkaiI6dHJ1ZSwiY3Jvc3NoYWlyIjp0cnVlLCJjaGFydFR5cGUiOiJsaW5lIiwiZXh0ZW5kZWQiOmZhbHNlLCJtYXJrZXRTZXNzaW9ucyI6e30sImFnZ3JlZ2F0aW9uVHlwZSI6Im9obGMiLCJjaGFydFNjYWxlIjoibGluZWFyIiwicGFuZWxzIjp7ImNoYXJ0Ijp7InBlcmNlbnQiOjEsImRpc3BsYXkiOiJBQVBMIiwiY2hhcnROYW1lIjoiY2hhcnQiLCJpbmRleCI6MCwieUF4aXMiOnsibmFtZSI6ImNoYXJ0IiwicG9zaXRpb24iOm51bGx9LCJ5YXhpc0xIUyI6W10sInlheGlzUkhTIjpbImNoYXJ0Iiwi4oCMdm9sIHVuZHLigIwiXX19LCJzZXRTcGFuIjpudWxsLCJsaW5lV2lkdGgiOjIsInN0cmlwZWRCYWNrZ3JvdW5kIjp0cnVlLCJldmVudHMiOnRydWUsImNvbG9yIjoiIzAwODFmMiIsInN0cmlwZWRCYWNrZ3JvdWQiOnRydWUsInJhbmdlIjpudWxsLCJldmVudE1hcCI6eyJjb3Jwb3JhdGUiOnsiZGl2cyI6dHJ1ZSwic3BsaXRzIjp0cnVlfSwic2lnRGV2Ijp7fX0sInN5bWJvbHMiOlt7InN5bWJvbCI6IkFBUEwiLCJzeW1ib2xPYmplY3QiOnsic3ltYm9sIjoiQUFQTCIsInF1b3RlVHlwZSI6IkVRVUlUWSIsImV4Y2hhbmdlVGltZVpvbmUiOiJBbWVyaWNhL05ld19Zb3JrIn0sInBlcmlvZGljaXR5IjoxLCJpbnRlcnZhbCI6ImRheSIsInRpbWVVbml0IjpudWxsLCJzZXRTcGFuIjpudWxsfV0sInN0dWRpZXMiOnsi4oCMdm9sIHVuZHLigIwiOnsidHlwZSI6InZvbCB1bmRyIiwiaW5wdXRzIjp7ImlkIjoi4oCMdm9sIHVuZHLigIwiLCJkaXNwbGF5Ijoi4oCMdm9sIHVuZHLigIwifSwib3V0cHV0cyI6eyJVcCBWb2x1bWUiOiIjMDBiMDYxIiwiRG93biBWb2x1bWUiOiIjZmYzMzNhIn0sInBhbmVsIjoiY2hhcnQiLCJwYXJhbWV0ZXJzIjp7IndpZHRoRmFjdG9yIjowLjQ1LCJjaGFydE5hbWUiOiJjaGFydCIsInBhbmVsTmFtZSI6ImNoYXJ0In19fX0-">
+                  <img src={icon} className="graph-icon" alt="graph" />
+                  </a>
                 <div className="company-values">
                   <table>
                     <tbody>
@@ -1523,7 +1700,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">$ {item.marketCap}</td>
+                        <td className="stockDetails">{item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1549,6 +1726,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1581,6 +1766,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1602,6 +1795,9 @@ function App({ list }) {
             <div className="stock-card-container">
               <div className="stock-card-information">
                 <h2 className="company-name">{item.companyName}</h2>
+                <a href="https://finance.yahoo.com/chart/JPM#eyJpbnRlcnZhbCI6ImRheSIsInBlcmlvZGljaXR5IjoxLCJ0aW1lVW5pdCI6bnVsbCwiY2FuZGxlV2lkdGgiOjcuODAxMjQyMjM2MDI0ODQ0LCJmbGlwcGVkIjpmYWxzZSwidm9sdW1lVW5kZXJsYXkiOnRydWUsImFkaiI6dHJ1ZSwiY3Jvc3NoYWlyIjp0cnVlLCJjaGFydFR5cGUiOiJsaW5lIiwiZXh0ZW5kZWQiOmZhbHNlLCJtYXJrZXRTZXNzaW9ucyI6e30sImFnZ3JlZ2F0aW9uVHlwZSI6Im9obGMiLCJjaGFydFNjYWxlIjoibGluZWFyIiwicGFuZWxzIjp7ImNoYXJ0Ijp7InBlcmNlbnQiOjEsImRpc3BsYXkiOiJBQVBMIiwiY2hhcnROYW1lIjoiY2hhcnQiLCJpbmRleCI6MCwieUF4aXMiOnsibmFtZSI6ImNoYXJ0IiwicG9zaXRpb24iOm51bGx9LCJ5YXhpc0xIUyI6W10sInlheGlzUkhTIjpbImNoYXJ0Iiwi4oCMdm9sIHVuZHLigIwiXX19LCJzZXRTcGFuIjpudWxsLCJsaW5lV2lkdGgiOjIsInN0cmlwZWRCYWNrZ3JvdW5kIjp0cnVlLCJldmVudHMiOnRydWUsImNvbG9yIjoiIzAwODFmMiIsInN0cmlwZWRCYWNrZ3JvdWQiOnRydWUsInJhbmdlIjpudWxsLCJldmVudE1hcCI6eyJjb3Jwb3JhdGUiOnsiZGl2cyI6dHJ1ZSwic3BsaXRzIjp0cnVlfSwic2lnRGV2Ijp7fX0sInN5bWJvbHMiOlt7InN5bWJvbCI6IkFBUEwiLCJzeW1ib2xPYmplY3QiOnsic3ltYm9sIjoiQUFQTCIsInF1b3RlVHlwZSI6IkVRVUlUWSIsImV4Y2hhbmdlVGltZVpvbmUiOiJBbWVyaWNhL05ld19Zb3JrIn0sInBlcmlvZGljaXR5IjoxLCJpbnRlcnZhbCI6ImRheSIsInRpbWVVbml0IjpudWxsLCJzZXRTcGFuIjpudWxsfV0sInN0dWRpZXMiOnsi4oCMdm9sIHVuZHLigIwiOnsidHlwZSI6InZvbCB1bmRyIiwiaW5wdXRzIjp7ImlkIjoi4oCMdm9sIHVuZHLigIwiLCJkaXNwbGF5Ijoi4oCMdm9sIHVuZHLigIwifSwib3V0cHV0cyI6eyJVcCBWb2x1bWUiOiIjMDBiMDYxIiwiRG93biBWb2x1bWUiOiIjZmYzMzNhIn0sInBhbmVsIjoiY2hhcnQiLCJwYXJhbWV0ZXJzIjp7IndpZHRoRmFjdG9yIjowLjQ1LCJjaGFydE5hbWUiOiJjaGFydCIsInBhbmVsTmFtZSI6ImNoYXJ0In19fX0-">
+                  <img src={icon} className="graph-icon" alt="graph" />
+                  </a>
                 <div className="company-values">
                   <table>
                     <tbody>
@@ -1626,7 +1822,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">$ {item.marketCap}</td>
+                        <td className="stockDetails">{item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1652,6 +1848,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1684,6 +1888,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1705,6 +1917,9 @@ function App({ list }) {
             <div className="stock-card-container">
               <div className="stock-card-information">
                 <h2 className="company-name">{item.companyName}</h2>
+                <a href="https://finance.yahoo.com/chart/MSFT#eyJpbnRlcnZhbCI6ImRheSIsInBlcmlvZGljaXR5IjoxLCJ0aW1lVW5pdCI6bnVsbCwiY2FuZGxlV2lkdGgiOjcuODAxMjQyMjM2MDI0ODQ0LCJmbGlwcGVkIjpmYWxzZSwidm9sdW1lVW5kZXJsYXkiOnRydWUsImFkaiI6dHJ1ZSwiY3Jvc3NoYWlyIjp0cnVlLCJjaGFydFR5cGUiOiJsaW5lIiwiZXh0ZW5kZWQiOmZhbHNlLCJtYXJrZXRTZXNzaW9ucyI6e30sImFnZ3JlZ2F0aW9uVHlwZSI6Im9obGMiLCJjaGFydFNjYWxlIjoibGluZWFyIiwicGFuZWxzIjp7ImNoYXJ0Ijp7InBlcmNlbnQiOjEsImRpc3BsYXkiOiJBQVBMIiwiY2hhcnROYW1lIjoiY2hhcnQiLCJpbmRleCI6MCwieUF4aXMiOnsibmFtZSI6ImNoYXJ0IiwicG9zaXRpb24iOm51bGx9LCJ5YXhpc0xIUyI6W10sInlheGlzUkhTIjpbImNoYXJ0Iiwi4oCMdm9sIHVuZHLigIwiXX19LCJzZXRTcGFuIjpudWxsLCJsaW5lV2lkdGgiOjIsInN0cmlwZWRCYWNrZ3JvdW5kIjp0cnVlLCJldmVudHMiOnRydWUsImNvbG9yIjoiIzAwODFmMiIsInN0cmlwZWRCYWNrZ3JvdWQiOnRydWUsInJhbmdlIjpudWxsLCJldmVudE1hcCI6eyJjb3Jwb3JhdGUiOnsiZGl2cyI6dHJ1ZSwic3BsaXRzIjp0cnVlfSwic2lnRGV2Ijp7fX0sInN5bWJvbHMiOlt7InN5bWJvbCI6IkFBUEwiLCJzeW1ib2xPYmplY3QiOnsic3ltYm9sIjoiQUFQTCIsInF1b3RlVHlwZSI6IkVRVUlUWSIsImV4Y2hhbmdlVGltZVpvbmUiOiJBbWVyaWNhL05ld19Zb3JrIn0sInBlcmlvZGljaXR5IjoxLCJpbnRlcnZhbCI6ImRheSIsInRpbWVVbml0IjpudWxsLCJzZXRTcGFuIjpudWxsfV0sInN0dWRpZXMiOnsi4oCMdm9sIHVuZHLigIwiOnsidHlwZSI6InZvbCB1bmRyIiwiaW5wdXRzIjp7ImlkIjoi4oCMdm9sIHVuZHLigIwiLCJkaXNwbGF5Ijoi4oCMdm9sIHVuZHLigIwifSwib3V0cHV0cyI6eyJVcCBWb2x1bWUiOiIjMDBiMDYxIiwiRG93biBWb2x1bWUiOiIjZmYzMzNhIn0sInBhbmVsIjoiY2hhcnQiLCJwYXJhbWV0ZXJzIjp7IndpZHRoRmFjdG9yIjowLjQ1LCJjaGFydE5hbWUiOiJjaGFydCIsInBhbmVsTmFtZSI6ImNoYXJ0In19fX0-">
+                  <img src={icon} className="graph-icon" alt="graph" />
+                  </a>
                 <div className="company-values">
                   <table>
                     <tbody>
@@ -1729,7 +1944,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">$ {item.marketCap}</td>
+                        <td className="stockDetails">{item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1755,6 +1970,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1787,6 +2010,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1808,6 +2039,9 @@ function App({ list }) {
             <div className="stock-card-container">
               <div className="stock-card-information">
                 <h2 className="company-name">{item.companyName}</h2>
+                <a href="https://finance.yahoo.com/chart/NVDA#eyJpbnRlcnZhbCI6ImRheSIsInBlcmlvZGljaXR5IjoxLCJ0aW1lVW5pdCI6bnVsbCwiY2FuZGxlV2lkdGgiOjcuODAxMjQyMjM2MDI0ODQ0LCJmbGlwcGVkIjpmYWxzZSwidm9sdW1lVW5kZXJsYXkiOnRydWUsImFkaiI6dHJ1ZSwiY3Jvc3NoYWlyIjp0cnVlLCJjaGFydFR5cGUiOiJsaW5lIiwiZXh0ZW5kZWQiOmZhbHNlLCJtYXJrZXRTZXNzaW9ucyI6e30sImFnZ3JlZ2F0aW9uVHlwZSI6Im9obGMiLCJjaGFydFNjYWxlIjoibGluZWFyIiwicGFuZWxzIjp7ImNoYXJ0Ijp7InBlcmNlbnQiOjEsImRpc3BsYXkiOiJBQVBMIiwiY2hhcnROYW1lIjoiY2hhcnQiLCJpbmRleCI6MCwieUF4aXMiOnsibmFtZSI6ImNoYXJ0IiwicG9zaXRpb24iOm51bGx9LCJ5YXhpc0xIUyI6W10sInlheGlzUkhTIjpbImNoYXJ0Iiwi4oCMdm9sIHVuZHLigIwiXX19LCJzZXRTcGFuIjpudWxsLCJsaW5lV2lkdGgiOjIsInN0cmlwZWRCYWNrZ3JvdW5kIjp0cnVlLCJldmVudHMiOnRydWUsImNvbG9yIjoiIzAwODFmMiIsInN0cmlwZWRCYWNrZ3JvdWQiOnRydWUsInJhbmdlIjpudWxsLCJldmVudE1hcCI6eyJjb3Jwb3JhdGUiOnsiZGl2cyI6dHJ1ZSwic3BsaXRzIjp0cnVlfSwic2lnRGV2Ijp7fX0sInN5bWJvbHMiOlt7InN5bWJvbCI6IkFBUEwiLCJzeW1ib2xPYmplY3QiOnsic3ltYm9sIjoiQUFQTCIsInF1b3RlVHlwZSI6IkVRVUlUWSIsImV4Y2hhbmdlVGltZVpvbmUiOiJBbWVyaWNhL05ld19Zb3JrIn0sInBlcmlvZGljaXR5IjoxLCJpbnRlcnZhbCI6ImRheSIsInRpbWVVbml0IjpudWxsLCJzZXRTcGFuIjpudWxsfV0sInN0dWRpZXMiOnsi4oCMdm9sIHVuZHLigIwiOnsidHlwZSI6InZvbCB1bmRyIiwiaW5wdXRzIjp7ImlkIjoi4oCMdm9sIHVuZHLigIwiLCJkaXNwbGF5Ijoi4oCMdm9sIHVuZHLigIwifSwib3V0cHV0cyI6eyJVcCBWb2x1bWUiOiIjMDBiMDYxIiwiRG93biBWb2x1bWUiOiIjZmYzMzNhIn0sInBhbmVsIjoiY2hhcnQiLCJwYXJhbWV0ZXJzIjp7IndpZHRoRmFjdG9yIjowLjQ1LCJjaGFydE5hbWUiOiJjaGFydCIsInBhbmVsTmFtZSI6ImNoYXJ0In19fX0-">
+                  <img src={icon} className="graph-icon" alt="graph" />
+                  </a>
                 <div className="company-values">
                   <table>
                     <tbody>
@@ -1858,6 +2092,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1890,6 +2132,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1910,6 +2160,9 @@ function App({ list }) {
             <div className="stock-card-container">
               <div className="stock-card-information">
                 <h2 className="company-name">{item.companyName}</h2>
+                <a href="https://finance.yahoo.com/chart/V#eyJpbnRlcnZhbCI6ImRheSIsInBlcmlvZGljaXR5IjoxLCJ0aW1lVW5pdCI6bnVsbCwiY2FuZGxlV2lkdGgiOjcuODAxMjQyMjM2MDI0ODQ0LCJmbGlwcGVkIjpmYWxzZSwidm9sdW1lVW5kZXJsYXkiOnRydWUsImFkaiI6dHJ1ZSwiY3Jvc3NoYWlyIjp0cnVlLCJjaGFydFR5cGUiOiJsaW5lIiwiZXh0ZW5kZWQiOmZhbHNlLCJtYXJrZXRTZXNzaW9ucyI6e30sImFnZ3JlZ2F0aW9uVHlwZSI6Im9obGMiLCJjaGFydFNjYWxlIjoibGluZWFyIiwicGFuZWxzIjp7ImNoYXJ0Ijp7InBlcmNlbnQiOjEsImRpc3BsYXkiOiJBQVBMIiwiY2hhcnROYW1lIjoiY2hhcnQiLCJpbmRleCI6MCwieUF4aXMiOnsibmFtZSI6ImNoYXJ0IiwicG9zaXRpb24iOm51bGx9LCJ5YXhpc0xIUyI6W10sInlheGlzUkhTIjpbImNoYXJ0Iiwi4oCMdm9sIHVuZHLigIwiXX19LCJzZXRTcGFuIjpudWxsLCJsaW5lV2lkdGgiOjIsInN0cmlwZWRCYWNrZ3JvdW5kIjp0cnVlLCJldmVudHMiOnRydWUsImNvbG9yIjoiIzAwODFmMiIsInN0cmlwZWRCYWNrZ3JvdWQiOnRydWUsInJhbmdlIjpudWxsLCJldmVudE1hcCI6eyJjb3Jwb3JhdGUiOnsiZGl2cyI6dHJ1ZSwic3BsaXRzIjp0cnVlfSwic2lnRGV2Ijp7fX0sInN5bWJvbHMiOlt7InN5bWJvbCI6IkFBUEwiLCJzeW1ib2xPYmplY3QiOnsic3ltYm9sIjoiQUFQTCIsInF1b3RlVHlwZSI6IkVRVUlUWSIsImV4Y2hhbmdlVGltZVpvbmUiOiJBbWVyaWNhL05ld19Zb3JrIn0sInBlcmlvZGljaXR5IjoxLCJpbnRlcnZhbCI6ImRheSIsInRpbWVVbml0IjpudWxsLCJzZXRTcGFuIjpudWxsfV0sInN0dWRpZXMiOnsi4oCMdm9sIHVuZHLigIwiOnsidHlwZSI6InZvbCB1bmRyIiwiaW5wdXRzIjp7ImlkIjoi4oCMdm9sIHVuZHLigIwiLCJkaXNwbGF5Ijoi4oCMdm9sIHVuZHLigIwifSwib3V0cHV0cyI6eyJVcCBWb2x1bWUiOiIjMDBiMDYxIiwiRG93biBWb2x1bWUiOiIjZmYzMzNhIn0sInBhbmVsIjoiY2hhcnQiLCJwYXJhbWV0ZXJzIjp7IndpZHRoRmFjdG9yIjowLjQ1LCJjaGFydE5hbWUiOiJjaGFydCIsInBhbmVsTmFtZSI6ImNoYXJ0In19fX0-">
+                  <img src={icon} className="graph-icon" alt="graph" />
+                  </a>
                 <div className="company-values">
                   <table>
                     <tbody>
@@ -1934,7 +2187,7 @@ function App({ list }) {
                  </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">$ {item.marketCap}</td>
+                        <td className="stockDetails">{item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1960,6 +2213,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
@@ -1992,6 +2253,14 @@ function App({ list }) {
                             onChange={handleQuantityChange}
                           ></input>
                           <br></br>
+                          <label for="bidPrice">Bid-Price</label>
+                          <input
+                            type="number"
+                            name="bidPrice"
+                            placeholder="At what price"
+                            value={bidPrice}
+                            onChange={handleBidPriceChange}
+                          ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>

@@ -1,6 +1,5 @@
 import React from "react";
 import "../components/Portfolio/Portfolio.css";
-import Navbar from "../components/Navbar";
 import "../components/Marketpg/market.css";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -11,13 +10,13 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { unSetUserToken } from "../features/authSlice";
 import { unsetUserInfo } from "../features/userSlice";
-import { useLocation } from "react-router-dom";
 import axios from "axios";
 
 export const Portfolio = () => {
   const [openOrders, setOpenOrders] = useState([]);
   const [holdings, setHoldings] = useState([]);
-  const location = useLocation();
+  let cash=1000000;
+  let mtm = 0;
 
   
   const fetchData = async () => {
@@ -45,17 +44,6 @@ axios.get(
 console.log(response1);
 setHoldings(response1.data.orders);
 });
-// axios.get(
-//   `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
-//   {
-//     headers: {
-//       authorization: `Bearer ${localStorage.getItem("access_token")}`,
-//     },
-//   }
-// ).then(function (response) {
-// console.log(response);
-// setOpenOrders(response.data.orders);
-// });
   };
 
   
@@ -73,7 +61,6 @@ setHoldings(response1.data.orders);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   return (
@@ -122,15 +109,15 @@ setHoldings(response1.data.orders);
 
             <div className="portfolio-card">
               <div className="portfolio-container-card bg-white-box">
-                <p className="portfolio-card-title">USD</p>
-                <p className="portfolio-card-description">Rs 100,000</p>
+                <p className="portfolio-card-title">Cash</p>
+                <p className="portfolio-card-description">$ {cash}</p>
               </div>
             </div>
 
             <div className="portfolio-card">
               <div className="portfolio-container-card bg-yellow-box">
                 <p className="portfolio-card-title">MTM</p>
-                <p className="portfolio-card-description">+ Rs 0.00 (0.00%)</p>
+                <p className="portfolio-card-description">$ {mtm}</p>
               </div>
             </div>
 
@@ -151,7 +138,7 @@ setHoldings(response1.data.orders);
             <thead>
               <tr>
                 <th>Symbol</th>
-                <th>Current Price</th>
+                {/* <th>Current Price</th> */}
                 {/* <th>Purchasing Price</th> */}
                 <th>Quantity</th>
               </tr>
@@ -167,7 +154,7 @@ setHoldings(response1.data.orders);
               {holdings.map((Order, index) => (
                       <tr>
                         <td key={index}>{Order.symbol}</td>
-                        <td>{Order.bidPrice}</td>
+                        {/* <td>{Order.bidPrice}</td> */}
                         {/* <td>{Order.bidPrice}</td> */}
                         <td>{Order.holding_count}</td>    
                         {/* <td>{Order.holding_count}</td>     */}
@@ -210,8 +197,8 @@ setHoldings(response1.data.orders);
                       <tr>
                         <td key={index}>{order.symbol}</td>
                         <td>{order.quantity}</td>
-                        <td>{order.bidPrice}</td>
-                        <td>{order.quantity * order.bidPrice}</td>
+                        <td>$ {order.bidPrice}</td>
+                        <td>$ {order.quantity * order.bidPrice}</td>
                       
                       </tr>
                     ))}
