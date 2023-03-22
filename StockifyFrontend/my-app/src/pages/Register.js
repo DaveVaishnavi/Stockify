@@ -68,6 +68,7 @@ const Registration = () => {
           onSubmit={handleSubmit}
         >
           <TextField
+            className="login_textfield"
             margin="normal"
             required
             fullWidth
@@ -84,6 +85,7 @@ const Registration = () => {
             ""
           )}
           <TextField
+            className="login_textfield"
             margin="normal"
             required
             fullWidth
@@ -100,6 +102,7 @@ const Registration = () => {
             ""
           )}
           <TextField
+            className="login_textfield"
             margin="normal"
             required
             fullWidth
@@ -117,6 +120,7 @@ const Registration = () => {
             ""
           )}
           <TextField
+            className="login_textfield"
             margin="normal"
             required
             fullWidth

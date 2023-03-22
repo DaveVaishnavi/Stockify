@@ -71,6 +71,7 @@ const UserLogin = () => {
             onSubmit={handleSubmit}
           >
             <TextField
+              className="login_textfield"
               borderColor="white"
               margin="normal"
               required
@@ -89,6 +90,7 @@ const UserLogin = () => {
               ""
             )}
             <TextField
+              className="login_textfield"
               margin="normal"
               required
               fullWidth
