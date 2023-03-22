@@ -584,11 +584,27 @@ h5 {
     margin-left: 20px;
     margin-top: 5px;
     /* color: white; */
+
   }
+
+  .graph-icon{
+    display:inline-block; /* to make it inline with the company name */
+    height: 2em; /* adjust the height to match the font size of the company name */
+    width: 2.5em; /* adjust the width to match the height */
+    margin-right: 10px; /* add some margin to the right to separate it from */
+    margin-left: auto;
+    background-color:  rgba(17, 22, 34, 1);
+    padding-left: 10px;
+    /* margin-bottom: 10px ; */
+    margin-top: -0.8em;
+  }
+  
   .company-name {
     color:  rgba(17, 22, 34, 1);
+    display:inline-block;
     /* text-decoration: underline; */
     font-weight: 700;
+    padding-right: 10px;
     margin-bottom: 10px;
   }
   .stock-card-chart {
@@ -637,7 +653,7 @@ h5 {
     background: rgb(100, 185, 106);
     padding: 10px 30px 10px 30px;
     text-decoration: none;
-    margin-right: 4vh;
+    margin-right: 5vh;
     margin-bottom: 3vh;
     height: 50px;
     line-height: 30px;
@@ -659,7 +675,7 @@ h5 {
     background: rgb(213, 83, 68);
     padding: 10px 30px 10px 30px;
     text-decoration: none;
-    margin-left: 4vh;
+    margin-left: 5vh;
     margin-bottom: 3vh;
     height: 50px;
     line-height: 30px;
