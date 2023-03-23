@@ -109,8 +109,10 @@ setHoldings(response1.data.orders);
 
             <div className="portfolio-card">
               <div className="portfolio-container-card bg-white-box">
-                <p className="portfolio-card-title">Cash</p>
+              <p className="portfolio-card-title">Cash</p>
+              {/* {openOrders.map((order, index) => ( */}
                 <p className="portfolio-card-description">$ {cash}</p>
+                {/* ))} */}
               </div>
             </div>
 
@@ -189,6 +191,7 @@ setHoldings(response1.data.orders);
                       <th>Amount</th>
                       <th>Price</th>
                       <th>Total</th>
+                      <th>Type</th>
                       {/* <th>Type of Bid</th> */}
                     </tr>
                   </thead>
@@ -199,6 +202,7 @@ setHoldings(response1.data.orders);
                         <td>{order.quantity}</td>
                         <td>$ {order.bidPrice}</td>
                         <td>$ {order.quantity * order.bidPrice}</td>
+                        <td>{order.type}</td>
                       
                       </tr>
                     ))}

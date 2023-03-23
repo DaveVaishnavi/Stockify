@@ -160,9 +160,14 @@ class BuyStock(APIView):
             symbol=d["symbol"],
             quantity=d["quantity"],
             bidPrice=d["bidPrice"],
+            type=d["type"],
+            # cash=d["cash"],
+
         )
 
-        if instance.bidPrice:
+        if instance.symbol:
+            # instance.type="Bought"
+            # instance.cash=instance.cash-(int(d["quantity"])*int(d["bidPrice"]))
             instance.save()
             if Holdings.objects.filter(user=request.user, symbol=d["symbol"],bidPrice=d["bidPrice"]).count():
                 holding = Holdings.objects.get(user=request.user, symbol=d["symbol"],bidPrice=d["bidPrice"])
@@ -171,6 +176,7 @@ class BuyStock(APIView):
             else:
                 holding = Holdings(user=request.user, symbol=d["symbol"], holding_count=d["quantity"],bidPrice=d["bidPrice"])
                 holding.save()
+            
             return Response(data={"success": True}, status=status.HTTP_200_OK)
         else:
             return Response(data={"success": False}, status=status.HTTP_400_BAD_REQUEST)
@@ -190,22 +196,29 @@ class SellStock(APIView):
             symbol=d["symbol"],
             quantity=d["quantity"],
             bidPrice=d["bidPrice"],
+            type=d["type"],
+            # cash=d["cash"],
         )
 
-        if instance.bidPrice:
+        if instance.symbol:
+            # instance.type="Sold"
+            # instance.cash=instance.cash+(int(d["quantity"])*int(d["bidPrice"]))
             instance.save()
-            if Holdings.objects.filter(user=request.user, symbol=d["symbol"],bidPrice=d["bidPrice"]).count():
-                holding = Holdings.objects.get(user=request.user, symbol=d["symbol"],bidPrice=d["bidPrice"])
-                holding.holding_count = holding.holding_count - int(d["quantity"])
-                holding.save()
-                if holding.holding_count >= 0:
+            if Holdings.objects.filter(user=request.user, symbol=d["symbol"]).count():
+                holding = Holdings.objects.get(user=request.user, symbol=d["symbol"])
+                # holding.save()
+                if holding.holding_count >= int(d["quantity"]):
+                    holding.holding_count = holding.holding_count - int(d["quantity"])
+                    holding.save()
                     return Response(data={"success": True}, status=status.HTTP_200_OK)
                 else:
-                    holding.holding_count = holding.holding_count + int(d["quantity"])
-                    holding.save()
+                    # holding.holding_count = holding.holding_count + int(d["quantity"])
+                    # holding.save()
                     return Response(data={"success": False}, status=status.HTTP_400_BAD_REQUEST)
 
             else:
+                # holding = Holdings(user=request.user, symbol=d["symbol"], holding_count=d["quantity"],bidPrice=d["bidPrice"])
+                # holding.save()
                 return Response(data={"success": False}, status=status.HTTP_400_BAD_REQUEST)
 
             

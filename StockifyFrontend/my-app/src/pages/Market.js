@@ -13,9 +13,9 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import icon from "../images/graph.jpeg";
 // import "../components/Marketpg/events";
-
+let cash=100000
 function App({ list }) {
-  let cash=100000;
+  // let cash=100000;
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
   const [data3, setData3] = useState([]);
@@ -247,11 +247,13 @@ function App({ list }) {
   const dispatch = useDispatch();
   const handleSubmit1 = async (event) => {
     event.preventDefault();
+    // cash=cash-quantity*bidPrice
     const newOrder = {
       symbol: "AAPL",
       quantity: quantity,
       bidPrice: bidPrice,
       type: "Bought",
+      // cash: cash,
     };
     // console.log("something")
     const response = await axios.post(
@@ -271,11 +273,13 @@ function App({ list }) {
 
   const handleSubmit2 = async (event) => {
     event.preventDefault();
+    // cash=cash+quantity*bidPrice
     const newOrder = {
       symbol: "AAPL",
       quantity: quantity,
       bidPrice: bidPrice,
       type: "Sold",
+      // cash: cash,
     };
     
     const response = await axios.post(
