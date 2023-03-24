@@ -150,7 +150,6 @@ export const Portfolio = () => {
   const [openOrders, setOpenOrders] = useState([]);
   const [holdings, setHoldings] = useState([]);
   const [accbalance, setBalance] = useState([]);
-  // let cash=1000000;
   let mtm = 0;
 
   
@@ -227,9 +226,6 @@ setBalance(response2.data.accbalance);
             Logout
           </Button>
           <Modal show={show} onHide={handleClose}>
-            {/* <Modal.Header closeButton>
-          <Modal.Title>Confirm</Modal.Title>
-        </Modal.Header> */}
             <Modal.Body>Are you sure you want to logout?</Modal.Body>
             <Modal.Footer>
               <Button color="success" onClick={handleLogout}>
@@ -246,12 +242,6 @@ setBalance(response2.data.accbalance);
         <div className="portfolio-container">
           <p className="portfolio-container-title">Your Portfolio</p>
           <div className="portfolio-gradient-cards">
-            {/* <div className="portfolio-card">
-              <div className="portfolio-container-card bg-green-box">
-                <p className="portfolio-card-title">Account Value</p>
-                <p className="portfolio-card-description">Rs 100,000</p>
-              </div>
-            </div> */}
 
             <div className="portfolio-card">
               <div className="portfolio-container-card bg-white-box">
@@ -268,13 +258,6 @@ setBalance(response2.data.accbalance);
                 <p className="portfolio-card-description">$ {mtm}</p>
               </div>
             </div>
-
-            {/* <div className="portfolio-card">
-              <div className="portfolio-container-card bg-blue-box">
-                <p className="portfolio-card-title">Annual Return</p>
-                <p className="portfolio-card-description">+NaN%</p>
-              </div>
-            </div> */}
           </div>
         </div>
       </section>
@@ -291,71 +274,61 @@ setBalance(response2.data.accbalance);
               </tr>
             </thead>
             <tbody>
-             {/* <tr>
-                <td>AAPL</td>
-                <td>156</td>
-                <td>0.00</td>
-                <td>147</td>
-                <td>10</td>
-              </tr> */}
               {holdings.map((Order, index) => (
                       <tr>
                         <td key={index}>{Order.symbol}</td>
                         <td>{Order.holding_count}</td>  
                         {Order.symbol === "AAPL" ? (
   data1.map((item)=>{
-    return <td>{item.latestPrice}</td>
+    return <td>$ {item.latestPrice}</td>
   })
 ) : Order.symbol == "TWTR" ? (
   data2.map((item)=>{
-    return <td>{item.latestPrice}</td>
+    return <td>$ {item.latestPrice}</td>
   })
 ) : Order.symbol == "AMZN" ? (
   data3.map((item)=>{
-    return <td>{item.latestPrice}</td>
+    return <td>$ {item.latestPrice}</td>
   })
 ) : Order.symbol == "TSLA" ? (
   data4.map((item)=>{
-    return <td>{item.latestPrice}</td>
+    return <td>$ {item.latestPrice}</td>
   })
 ) : Order.symbol == "BAC" ? (
   data5.map((item)=>{
-    return <td>{item.latestPrice}</td>
+    return <td>$ {item.latestPrice}</td>
   })
 ) : Order.symbol == "ORC" ? (
   data6.map((item)=>{
-    return <td>{item.latestPrice}</td>
+    return <td>$ {item.latestPrice}</td>
   })
 ) : Order.symbol == "GOOG" ? (
   data7.map((item)=>{
-    return <td>{item.latestPrice}</td>
+    return <td>$ {item.latestPrice}</td>
   })
 ) : Order.symbol == "NKE" ? (
   data8.map((item)=>{
-    return <td>{item.latestPrice}</td>
+    return <td>$ {item.latestPrice}</td>
   })
 ) : Order.symbol == "JPM" ? (
   data9.map((item)=>{
-    return <td>{item.latestPrice}</td>
+    return <td>$ {item.latestPrice}</td>
   })
 ) : Order.symbol == "MSFT" ? (
   data10.map((item)=>{
-    return <td>{item.latestPrice}</td>
+    return <td>$ {item.latestPrice}</td>
   })
 ) : Order.symbol == "NVDA" ? (
   data11.map((item)=>{
-    return <td>{item.latestPrice}</td>
+    return <td>$ {item.latestPrice}</td>
   })
 ) : Order.symbol == "V" ? (
   data12.map((item)=>{
-    return <td>{item.latestPrice}</td>
+    return <td>$ {item.latestPrice}</td>
   })
 ) : (
   <td></td>
 )}
-                       {/* <td>{Order.bidPrice}</td> */}
-                        {/* <td>{Order.bidPrice}</td> */}  
-                        {/* <td>{Order.holding_count}</td>     */}
                       </tr>
                     ))}
             </tbody>
@@ -367,7 +340,6 @@ setBalance(response2.data.accbalance);
 
       <section className="portfolio-orders">
         <h2 className="portfolio-orders-h2">Orders</h2>
-        {/* orders table */}
         <div className="wrapper">
           <input type="radio" name="slider" checked id="home"></input>
           <input type="radio" name="slider" id="blog"></input>
@@ -388,7 +360,6 @@ setBalance(response2.data.accbalance);
                       <th>Price</th>
                       <th>Total</th>
                       <th>Type</th>
-                      {/* <th>Type of Bid</th> */}
                     </tr>
                   </thead>
                   <tbody>
@@ -406,38 +377,8 @@ setBalance(response2.data.accbalance);
                 </table>
               </div>
             </div>
-            {/* completed orders */}
-            {/* <div className="content content-2">
-              <div className="table-wrapper2 table-wrapper-scroll-y my-custom-scrollbar">
-                <table className="fl-table2">
-                  <thead>
-                    <tr>
-                      <th>Pair</th>
-                      <th>Amount</th>
-                      <th>Price</th>
-                      <th>Total</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>9</td>
-                      <td>10</td>
-                      <td>11</td>
-                      <td>12</td>
-                    </tr>
-                    <tr>
-                      <td>13</td>
-                      <td>14</td>
-                      <td>15</td>
-                      <td>16</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div> */}
           </section>
         </div>
-        {/* orders table end */}
       </section>
     </div>
   );

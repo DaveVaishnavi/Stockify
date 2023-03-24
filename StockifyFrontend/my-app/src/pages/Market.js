@@ -254,17 +254,16 @@ function App({ list }) {
   // }
   
   const dispatch = useDispatch();
-  const handleSubmit1 = async (event) => {
-    event.preventDefault();
+  const handleSubmit1 = async (itemPrice) => {
     
     const newOrder = {
       symbol: "AAPL",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Bought",
       // cash: cash,
     };
-    console.log(bidPrice)
+    // console.log(bidPrice)
     const response = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
       newOrder,
@@ -276,17 +275,20 @@ function App({ list }) {
     );
     setQuantity(0);
     // setBidPrice(0);
-    if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
+    console.log(response.data)
+    if (response.data.success) {
+      console.log("YOOO")
+      navigate("/Portfolio", { state: { newOrder } });
+    }
     else setError("Buy failed");
   };
 
-  const handleSubmit2 = async (event) => {
-    event.preventDefault();
+  const handleSubmit2 = async (itemPrice) => {
     // cash=cash+quantity*bidPrice
     const newOrder = {
       symbol: "AAPL",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Sold",
       // cash: cash,
     };
@@ -301,16 +303,15 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    // setBidPrice(0);
+    setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
-  const handleSubmit3 = async (event) => {
-    event.preventDefault();
+  const handleSubmit3 = async (itemPrice) => {
     const newOrder = {
       symbol: "TWTR",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -327,12 +328,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
-  const handleSubmit4 = async (event) => {
-    event.preventDefault();
+  const handleSubmit4 = async (itemPrice) => {
     const newOrder = {
       symbol: "TWTR",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -349,12 +349,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
-  const handleSubmit5 = async (event) => {
-    event.preventDefault();
+  const handleSubmit5 = async (itemPrice) => {
     const newOrder = {
       symbol: "AMZN",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -372,12 +371,11 @@ function App({ list }) {
     else setError("Buy failed");
   };
 
-  const handleSubmit6 = async (event) => {
-    event.preventDefault();
+  const handleSubmit6 = async (itemPrice) => {
     const newOrder = {
       symbol: "AMZN",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -394,12 +392,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
-  const handleSubmit7 = async (event) => {
-    event.preventDefault();
+  const handleSubmit7 = async (itemPrice) => {
     const newOrder = {
       symbol: "TSLA",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -416,12 +413,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
-  const handleSubmit8 = async (event) => {
-    event.preventDefault();
+  const handleSubmit8 = async (itemPrice) => {
     const newOrder = {
       symbol: "TSLA",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -438,12 +434,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
-  const handleSubmit9 = async (event) => {
-    event.preventDefault();
+  const handleSubmit9 = async (itemPrice) => {
     const newOrder = {
       symbol: "BAC",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -460,12 +455,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
-  const handleSubmit10 = async (event) => {
-    event.preventDefault();
+  const handleSubmit10 = async (itemPrice) => {
     const newOrder = {
       symbol: "BAC",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -482,12 +476,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
-  const handleSubmit11 = async (event) => {
-    event.preventDefault();
+  const handleSubmit11 = async (itemPrice) => {
     const newOrder = {
       symbol: "ORC",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -504,12 +497,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
-  const handleSubmit12 = async (event) => {
-    event.preventDefault();
+  const handleSubmit12 = async (itemPrice) => {
     const newOrder = {
       symbol: "ORC",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -526,12 +518,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
-  const handleSubmit13 = async (event) => {
-    event.preventDefault();
+  const handleSubmit13 = async (itemPrice) => {
     const newOrder = {
       symbol: "GOOG",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -548,12 +539,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
-  const handleSubmit14 = async (event) => {
-    event.preventDefault();
+  const handleSubmit14 = async (itemPrice) => {
     const newOrder = {
       symbol: "GOOG",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -570,12 +560,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
-  const handleSubmit15 = async (event) => {
-    event.preventDefault();
+  const handleSubmit15 = async (itemPrice) => {
     const newOrder = {
       symbol: "NKE",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -592,12 +581,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
-  const handleSubmit16 = async (event) => {
-    event.preventDefault();
+  const handleSubmit16 = async (itemPrice) => {
     const newOrder = {
       symbol: "NKE",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -614,12 +602,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
-  const handleSubmit17 = async (event) => {
-    event.preventDefault();
+  const handleSubmit17 = async (itemPrice) => {
     const newOrder = {
       symbol: "JPM",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -636,12 +623,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
-  const handleSubmit18 = async (event) => {
-    event.preventDefault();
+  const handleSubmit18 = async (itemPrice) => {
     const newOrder = {
       symbol: "JPM",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -658,12 +644,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
-  const handleSubmit19 = async (event) => {
-    event.preventDefault();
+  const handleSubmit19 = async (itemPrice) => {
     const newOrder = {
       symbol: "MSFT",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -680,12 +665,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
-  const handleSubmit20 = async (event) => {
-    event.preventDefault();
+  const handleSubmit20 = async (itemPrice) => {
     const newOrder = {
       symbol: "MSFT",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -702,12 +686,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
-  const handleSubmit21 = async (event) => {
-    event.preventDefault();
+  const handleSubmit21 = async (itemPrice) => {
     const newOrder = {
       symbol: "NVDA",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -724,12 +707,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
-  const handleSubmit22 = async (event) => {
-    event.preventDefault();
+  const handleSubmit22 = async (itemPrice) => {
     const newOrder = {
       symbol: "NVDA",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -746,12 +728,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
-  const handleSubmit23 = async (event) => {
-    event.preventDefault();
+  const handleSubmit23 = async (itemPrice) => {
     const newOrder = {
       symbol: "V",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Bought",
     };
     const response = await axios.post(
@@ -768,12 +749,11 @@ function App({ list }) {
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
-  const handleSubmit24 = async (event) => {
-    event.preventDefault();
+  const handleSubmit24 = async (itemPrice) => {
     const newOrder = {
       symbol: "AAPL",
       quantity: quantity,
-      bidPrice: bidPrice,
+      bidPrice: itemPrice,
       type: "Sold",
     };
     const response = await axios.post(
@@ -848,14 +828,6 @@ function App({ list }) {
                           <i className="icon-arrow-up"></i>
                         </td>
                       </tr>
-                      {/* <tr>
-                   <td className="bold">High:</td>
-                   <td className="stockDetails">{item.high}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Low:</td>
-                   <td className="stockDetails">{item.low}</td>
-                 </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
                         <td className="stockDetails">$ {item.marketCap}</td>
@@ -889,16 +861,14 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             // disabled
-                            onChange={handleBidPriceChange}
+                            // onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <script></script>
-                        
-                        <Button color="success" onClick={handleSubmit1()}>
+                        <Button color="success" onClick={() => handleSubmit1(item.latestPrice)}>
                           <font color="black">Buy</font>
                         </Button>
                         <Button color="danger" onClick={handleClose1}>
@@ -932,14 +902,14 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             // disabled
-                            onChange={handleBidPriceChange}
+                            // onChange={handleBidPriceChange()}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit2}>
+                        <Button color="success" onClick={() => handleSubmit2(item.latestPrice)}>
                           <font color="black">Sell</font>
                         </Button>
                         <Button color="danger" onClick={handleClose2}>
@@ -957,7 +927,7 @@ function App({ list }) {
             <div className="stock-card-container">
               <div className="stock-card-information">
                 <h2 className="company-name">{item.companyName}</h2>
-                <a href="https://finance.yahoo.com/chart/AAPL#eyJpbnRlcnZhbCI6ImRheSIsInBlcmlvZGljaXR5IjoxLCJ0aW1lVW5pdCI6bnVsbCwiY2FuZGxlV2lkdGgiOjcuODAxMjQyMjM2MDI0ODQ0LCJmbGlwcGVkIjpmYWxzZSwidm9sdW1lVW5kZXJsYXkiOnRydWUsImFkaiI6dHJ1ZSwiY3Jvc3NoYWlyIjp0cnVlLCJjaGFydFR5cGUiOiJsaW5lIiwiZXh0ZW5kZWQiOmZhbHNlLCJtYXJrZXRTZXNzaW9ucyI6e30sImFnZ3JlZ2F0aW9uVHlwZSI6Im9obGMiLCJjaGFydFNjYWxlIjoibGluZWFyIiwicGFuZWxzIjp7ImNoYXJ0Ijp7InBlcmNlbnQiOjEsImRpc3BsYXkiOiJBQVBMIiwiY2hhcnROYW1lIjoiY2hhcnQiLCJpbmRleCI6MCwieUF4aXMiOnsibmFtZSI6ImNoYXJ0IiwicG9zaXRpb24iOm51bGx9LCJ5YXhpc0xIUyI6W10sInlheGlzUkhTIjpbImNoYXJ0Iiwi4oCMdm9sIHVuZHLigIwiXX19LCJzZXRTcGFuIjpudWxsLCJsaW5lV2lkdGgiOjIsInN0cmlwZWRCYWNrZ3JvdW5kIjp0cnVlLCJldmVudHMiOnRydWUsImNvbG9yIjoiIzAwODFmMiIsInN0cmlwZWRCYWNrZ3JvdWQiOnRydWUsInJhbmdlIjpudWxsLCJldmVudE1hcCI6eyJjb3Jwb3JhdGUiOnsiZGl2cyI6dHJ1ZSwic3BsaXRzIjp0cnVlfSwic2lnRGV2Ijp7fX0sInN5bWJvbHMiOlt7InN5bWJvbCI6IkFBUEwiLCJzeW1ib2xPYmplY3QiOnsic3ltYm9sIjoiQUFQTCIsInF1b3RlVHlwZSI6IkVRVUlUWSIsImV4Y2hhbmdlVGltZVpvbmUiOiJBbWVyaWNhL05ld19Zb3JrIn0sInBlcmlvZGljaXR5IjoxLCJpbnRlcnZhbCI6ImRheSIsInRpbWVVbml0IjpudWxsLCJzZXRTcGFuIjpudWxsfV0sInN0dWRpZXMiOnsi4oCMdm9sIHVuZHLigIwiOnsidHlwZSI6InZvbCB1bmRyIiwiaW5wdXRzIjp7ImlkIjoi4oCMdm9sIHVuZHLigIwiLCJkaXNwbGF5Ijoi4oCMdm9sIHVuZHLigIwifSwib3V0cHV0cyI6eyJVcCBWb2x1bWUiOiIjMDBiMDYxIiwiRG93biBWb2x1bWUiOiIjZmYzMzNhIn0sInBhbmVsIjoiY2hhcnQiLCJwYXJhbWV0ZXJzIjp7IndpZHRoRmFjdG9yIjowLjQ1LCJjaGFydE5hbWUiOiJjaGFydCIsInBhbmVsTmFtZSI6ImNoYXJ0In19fX0-">
+                <a href="https://finance.yahoo.com/chart/AMZN#eyJpbnRlcnZhbCI6ImRheSIsInBlcmlvZGljaXR5IjoxLCJ0aW1lVW5pdCI6bnVsbCwiY2FuZGxlV2lkdGgiOjcuODAxMjQyMjM2MDI0ODQ0LCJmbGlwcGVkIjpmYWxzZSwidm9sdW1lVW5kZXJsYXkiOnRydWUsImFkaiI6dHJ1ZSwiY3Jvc3NoYWlyIjp0cnVlLCJjaGFydFR5cGUiOiJsaW5lIiwiZXh0ZW5kZWQiOmZhbHNlLCJtYXJrZXRTZXNzaW9ucyI6e30sImFnZ3JlZ2F0aW9uVHlwZSI6Im9obGMiLCJjaGFydFNjYWxlIjoibGluZWFyIiwicGFuZWxzIjp7ImNoYXJ0Ijp7InBlcmNlbnQiOjEsImRpc3BsYXkiOiJBQVBMIiwiY2hhcnROYW1lIjoiY2hhcnQiLCJpbmRleCI6MCwieUF4aXMiOnsibmFtZSI6ImNoYXJ0IiwicG9zaXRpb24iOm51bGx9LCJ5YXhpc0xIUyI6W10sInlheGlzUkhTIjpbImNoYXJ0Iiwi4oCMdm9sIHVuZHLigIwiXX19LCJzZXRTcGFuIjpudWxsLCJsaW5lV2lkdGgiOjIsInN0cmlwZWRCYWNrZ3JvdW5kIjp0cnVlLCJldmVudHMiOnRydWUsImNvbG9yIjoiIzAwODFmMiIsInN0cmlwZWRCYWNrZ3JvdWQiOnRydWUsInJhbmdlIjpudWxsLCJldmVudE1hcCI6eyJjb3Jwb3JhdGUiOnsiZGl2cyI6dHJ1ZSwic3BsaXRzIjp0cnVlfSwic2lnRGV2Ijp7fX0sInN5bWJvbHMiOlt7InN5bWJvbCI6IkFBUEwiLCJzeW1ib2xPYmplY3QiOnsic3ltYm9sIjoiQUFQTCIsInF1b3RlVHlwZSI6IkVRVUlUWSIsImV4Y2hhbmdlVGltZVpvbmUiOiJBbWVyaWNhL05ld19Zb3JrIn0sInBlcmlvZGljaXR5IjoxLCJpbnRlcnZhbCI6ImRheSIsInRpbWVVbml0IjpudWxsLCJzZXRTcGFuIjpudWxsfV0sInN0dWRpZXMiOnsi4oCMdm9sIHVuZHLigIwiOnsidHlwZSI6InZvbCB1bmRyIiwiaW5wdXRzIjp7ImlkIjoi4oCMdm9sIHVuZHLigIwiLCJkaXNwbGF5Ijoi4oCMdm9sIHVuZHLigIwifSwib3V0cHV0cyI6eyJVcCBWb2x1bWUiOiIjMDBiMDYxIiwiRG93biBWb2x1bWUiOiIjZmYzMzNhIn0sInBhbmVsIjoiY2hhcnQiLCJwYXJhbWV0ZXJzIjp7IndpZHRoRmFjdG9yIjowLjQ1LCJjaGFydE5hbWUiOiJjaGFydCIsInBhbmVsTmFtZSI6ImNoYXJ0In19fX0-">
                   <img src={icon} className="graph-icon" alt="graph" />
                   </a>
                 <div className="company-values">
@@ -974,17 +944,9 @@ function App({ list }) {
                           <i className="icon-arrow-up"></i>
                         </td>
                       </tr>
-                      {/* <tr>
-                   <td className="bold">High:</td>
-                   <td className="stockDetails">$ {item.high}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Low:</td>
-                   <td className="stockDetails">$ {item.low}</td>
-                 </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">${item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1015,13 +977,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
-                            onChange={handleBidPriceChange}
+                            value={item.latestPrice}
+                            // onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit3}>
+                        <Button color="success" onClick={() => handleSubmit3(item.latestPrice)}>
                           <font color="black">Buy</font>
                         </Button>
                         <Button color="danger" onClick={handleClose3}>
@@ -1055,13 +1017,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit4}>
+                        <Button color="success" onClick={() => handleSubmit4(item.latestPrice)}>
                           <font color="black">Sell</font>
                         </Button>
                         <Button color="danger" onClick={handleClose4}>
@@ -1079,7 +1041,7 @@ function App({ list }) {
             <div className="stock-card-container">
               <div className="stock-card-information">
                 <h2 className="company-name">{item.companyName}</h2>
-                <a href="https://finance.yahoo.com/chart/AAPL#eyJpbnRlcnZhbCI6ImRheSIsInBlcmlvZGljaXR5IjoxLCJ0aW1lVW5pdCI6bnVsbCwiY2FuZGxlV2lkdGgiOjcuODAxMjQyMjM2MDI0ODQ0LCJmbGlwcGVkIjpmYWxzZSwidm9sdW1lVW5kZXJsYXkiOnRydWUsImFkaiI6dHJ1ZSwiY3Jvc3NoYWlyIjp0cnVlLCJjaGFydFR5cGUiOiJsaW5lIiwiZXh0ZW5kZWQiOmZhbHNlLCJtYXJrZXRTZXNzaW9ucyI6e30sImFnZ3JlZ2F0aW9uVHlwZSI6Im9obGMiLCJjaGFydFNjYWxlIjoibGluZWFyIiwicGFuZWxzIjp7ImNoYXJ0Ijp7InBlcmNlbnQiOjEsImRpc3BsYXkiOiJBQVBMIiwiY2hhcnROYW1lIjoiY2hhcnQiLCJpbmRleCI6MCwieUF4aXMiOnsibmFtZSI6ImNoYXJ0IiwicG9zaXRpb24iOm51bGx9LCJ5YXhpc0xIUyI6W10sInlheGlzUkhTIjpbImNoYXJ0Iiwi4oCMdm9sIHVuZHLigIwiXX19LCJzZXRTcGFuIjpudWxsLCJsaW5lV2lkdGgiOjIsInN0cmlwZWRCYWNrZ3JvdW5kIjp0cnVlLCJldmVudHMiOnRydWUsImNvbG9yIjoiIzAwODFmMiIsInN0cmlwZWRCYWNrZ3JvdWQiOnRydWUsInJhbmdlIjpudWxsLCJldmVudE1hcCI6eyJjb3Jwb3JhdGUiOnsiZGl2cyI6dHJ1ZSwic3BsaXRzIjp0cnVlfSwic2lnRGV2Ijp7fX0sInN5bWJvbHMiOlt7InN5bWJvbCI6IkFBUEwiLCJzeW1ib2xPYmplY3QiOnsic3ltYm9sIjoiQUFQTCIsInF1b3RlVHlwZSI6IkVRVUlUWSIsImV4Y2hhbmdlVGltZVpvbmUiOiJBbWVyaWNhL05ld19Zb3JrIn0sInBlcmlvZGljaXR5IjoxLCJpbnRlcnZhbCI6ImRheSIsInRpbWVVbml0IjpudWxsLCJzZXRTcGFuIjpudWxsfV0sInN0dWRpZXMiOnsi4oCMdm9sIHVuZHLigIwiOnsidHlwZSI6InZvbCB1bmRyIiwiaW5wdXRzIjp7ImlkIjoi4oCMdm9sIHVuZHLigIwiLCJkaXNwbGF5Ijoi4oCMdm9sIHVuZHLigIwifSwib3V0cHV0cyI6eyJVcCBWb2x1bWUiOiIjMDBiMDYxIiwiRG93biBWb2x1bWUiOiIjZmYzMzNhIn0sInBhbmVsIjoiY2hhcnQiLCJwYXJhbWV0ZXJzIjp7IndpZHRoRmFjdG9yIjowLjQ1LCJjaGFydE5hbWUiOiJjaGFydCIsInBhbmVsTmFtZSI6ImNoYXJ0In19fX0-">
+                <a href="https://finance.yahoo.com/chart/AMZN#eyJpbnRlcnZhbCI6ImRheSIsInBlcmlvZGljaXR5IjoxLCJ0aW1lVW5pdCI6bnVsbCwiY2FuZGxlV2lkdGgiOjcuODAxMjQyMjM2MDI0ODQ0LCJmbGlwcGVkIjpmYWxzZSwidm9sdW1lVW5kZXJsYXkiOnRydWUsImFkaiI6dHJ1ZSwiY3Jvc3NoYWlyIjp0cnVlLCJjaGFydFR5cGUiOiJsaW5lIiwiZXh0ZW5kZWQiOmZhbHNlLCJtYXJrZXRTZXNzaW9ucyI6e30sImFnZ3JlZ2F0aW9uVHlwZSI6Im9obGMiLCJjaGFydFNjYWxlIjoibGluZWFyIiwicGFuZWxzIjp7ImNoYXJ0Ijp7InBlcmNlbnQiOjEsImRpc3BsYXkiOiJBQVBMIiwiY2hhcnROYW1lIjoiY2hhcnQiLCJpbmRleCI6MCwieUF4aXMiOnsibmFtZSI6ImNoYXJ0IiwicG9zaXRpb24iOm51bGx9LCJ5YXhpc0xIUyI6W10sInlheGlzUkhTIjpbImNoYXJ0Iiwi4oCMdm9sIHVuZHLigIwiXX19LCJzZXRTcGFuIjpudWxsLCJsaW5lV2lkdGgiOjIsInN0cmlwZWRCYWNrZ3JvdW5kIjp0cnVlLCJldmVudHMiOnRydWUsImNvbG9yIjoiIzAwODFmMiIsInN0cmlwZWRCYWNrZ3JvdWQiOnRydWUsInJhbmdlIjpudWxsLCJldmVudE1hcCI6eyJjb3Jwb3JhdGUiOnsiZGl2cyI6dHJ1ZSwic3BsaXRzIjp0cnVlfSwic2lnRGV2Ijp7fX0sInN5bWJvbHMiOlt7InN5bWJvbCI6IkFBUEwiLCJzeW1ib2xPYmplY3QiOnsic3ltYm9sIjoiQUFQTCIsInF1b3RlVHlwZSI6IkVRVUlUWSIsImV4Y2hhbmdlVGltZVpvbmUiOiJBbWVyaWNhL05ld19Zb3JrIn0sInBlcmlvZGljaXR5IjoxLCJpbnRlcnZhbCI6ImRheSIsInRpbWVVbml0IjpudWxsLCJzZXRTcGFuIjpudWxsfV0sInN0dWRpZXMiOnsi4oCMdm9sIHVuZHLigIwiOnsidHlwZSI6InZvbCB1bmRyIiwiaW5wdXRzIjp7ImlkIjoi4oCMdm9sIHVuZHLigIwiLCJkaXNwbGF5Ijoi4oCMdm9sIHVuZHLigIwifSwib3V0cHV0cyI6eyJVcCBWb2x1bWUiOiIjMDBiMDYxIiwiRG93biBWb2x1bWUiOiIjZmYzMzNhIn0sInBhbmVsIjoiY2hhcnQiLCJwYXJhbWV0ZXJzIjp7IndpZHRoRmFjdG9yIjowLjQ1LCJjaGFydE5hbWUiOiJjaGFydCIsInBhbmVsTmFtZSI6ImNoYXJ0In19fX0-">
                   <img src={icon} className="graph-icon" alt="graph" />
                   </a>
                 <div className="company-values">
@@ -1096,17 +1058,9 @@ function App({ list }) {
                           <i className="icon-arrow-up"></i>
                         </td>
                       </tr>
-                      {/* <tr>
-                   <td className="bold">High:</td>
-                   <td className="stockDetails">{item.high}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Low:</td>
-                   <td className="stockDetails">{item.low}</td>
-                 </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1137,13 +1091,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit5}>
+                        <Button color="success" onClick={() => handleSubmit5(item.latestPrice)}>
                           <font color="black">Buy</font>
                         </Button>
                         <Button color="danger" onClick={handleClose5}>
@@ -1177,13 +1131,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit6}>
+                        <Button color="success" onClick={() => handleSubmit6(item.latestPrice)}>
                           <font color="black">Sell</font>
                         </Button>
                         <Button color="danger" onClick={handleClose6}>
@@ -1218,17 +1172,9 @@ function App({ list }) {
                           <i className="icon-arrow-up"></i>
                         </td>
                       </tr>
-                      {/* <tr>
-                   <td className="bold">High:</td>
-                   <td className="stockDetails">{item.high}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Low:</td>
-                   <td className="stockDetails">{item.low}</td>
-                 </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1259,13 +1205,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit7}>
+                        <Button color="success" onClick={() => handleSubmit7(item.latestPrice)}>
                           <font color="black">Buy</font>
                         </Button>
                         <Button color="danger" onClick={handleClose7}>
@@ -1299,13 +1245,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit8}>
+                        <Button color="success" onClick={() => handleSubmit8(item.latestPrice)}>
                           <font color="black">Sell</font>
                         </Button>
                         <Button color="danger" onClick={handleClose8}>
@@ -1340,17 +1286,9 @@ function App({ list }) {
                           <i className="icon-arrow-up"></i>
                         </td>
                       </tr>
-                      {/* <tr>
-                   <td className="bold">High:</td>
-                   <td className="stockDetails">{item.high}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Low:</td>
-                   <td className="stockDetails">{item.low}</td>
-                 </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1381,13 +1319,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit9}>
+                        <Button color="success" onClick={() => handleSubmit9(item.latestPrice)}>
                           <font color="black">Buy</font>
                         </Button>
                         <Button color="danger" onClick={handleClose9}>
@@ -1421,13 +1359,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit10}>
+                        <Button color="success" onClick={() => handleSubmit10(item.latestPrice)}>
                           <font color="black">Sell</font>
                         </Button>
                         <Button color="danger" onClick={handleClose10}>
@@ -1462,17 +1400,9 @@ function App({ list }) {
                           <i className="icon-arrow-up"></i>
                         </td>
                       </tr>
-                      {/* <tr>
-                   <td className="bold">High:</td>
-                   <td className="stockDetails">{item.high}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Low:</td>
-                   <td className="stockDetails">{item.low}</td>
-                 </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1503,13 +1433,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit11}>
+                        <Button color="success" onClick={() => handleSubmit11(item.latestPrice)}>
                           <font color="black">Buy</font>
                         </Button>
                         <Button color="danger" onClick={handleClose11}>
@@ -1543,13 +1473,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit12}>
+                        <Button color="success" onClick={() => handleSubmit12(item.latestPrice)}>
                           <font color="black">Sell</font>
                         </Button>
                         <Button color="danger" onClick={handleClose12}>
@@ -1584,17 +1514,9 @@ function App({ list }) {
                           <i className="icon-arrow-up"></i>
                         </td>
                       </tr>
-                      {/* <tr>
-                   <td className="bold">High:</td>
-                   <td className="stockDetails">{item.high}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Low:</td>
-                   <td className="stockDetails">{item.low}</td>
-                 </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1625,13 +1547,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit13}>
+                        <Button color="success" onClick={() => handleSubmit13(item.latestPrice)}>
                           <font color="black">Buy</font>
                         </Button>
                         <Button color="danger" onClick={handleClose13}>
@@ -1665,13 +1587,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit14}>
+                        <Button color="success" onClick={() => handleSubmit14(item.latestPrice)}>
                           <font color="black">Sell</font>
                         </Button>
                         <Button color="danger" onClick={handleClose14}>
@@ -1706,17 +1628,9 @@ function App({ list }) {
                           <i className="icon-arrow-up"></i>
                         </td>
                       </tr>
-                      {/* <tr>
-                   <td className="bold">High:</td>
-                   <td className="stockDetails">{item.high}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Low:</td>
-                   <td className="stockDetails">{item.low}</td>
-                 </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1747,13 +1661,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit15}>
+                        <Button color="success" onClick={() => handleSubmit15(item.latestPrice)}>
                           <font color="black">Buy</font>
                         </Button>
                         <Button color="danger" onClick={handleClose15}>
@@ -1787,13 +1701,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit16}>
+                        <Button color="success" onClick={() => handleSubmit16(item.latestPrice)}>
                           <font color="black">Sell</font>
                         </Button>
                         <Button color="danger" onClick={handleClose16}>
@@ -1828,17 +1742,9 @@ function App({ list }) {
                           <i className="icon-arrow-up"></i>
                         </td>
                       </tr>
-                      {/* <tr>
-                   <td className="bold">High:</td>
-                   <td className="stockDetails">{item.high}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Low:</td>
-                   <td className="stockDetails">{item.low}</td>
-                 </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1869,13 +1775,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit17}>
+                        <Button color="success" onClick={() => handleSubmit17(item.latestPrice)}>
                           <font color="black">Buy</font>
                         </Button>
                         <Button color="danger" onClick={handleClose17}>
@@ -1909,13 +1815,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit18}>
+                        <Button color="success" onClick={() => handleSubmit18(item.latestPrice)}>
                           <font color="black">Sell</font>
                         </Button>
                         <Button color="danger" onClick={handleClose18}>
@@ -1950,17 +1856,9 @@ function App({ list }) {
                           <i className="icon-arrow-up"></i>
                         </td>
                       </tr>
-                      {/* <tr>
-                   <td className="bold">High:</td>
-                   <td className="stockDetails">{item.high}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Low:</td>
-                   <td className="stockDetails">{item.low}</td>
-                 </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1991,13 +1889,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit19}>
+                        <Button color="success" onClick={() => handleSubmit19(item.latestPrice)}>
                           <font color="black">Buy</font>
                         </Button>
                         <Button color="danger" onClick={handleClose19}>
@@ -2031,13 +1929,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit20}>
+                        <Button color="success" onClick={() => handleSubmit20(item.latestPrice)}>
                           <font color="black">Sell</font>
                         </Button>
                         <Button color="danger" onClick={handleClose20}>
@@ -2072,17 +1970,9 @@ function App({ list }) {
                           <i className="icon-arrow-up"></i>
                         </td>
                       </tr>
-                      {/* <tr>
-                   <td className="bold">High:</td>
-                   <td className="stockDetails">{item.high}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Low:</td>
-                   <td className="stockDetails">{item.low}</td>
-                 </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">$ {item.marketCap}</td>
+                        <td className="stockDetails">$ $ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -2113,13 +2003,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit21}>
+                        <Button color="success" onClick={() => handleSubmit21(item.latestPrice)}>
                           <font color="black">Buy</font>
                         </Button>
                         <Button color="danger" onClick={handleClose21}>
@@ -2153,13 +2043,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit22}>
+                        <Button color="success" onClick={() => handleSubmit22(item.latestPrice)}>
                           <font color="black">Sell</font>
                         </Button>
                         <Button color="danger" onClick={handleClose22}>
@@ -2193,17 +2083,9 @@ function App({ list }) {
                           <i className="icon-arrow-up"></i>
                         </td>
                       </tr>
-                      {/* <tr>
-                   <td className="bold">High:</td>
-                   <td className="stockDetails">{item.high}</td>
-                 </tr>
-                 <tr>
-                   <td className="bold">Low:</td>
-                   <td className="stockDetails">{item.low}</td>
-                 </tr> */}
                       <tr>
                         <td className="bold">Market Capitalisation:</td>
-                        <td className="stockDetails">{item.marketCap}</td>
+                        <td className="stockDetails">$ {item.marketCap}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -2234,13 +2116,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit23}>
+                        <Button color="success" onClick={() => handleSubmit23(item.latestPrice)}>
                           <font color="black">Buy</font>
                         </Button>
                         <Button color="danger" onClick={handleClose23}>
@@ -2274,13 +2156,13 @@ function App({ list }) {
                             type="number"
                             name="bidPrice"
                             placeholder="At what price"
-                            value={bidPrice}
+                            value={item.latestPrice}
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button color="success" onClick={handleSubmit24}>
+                        <Button color="success" onClick={() => handleSubmit24(item.latestPrice)}>
                           <font color="black">Sell</font>
                         </Button>
                         <Button color="danger" onClick={handleClose24}>
@@ -2301,22 +2183,9 @@ function App({ list }) {
 }
 
 function Market() {
-  const list = [
-    "AAPL",
-    "TWTR",
-    "AMZN",
-    "TSLA",
-    "BAC",
-    "SPY",
-    "GOOG",
-    "META",
-    "JPM",
-    "MSFT",
-  ];
-
   return (
     <div>
-      <App list={list} />
+      <App/>
     </div>
   );
 }
