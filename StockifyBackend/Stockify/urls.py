@@ -2,6 +2,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from .views import (
+    GetBalance,
     GetStockTransactions,
     BuyStock,
     GetHoldings,
@@ -20,6 +21,7 @@ urlpatterns = [
     path("sellStock", SellStock.as_view()),
     path("getHoldings", GetHoldings.as_view()),
     path("getStockTransactions", GetStockTransactions.as_view()),
+    path("getBalance", GetBalance.as_view()),
     path("register/", UserRegistrationView.as_view(), name="register"),
     path("login/", UserLoginView.as_view(), name="login"),
     path("profile/", UserProfileView.as_view(), name="profile"),

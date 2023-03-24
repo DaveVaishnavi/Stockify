@@ -2,7 +2,7 @@ from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
 # from django.contrib.auth.models import User
-from .models import StockTransaction, User, Stock, Transaction, WatchList, Customer, Holdings
+from .models import Balance, StockTransaction, User, Stock, Transaction, WatchList, Customer, Holdings
 from django.utils.encoding import smart_str, force_bytes, DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
@@ -164,7 +164,11 @@ class StockTransactionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = StockTransaction
         fields = "__all__"
-
+        
+class BalanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Balance
+        fields = "__all__"
 
 class UserPasswordResetSerializer(serializers.Serializer):
     password = serializers.CharField(

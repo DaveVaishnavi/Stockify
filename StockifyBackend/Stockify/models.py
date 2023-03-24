@@ -143,5 +143,9 @@ class StockTransaction(models.Model):
 class Holdings(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     symbol = models.CharField(max_length=30)
-    bidPrice = models.FloatField(null=True)
     holding_count = models.IntegerField()
+
+class Balance(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    cash = models.FloatField(default=1000000)
+

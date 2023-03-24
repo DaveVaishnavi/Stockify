@@ -13,9 +13,144 @@ import { unsetUserInfo } from "../features/userSlice";
 import axios from "axios";
 
 export const Portfolio = () => {
+  const [data1, setData1] = useState([]);
+  const [data2, setData2] = useState([]);
+  const [data3, setData3] = useState([]);
+  const [data4, setData4] = useState([]);
+  const [data5, setData5] = useState([]);
+  const [data6, setData6] = useState([]);
+  const [data7, setData7] = useState([]);
+  const [data8, setData8] = useState([]);
+  const [data9, setData9] = useState([]);
+  const [data10, setData10] = useState([]);
+  const [data11, setData11] = useState([]);
+  const [data12, setData12] = useState([]);
+
+  useEffect(() => {
+    const interval = setInterval(()=>{
+      fetch(
+        "https://api.iex.cloud/v1/data/CORE/QUOTE/AAPL?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+      )
+        .then((response) => response.json())
+        .then((data1) => setData1(data1));
+    }, 1000);
+    return ()=>clearInterval(interval);
+  }, []);
+  useEffect(() => {
+    const interval = setInterval(()=>{
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/TWTR?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data2) => setData2(data2));
+    }, 1000);
+    return ()=>clearInterval(interval);
+  }, []);
+  useEffect(() => {
+    const interval = setInterval(()=>{
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/AMZN?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data3) => setData3(data3));
+    }, 1000);
+    return ()=>clearInterval(interval);
+  }, []);
+  useEffect(() => {
+    const interval = setInterval(()=>{
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/TSLA?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data4) => setData4(data4));
+    }, 1000);
+    return ()=>clearInterval(interval);
+  }, []);
+  useEffect(() => {
+    const interval = setInterval(()=>{
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/BAC?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data5) => setData5(data5));
+    }, 1000);
+    return ()=>clearInterval(interval);
+  }, []);
+  useEffect(() => {
+    const interval = setInterval(()=>{
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/ORCL?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data6) => setData6(data6));
+    }, 1000);
+    return ()=>clearInterval(interval);
+  }, []);
+  useEffect(() => {
+    const interval = setInterval(()=>{
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/GOOG?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data7) => setData7(data7));
+    }, 1000);
+    return ()=>clearInterval(interval);
+  }, []);
+  useEffect(() => {
+    const interval = setInterval(()=>{
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/NKE?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data8) => setData8(data8));
+    }, 1000);
+    return ()=>clearInterval(interval);
+  }, []);
+  useEffect(() => {
+    const interval = setInterval(()=>{
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/JPM?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data9) => setData9(data9));
+    }, 1000);
+    return ()=>clearInterval(interval);
+  }, []);
+  useEffect(() => {
+    const interval = setInterval(()=>{
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/MSFT?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data10) => setData10(data10));
+    }, 1000);
+    return ()=>clearInterval(interval);
+  }, []);
+  useEffect(() => {
+    const interval = setInterval(()=>{
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/NVDA?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data11) => setData11(data11));
+    }, 1000);
+    return ()=>clearInterval(interval);
+  }, []);
+  useEffect(() => {
+    const interval = setInterval(()=>{
+    fetch(
+      "https://api.iex.cloud/v1/data/CORE/QUOTE/V?token=pk_00366a0765ce48c8b0143cb428fa0d84"
+    )
+      .then((response) => response.json())
+      .then((data12) => setData12(data12));
+    }, 1000);
+    return ()=>clearInterval(interval);
+  }, []);
+
   const [openOrders, setOpenOrders] = useState([]);
   const [holdings, setHoldings] = useState([]);
-  let cash=1000000;
+  const [accbalance, setBalance] = useState([]);
+  // let cash=1000000;
   let mtm = 0;
 
   
@@ -43,6 +178,17 @@ axios.get(
 ).then(function (response1) {
 console.log(response1);
 setHoldings(response1.data.orders);
+});
+axios.get(
+  `${process.env.REACT_APP_BACKEND_URL}/getBalance`,
+  {
+    headers: {
+      authorization: `Bearer ${localStorage.getItem("access_token")}`,
+    },
+  }
+).then(function (response2) {
+console.log(response2);
+setBalance(response2.data.accbalance);
 });
   };
 
@@ -110,9 +256,9 @@ setHoldings(response1.data.orders);
             <div className="portfolio-card">
               <div className="portfolio-container-card bg-white-box">
               <p className="portfolio-card-title">Cash</p>
-              {/* {openOrders.map((order, index) => ( */}
-                <p className="portfolio-card-description">$ {cash}</p>
-                {/* ))} */}
+              {accbalance.map((acc, index) => (
+                <p className="portfolio-card-description">$ {acc.cash}</p>
+                ))} 
               </div>
             </div>
 
@@ -140,13 +286,12 @@ setHoldings(response1.data.orders);
             <thead>
               <tr>
                 <th>Symbol</th>
-                {/* <th>Current Price</th> */}
-                {/* <th>Purchasing Price</th> */}
                 <th>Quantity</th>
+                <th>Current Price</th>
               </tr>
             </thead>
             <tbody>
-              {/* <tr>
+             {/* <tr>
                 <td>AAPL</td>
                 <td>156</td>
                 <td>0.00</td>
@@ -156,9 +301,60 @@ setHoldings(response1.data.orders);
               {holdings.map((Order, index) => (
                       <tr>
                         <td key={index}>{Order.symbol}</td>
-                        {/* <td>{Order.bidPrice}</td> */}
-                        {/* <td>{Order.bidPrice}</td> */}
-                        <td>{Order.holding_count}</td>    
+                        <td>{Order.holding_count}</td>  
+                        {Order.symbol === "AAPL" ? (
+  data1.map((item)=>{
+    return <td>{item.latestPrice}</td>
+  })
+) : Order.symbol == "TWTR" ? (
+  data2.map((item)=>{
+    return <td>{item.latestPrice}</td>
+  })
+) : Order.symbol == "AMZN" ? (
+  data3.map((item)=>{
+    return <td>{item.latestPrice}</td>
+  })
+) : Order.symbol == "TSLA" ? (
+  data4.map((item)=>{
+    return <td>{item.latestPrice}</td>
+  })
+) : Order.symbol == "BAC" ? (
+  data5.map((item)=>{
+    return <td>{item.latestPrice}</td>
+  })
+) : Order.symbol == "ORC" ? (
+  data6.map((item)=>{
+    return <td>{item.latestPrice}</td>
+  })
+) : Order.symbol == "GOOG" ? (
+  data7.map((item)=>{
+    return <td>{item.latestPrice}</td>
+  })
+) : Order.symbol == "NKE" ? (
+  data8.map((item)=>{
+    return <td>{item.latestPrice}</td>
+  })
+) : Order.symbol == "JPM" ? (
+  data9.map((item)=>{
+    return <td>{item.latestPrice}</td>
+  })
+) : Order.symbol == "MSFT" ? (
+  data10.map((item)=>{
+    return <td>{item.latestPrice}</td>
+  })
+) : Order.symbol == "NVDA" ? (
+  data11.map((item)=>{
+    return <td>{item.latestPrice}</td>
+  })
+) : Order.symbol == "V" ? (
+  data12.map((item)=>{
+    return <td>{item.latestPrice}</td>
+  })
+) : (
+  <td></td>
+)}
+                       {/* <td>{Order.bidPrice}</td> */}
+                        {/* <td>{Order.bidPrice}</td> */}  
                         {/* <td>{Order.holding_count}</td>     */}
                       </tr>
                     ))}

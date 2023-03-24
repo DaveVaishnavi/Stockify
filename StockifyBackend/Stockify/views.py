@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .serializers import (
+    BalanceSerializer,
     SendPasswordResetEmailSerializer,
     StockTransactionsSerializer,
     UserChangePasswordSerializer,
@@ -18,7 +19,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
-from .models import StockTransaction, Holdings
+from .models import Balance, StockTransaction, Holdings
 
 
 def index(request):
@@ -42,10 +43,18 @@ class UserRegistrationView(APIView):
     renderer_classes = [UserRenderer]
 
     def post(self, request, format=None):
+        
         serializer = UserRegistrationSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         token = get_tokens_for_user(user)
+         # added
+        instance = Balance(
+            user=user,
+            cash=1000000,
+        )
+        instance.save()
+            # added
         return Response(
             {"token": token, "msg": "Registration Successful"},
             status=status.HTTP_201_CREATED,
@@ -56,12 +65,21 @@ class UserLoginView(APIView):
     renderer_classes = [UserRenderer]
 
     def post(self, request, format=None):
+        
         serializer = UserLoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         email = serializer.data.get("email")
         password = serializer.data.get("password")
         user = authenticate(email=email, password=password)
         if user is not None:
+                # added
+            # instance = Balance(
+            #     user=user,
+            #     cash=1000000,
+            # )
+            
+            # instance.save()
+            # added
             token = get_tokens_for_user(user)
             return Response(
                 {"token": token, "msg": "Login Success"}, status=status.HTTP_200_OK
@@ -169,12 +187,21 @@ class BuyStock(APIView):
             # instance.type="Bought"
             # instance.cash=instance.cash-(int(d["quantity"])*int(d["bidPrice"]))
             instance.save()
-            if Holdings.objects.filter(user=request.user, symbol=d["symbol"],bidPrice=d["bidPrice"]).count():
-                holding = Holdings.objects.get(user=request.user, symbol=d["symbol"],bidPrice=d["bidPrice"])
+            if Balance.objects.filter(user=request.user).count():
+                accbalance=Balance.objects.get(user=request.user)
+                accbalance.cash = accbalance.cash-(int(d["quantity"])*int(d["bidPrice"]))
+                accbalance.save()
+
+            else:
+                accbalance=Balance(user=request.user,cash=1000000)
+                accbalance.save()
+
+            if Holdings.objects.filter(user=request.user, symbol=d["symbol"]).count():
+                holding = Holdings.objects.get(user=request.user, symbol=d["symbol"])
                 holding.holding_count = holding.holding_count + int(d["quantity"])
                 holding.save()
             else:
-                holding = Holdings(user=request.user, symbol=d["symbol"], holding_count=d["quantity"],bidPrice=d["bidPrice"])
+                holding = Holdings(user=request.user, symbol=d["symbol"], holding_count=d["quantity"])
                 holding.save()
             
             return Response(data={"success": True}, status=status.HTTP_200_OK)
@@ -201,15 +228,22 @@ class SellStock(APIView):
         )
 
         if instance.symbol:
-            # instance.type="Sold"
-            # instance.cash=instance.cash+(int(d["quantity"])*int(d["bidPrice"]))
-            instance.save()
+              
             if Holdings.objects.filter(user=request.user, symbol=d["symbol"]).count():
                 holding = Holdings.objects.get(user=request.user, symbol=d["symbol"])
                 # holding.save()
                 if holding.holding_count >= int(d["quantity"]):
                     holding.holding_count = holding.holding_count - int(d["quantity"])
                     holding.save()
+                    instance.save()
+                    if Balance.objects.filter(user=request.user).count():
+                        accbalance=Balance.objects.get(user=request.user)
+                        accbalance.cash = accbalance.cash-(int(d["quantity"])*int(d["bidPrice"]))
+                        accbalance.save()
+                
+                    else:
+                        accbalance=Balance(user=request.user,cash=1000000)
+                        accbalance.save()
                     return Response(data={"success": True}, status=status.HTTP_200_OK)
                 else:
                     # holding.holding_count = holding.holding_count + int(d["quantity"])
@@ -237,6 +271,7 @@ class GetHoldings(APIView):
         queryset = Holdings.objects.filter(user=request.user)
         serializer = HoldingsSerializer(queryset, many=True)
         return Response(data={"orders": serializer.data})
+    
 
 class GetStockTransactions(APIView):
     permission_classes = [
@@ -248,3 +283,14 @@ class GetStockTransactions(APIView):
         queryset = StockTransaction.objects.filter(user=request.user)
         serialized_data = StockTransactionsSerializer(queryset, many=True)
         return Response(data={"orders": serialized_data.data})
+
+class GetBalance(APIView):
+    permission_classes = [
+        IsAuthenticated,
+    ]
+
+    def get(self, request):
+        user = request.user
+        queryset = Balance.objects.filter(user=request.user)
+        serializer = BalanceSerializer(queryset, many=True)
+        return Response(data={"accbalance": serializer.data})

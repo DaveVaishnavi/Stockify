@@ -181,10 +181,8 @@ function App({ list }) {
   const [sell_microsoft, setSellMicrosoft] = useState(false);
   const [buy_nvidia, setBuyNvidia] = useState(false);
   const [sell_nvidia, setSellNvidia] = useState(false);
-  const handleBidPriceChange = (event) => {
-    setBidPrice(event.target.value);
-  };
-  const [bidPrice, setBidPrice] = useState(0);
+ 
+  
 
   const [error, setError] = useState("");
 
@@ -241,13 +239,24 @@ function App({ list }) {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(0);
+  const [bidPrice, setBidPrice] = useState(0);
+  // let bidPrice=0;
+  let latestprice=0;
   const handleQuantityChange = (event) => {
     setQuantity(event.target.value);
   };
+  const handleBidPriceChange = (event) => {
+    setBidPrice(event.target.value);
+  };
+  // function bidPricetoLatestprice(data)
+  // {
+  //   setBidPrice(data);
+  // }
+  
   const dispatch = useDispatch();
   const handleSubmit1 = async (event) => {
     event.preventDefault();
-    // cash=cash-quantity*bidPrice
+    
     const newOrder = {
       symbol: "AAPL",
       quantity: quantity,
@@ -255,7 +264,7 @@ function App({ list }) {
       type: "Bought",
       // cash: cash,
     };
-    // console.log("something")
+    console.log(bidPrice)
     const response = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
       newOrder,
@@ -266,7 +275,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
+    // setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Buy failed");
   };
@@ -281,7 +290,7 @@ function App({ list }) {
       type: "Sold",
       // cash: cash,
     };
-    
+    console.log(bidPrice)
     const response = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/sellStock`,
       newOrder,
@@ -292,7 +301,7 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    setBidPrice(0);
+    // setBidPrice(0);
     if (response.data.success) navigate("/Portfolio", { state: { newOrder } });
     else setError("Sell failed");
   };
@@ -881,13 +890,15 @@ function App({ list }) {
                             name="bidPrice"
                             placeholder="At what price"
                             value={bidPrice}
+                            // disabled
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
                       </Modal.Body>
                       <Modal.Footer>
                         <script></script>
-                        <Button color="success" onClick={handleSubmit1}>
+                        
+                        <Button color="success" onClick={handleSubmit1()}>
                           <font color="black">Buy</font>
                         </Button>
                         <Button color="danger" onClick={handleClose1}>
@@ -922,6 +933,7 @@ function App({ list }) {
                             name="bidPrice"
                             placeholder="At what price"
                             value={bidPrice}
+                            // disabled
                             onChange={handleBidPriceChange}
                           ></input>
                         </form>
