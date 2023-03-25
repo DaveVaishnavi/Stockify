@@ -180,6 +180,7 @@ class BuyStock(APIView):
             bidPrice=d["bidPrice"],
             type=d["type"],
             # cash=d["cash"],
+
         )
 
         if instance.symbol:
@@ -202,11 +203,8 @@ class BuyStock(APIView):
             else:
                 holding = Holdings(user=request.user, symbol=d["symbol"], holding_count=d["quantity"])
                 holding.save()
-                
-            if Holdings.objects.filter(user=request.user, symbol=d["symbol"]).count():
-                prices = Holdings.objects.filter(user=request.user, symbol=d["symbol"])
-                
-            return Response(data={"success": True, }, status=status.HTTP_200_OK)
+            
+            return Response(data={"success": True}, status=status.HTTP_200_OK)
         else:
             return Response(data={"success": False}, status=status.HTTP_400_BAD_REQUEST)
 
