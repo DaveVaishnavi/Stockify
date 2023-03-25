@@ -898,7 +898,7 @@ function App({ list }) {
                       <Modal.Footer>
                         <script></script>
                         
-                        <Button color="success" onClick={handleSubmit1()}>
+                        <Button color="success" onClick={handleSubmit1}>
                           <font color="black">Buy</font>
                         </Button>
                         <Button color="danger" onClick={handleClose1}>
