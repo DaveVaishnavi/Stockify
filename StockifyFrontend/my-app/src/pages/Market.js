@@ -274,10 +274,13 @@ function App({ list }) {
       }
     );
     setQuantity(0);
-    // setBidPrice(0);
-    console.log(response.data)
+    setBidPrice(0);
+    // console.log(response.data.mtm)
+    // console.log(response.data.success)
     if (response.data.success) {
-      console.log("YOOO")
+      
+      // console.log(response.data.mtm)
+      // console.log("yooo")
       navigate("/Portfolio", { state: { newOrder } });
     }
     else setError("Buy failed");

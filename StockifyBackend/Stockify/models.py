@@ -148,4 +148,5 @@ class Holdings(models.Model):
 class Balance(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     cash = models.FloatField(default=1000000)
+    mtm = models.FloatField(default=0)
 

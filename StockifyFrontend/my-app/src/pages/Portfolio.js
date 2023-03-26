@@ -150,7 +150,7 @@ export const Portfolio = () => {
   const [openOrders, setOpenOrders] = useState([]);
   const [holdings, setHoldings] = useState([]);
   const [accbalance, setBalance] = useState([]);
-  let mtm = 0;
+  // const [mtm,setmtm] = useState();
 
   
   const fetchData = async () => {
@@ -163,7 +163,7 @@ export const Portfolio = () => {
         },
       }
     ).then(function (response) {
-	  console.log(response);
+	  // console.log(response);
     setOpenOrders(response.data.orders);
     
 });
@@ -175,7 +175,7 @@ axios.get(
     },
   }
 ).then(function (response1) {
-console.log(response1);
+// console.log(response1);
 setHoldings(response1.data.orders);
 });
 axios.get(
@@ -186,9 +186,20 @@ axios.get(
     },
   }
 ).then(function (response2) {
-console.log(response2);
+// console.log(response2);
 setBalance(response2.data.accbalance);
 });
+// axios.get(
+//   `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
+//   {
+//     headers: {
+//       authorization: `Bearer ${localStorage.getItem("access_token")}`,
+//     },
+//   }
+// ).then(function (response3) {
+// console.log(response3.data.mtm);
+// setmtm(response3.data.mtm);
+// });
   };
 
   
@@ -242,7 +253,7 @@ setBalance(response2.data.accbalance);
         <div className="portfolio-container">
           <p className="portfolio-container-title">Your Portfolio</p>
           <div className="portfolio-gradient-cards">
-
+          
             <div className="portfolio-card">
               <div className="portfolio-container-card bg-white-box">
               <p className="portfolio-card-title">Cash</p>
@@ -254,10 +265,13 @@ setBalance(response2.data.accbalance);
 
             <div className="portfolio-card">
               <div className="portfolio-container-card bg-yellow-box">
-                <p className="portfolio-card-title">MTM</p>
-                <p className="portfolio-card-description">$ {mtm}</p>
+                <p className="portfolio-card-title">Profit / Loss</p> 
+                {accbalance.map((acc, index) => (
+                <p className="portfolio-card-description">$ {acc.mtm}</p>
+                ))} 
               </div>
             </div>
+
           </div>
         </div>
       </section>
