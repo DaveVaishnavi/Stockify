@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { unSetUserToken } from "../features/authSlice";
 import { unsetUserInfo } from "../features/userSlice";
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import axios from "axios";
 
 export const Portfolio = () => {
@@ -186,20 +188,6 @@ axios.get(
     },
   }
 ).then(function (response2) {
-// console.log(response2);
-setBalance(response2.data.accbalance);
-});
-// axios.get(
-//   `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
-//   {
-//     headers: {
-//       authorization: `Bearer ${localStorage.getItem("access_token")}`,
-//     },
-//   }
-// ).then(function (response3) {
-// console.log(response3.data.mtm);
-// setmtm(response3.data.mtm);
-// });
   };
 
   
@@ -251,7 +239,15 @@ setBalance(response2.data.accbalance);
       </header>
       <section className="your_portfolio">
         <div className="portfolio-container">
-          <p className="portfolio-container-title">Your Portfolio</p>
+          <p className="portfolio-container-title">Your Portfolio
+		  <div className="toggle">
+          <FormControlLabel
+          value="top"
+          control={<Switch color="primary" />}
+          label="Enable automatic trading"
+          labelPlacement="top"
+        />
+		  </p>
           <div className="portfolio-gradient-cards">
           
             <div className="portfolio-card">
