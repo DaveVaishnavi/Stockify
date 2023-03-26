@@ -28,26 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'http://localhost:3000', 'http://127.0.0.1', '127.0.0.1']
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:3000',
-#     'http://127.0.0.1:3000',
-#     'http://127.0.0.1',
-# ]
-
-# CORS_ORIGIN_WHITELIST = [
-#     'http://localhost:3000',
-#     'http://127.0.0.1:3000',
-#     'http://127.0.0.1',
-# ]
-# CORS_TRUSTED_ORIGINS = [
-#     'http://localhost:3000',
-#     'http://127.0.0.1:3000',
-#     'http://127.0.0.1',
-# ]
-
-# CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ALLOW_CREDENTIALS = True
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -149,10 +129,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static")
-# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

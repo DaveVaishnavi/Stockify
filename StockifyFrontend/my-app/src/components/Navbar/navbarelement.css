@@ -61,10 +61,7 @@
     transition: 0.8s all ease;
   }
 }
-/* @media (min-width: 200px) and (max-width: 480px) {
-  NavLogo {
-  }
-} */
+
 @media screen and (max-width: 768px) {
   .Nav-responsive {
     display: none;

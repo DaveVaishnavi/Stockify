@@ -182,38 +182,6 @@ body{
   position: relative;
 }
 
-/* .bg-green-box::after,
-.bg-white-box::after,
-.bg-yellow-box::after,
-.bg-blue-box::after {
-  position: absolute;
-  top: -1px;
-  bottom: -1px;
-  left: -1px;
-  right: -1px;
-  content: "";
-  z-index: -1;
-  border-radius: 20px;
-  background: linear-gradient(
-    rgba(29, 205, 254, 1),
-    rgba(33, 208, 179, 1),
-    rgba(52, 245, 198, 1)
-  );
-} */
-
-/* .bg-green-box::after,
-.bg-white-box::after,
-.bg-yellow-box::after,
-.bg-blue-box::after
- {
-  background: linear-gradient(
-    rgba(29, 205, 254, 1),
-    rgba(33, 208, 179, 1),
-    rgba(52, 245, 198, 1)
-  );
-} */
-
-
 .portfolio-card-title {
   font-weight: 600;
   color: hsla(0, 0%, 100%, 0.5);
@@ -280,14 +248,6 @@ body{
   /* margin:0; */
 }
 
-/* *{
-        box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-    } */
-/* .portfolio-holdings {
-  } */
-
 .portfolio-h2 {
   text-align: center;
   font-size: 40px;
@@ -330,7 +290,6 @@ body{
 }
 
 .portfolio-fl-table td {
-  /*     border-right: 1px solid #f8f8f8; */
   font-size: 16px;
   font-weight: 100;
   color: white;
@@ -409,13 +368,6 @@ body{
   .portfolio-fl-table tr:nth-child(even) {
     background: transparent;
   }
-  /*     .fl-table tr td:nth-child(odd) {
-          background: #F8F8F8;
-          border-right: 1px solid #E6E4E4;
-      }
-      .fl-table tr td:nth-child(even) {
-          border-right: 1px solid #E6E4E4;
-      } */
   .portfolio-fl-table tbody td {
     display: block;
     text-align: center;
@@ -455,11 +407,9 @@ body{
  
   width: 90%;
   max-width: 100%;
-/*   margin: 200px auto; */
   padding: 12px 12px 12px 12px;
   border-radius: 5px;
   background: rgba(46, 52, 69, 1);
-  /* box-shadow: 0px 10px 15px rgba(0,0,0,0.1); */
   margin: 40px 80px 80px 70px;
 }
 .wrapper nav{
@@ -519,15 +469,6 @@ input[type="radio"]{
 {
   display: block;
 }
-/* .order-section .content .title{
-  font-size: 21px;
-  font-weight: 500;
-  margin: 30px 0 10px 0;
-}
-.order-section .content p{
-text-align: justify;
-} */
-
 .order-section .content .my-custom-scrollbar {
   position: relative;
   height: 350px;
@@ -541,11 +482,8 @@ text-align: justify;
   border-radius: 2px;
   font-size: 12px;
   font-weight: normal;
-  /* border: none; */
   border-collapse: collapse;
   width: 100%;
-  /* width: 25%; */
-/*   height: 490px; */
   white-space: nowrap;
   background-color: rgba(46, 52, 69, 1);
 }
@@ -554,8 +492,6 @@ text-align: justify;
 .fl-table2 th {
   text-align: center;
   padding: 10px 20px 10px 20px;
-/*   padding-left: 0;
-  padding-right: 0; */
 }
 
 .fl-table2 td {
@@ -629,7 +565,6 @@ text-align: justify;
   }
   .fl-table2 thead th {
     text-align: left;
-  /*         border-bottom: 1px solid #f7f7f9;* */
   }
   .fl-table2 tbody tr {
     display: table-cell;
