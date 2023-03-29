@@ -49,25 +49,25 @@ We have tried implementing the automatic sell feature which is very crude as of 
 
 # Django RESTFRAMEWORK endpoints
 Here are the endpoints: 
-•	/buyStock: This endpoint is used to buy a stock. 
-•	/sellStock: This endpoint is used to sell a stock. 
-•	/getHoldings: This endpoint is used to get the holdings of a user. 
-•	/getStockTransactions: This endpoint is used to get the stock transactions of a user. 
-•	/getBalance: This endpoint is used to get the balance of a user. 
-•	/register/: This endpoint is used to register a new user. 
-•	/login/: This endpoint is used to log in an existing user. 
-•	/profile/: This endpoint is used to view the profile of a user. 
-•	/changepassword/: This endpoint is used to change the password of a user. 
-•	/send-reset-password-email/: This endpoint is used to send a password reset email to a user. 
-•	/reset-password/<uid>/<token>/: This endpoint is used to reset the password of a user. 
+•	/buyStock: This endpoint is used to buy a stock. <br/>
+•	/sellStock: This endpoint is used to sell a stock. <br/>
+•	/getHoldings: This endpoint is used to get the holdings of a user. <br/>
+•	/getStockTransactions: This endpoint is used to get the stock transactions of a user. <br/>
+•	/getBalance: This endpoint is used to get the balance of a user. <br/>
+•	/register/: This endpoint is used to register a new user. <br/>
+•	/login/: This endpoint is used to log in an existing user. <br/>
+•	/profile/: This endpoint is used to view the profile of a user. <br/>
+•	/changepassword/: This endpoint is used to change the password of a user. <br/>
+•	/send-reset-password-email/: This endpoint is used to send a password reset email to a user. <br/>
+•	/reset-password/<uid>/<token>/: This endpoint is used to reset the password of a user. <br/>
 
 # REACT COMPONENTS
 Here are the endpoints: 
-•	/ : This is the homepage component 
-•	/LogIn: This is the login page component
-•	/Register: This is the signup component that would help a new user register herself on the app
-•	/Market: This is the component that is fetching data from the external API, and also sending data to the backend using axios
-•	/Portfolio: This component is fetching order history, holdings, cash and profit data from the backend and displaying it in a formatted way
+•	/ : This is the homepage component <br/>
+•	/LogIn: This is the login page component<br/>
+•	/Register: This is the signup component that would help a new user register herself on the app<br/>
+•	/Market: This is the component that is fetching data from the external API, and also sending data to the backend using axios<br/>
+•	/Portfolio: This component is fetching order history, holdings, cash and profit data from the backend and displaying it in a formatted way<br/>
 
 # SNAPSHOTS
 
@@ -129,12 +129,12 @@ https://github.com/Stockify-Developers/Stockify
 
 # Future scopes
 
-•	We can include other tradable entities like options, futures, bonds, and even IPOs ( primary market ).
-•	Currently, we have 12 stocks in the user watchlist but we can implement the “search stock” with all listed stocks.
-•	Currently, we have tried to implement a non-configurable automatic trading system but we can make it modular by allowing the user to decide the profit and price change threshold.
-•	The final version of the app fetches data from the external API every second, we can develop an algorithm on our end that takes in data every morning and manipulates it based on the user activity.
-•	We can also implement the stop-loss feature that sells off stocks if the loss is going above a threshold.
-•	We can plot graphs on our end and have different types of indicators and geeks.
+•	We can include other tradable entities like options, futures, bonds, and even IPOs ( primary market ).<br/>
+•	Currently, we have 12 stocks in the user watchlist but we can implement the “search stock” with all listed stocks.<br/>
+•	Currently, we have tried to implement a non-configurable automatic trading system but we can make it modular by allowing the user to decide the profit and price change threshold.<br/>
+•	The final version of the app fetches data from the external API every second, we can develop an algorithm on our end that takes in data every morning and manipulates it based on the user activity.<br/>
+•	We can also implement the stop-loss feature that sells off stocks if the loss is going above a threshold.<br/>
+•	We can plot graphs on our end and have different types of indicators and geeks.<br/>
 
 # RESOURCES:
 
