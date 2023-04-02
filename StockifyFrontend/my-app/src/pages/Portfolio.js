@@ -252,6 +252,7 @@ setBalance(response2.data.accbalance);
           label="Enable automatic trading"
           labelPlacement="top"
         />
+        </div>
 		  </p>
           <div className="portfolio-gradient-cards">
           
