@@ -87,14 +87,6 @@ class UserLoginView(APIView):
         password = serializer.data.get("password")
         user = authenticate(email=email, password=password)
         if user is not None:
-            # added
-            # instance = Balance(
-            #     user=user,
-            #     cash=1000000,
-            # )
-
-            # instance.save()
-            # added
             token = get_tokens_for_user(user)
             return Response(
                 {"token": token, "msg": "Login Success"}, status=status.HTTP_200_OK
@@ -204,19 +196,18 @@ class BuyStock(APIView):
 
         denominator_bought = StockTransaction.objects.filter(
             user=request.user, symbol=request.data["symbol"],type="Bought"
-        ).aggregate(Sum("quantity"))['quantity__sum'] or 1
+        ).aggregate(Sum("quantity"))['quantity__sum'] or 1.00
 
         denominator_sold = StockTransaction.objects.filter(
             user=request.user, symbol=request.data["symbol"],type="Sold"
-        ).aggregate(Sum("quantity"))['quantity__sum'] or 1
+        ).aggregate(Sum("quantity"))['quantity__sum'] or 1.00
 
         denominator = denominator_bought - denominator_sold
         if denominator==0:
             denominator=1
 
-        weighted_purchasing_price= int(numerator/denominator)
+        weighted_purchasing_price= numerator/denominator
 
-       
 
         d = request.data
         d["bidPrice"] = int(d["bidPrice"])
@@ -226,13 +217,10 @@ class BuyStock(APIView):
             quantity=d["quantity"],
             bidPrice=d["bidPrice"],
             type=d["type"],
-            # cash=d["cash"],
         )
-        mtm = (int(weighted_purchasing_price)-d["bidPrice"])*int(denominator)
+        mtm = ((weighted_purchasing_price)-d["bidPrice"])*denominator
 
         if instance.symbol:
-            # instance.type="Bought"
-            # instance.cash=instance.cash-(int(d["quantity"])*int(d["bidPrice"]))
             instance.save()
             
             if Balance.objects.filter(user=request.user).count():
@@ -240,7 +228,7 @@ class BuyStock(APIView):
                 accbalance.cash = accbalance.cash - (
                     int(d["quantity"]) * int(d["bidPrice"])
                 )
-                accbalance.mtm = mtm
+                accbalance.mtm = accbalance.mtm+mtm
                 accbalance.save()
 
             else:
@@ -261,6 +249,10 @@ class BuyStock(APIView):
             return Response(
                 data={
                     "success": True,
+                    "mtm": mtm,
+                    "num": numerator,
+                    "denum": denominator,
+                    "price":weighted_purchasing_price,
                 },
                 status=status.HTTP_200_OK,
             )
@@ -274,7 +266,6 @@ class SellStock(APIView):
     ]
 
     def post(self, request):
-        import json
         numerator_bought = (
             StockTransaction.objects.filter(
                 user=request.user, symbol=request.data["symbol"], type="Bought"
@@ -295,17 +286,17 @@ class SellStock(APIView):
 
         denominator_bought = StockTransaction.objects.filter(
             user=request.user, symbol=request.data["symbol"],type="Bought"
-        ).aggregate(Sum("quantity"))['quantity__sum'] or 1
+        ).aggregate(Sum("quantity"))['quantity__sum'] or 1.00
 
         denominator_sold = StockTransaction.objects.filter(
             user=request.user, symbol=request.data["symbol"],type="Sold"
-        ).aggregate(Sum("quantity"))['quantity__sum'] or 1
+        ).aggregate(Sum("quantity"))['quantity__sum'] or 1.00
 
         denominator = denominator_bought - denominator_sold
         if denominator==0:
-            denominator=1
+            denominator=1.00
 
-        weighted_purchasing_price= int(numerator/denominator)
+        weighted_purchasing_price= numerator/denominator
 
        
         d = request.data
@@ -316,9 +307,8 @@ class SellStock(APIView):
             quantity=d["quantity"],
             bidPrice=d["bidPrice"],
             type=d["type"],
-            # cash=d["cash"],
         )
-        mtm = (int(weighted_purchasing_price)-d["bidPrice"])*int(denominator)
+        mtm = ((weighted_purchasing_price)-d["bidPrice"])*denominator
 
         if instance.symbol:
             if Holdings.objects.filter(user=request.user, symbol=d["symbol"]).count():
@@ -333,14 +323,13 @@ class SellStock(APIView):
                         accbalance.cash = accbalance.cash + (
                             int(d["quantity"]) * int(d["bidPrice"])
                         )
-                        accbalance.mtm = mtm
+                        accbalance.mtm =  accbalance.mtm + mtm
                         accbalance.save()
 
                     else:
                         accbalance = Balance(user=request.user, cash=1000000,mtm=0)
-                        accbalance.mtm = mtm
                         accbalance.save()
-                    return Response(data={"success": True}, status=status.HTTP_200_OK)
+                    return Response(data={"success": True,"mtm":mtm}, status=status.HTTP_200_OK)
                 else:
                     return Response(
                         data={"success": False}, status=status.HTTP_400_BAD_REQUEST

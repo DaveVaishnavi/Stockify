@@ -163,7 +163,7 @@ export const Portfolio = () => {
         },
       }
     ).then(function (response) {
-	  // console.log(response);
+	  console.log(response);
     setOpenOrders(response.data.orders);
     
 });
@@ -175,7 +175,7 @@ axios.get(
     },
   }
 ).then(function (response1) {
-// console.log(response1);
+console.log(response1);
 setHoldings(response1.data.orders);
 });
 axios.get(
@@ -186,20 +186,11 @@ axios.get(
     },
   }
 ).then(function (response2) {
-// console.log(response2);
+console.log(response2);
 setBalance(response2.data.accbalance);
+
 });
-// axios.get(
-//   `${process.env.REACT_APP_BACKEND_URL}/buyStock`,
-//   {
-//     headers: {
-//       authorization: `Bearer ${localStorage.getItem("access_token")}`,
-//     },
-//   }
-// ).then(function (response3) {
-// console.log(response3.data.mtm);
-// setmtm(response3.data.mtm);
-// });
+
   };
 
   
