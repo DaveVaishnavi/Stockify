@@ -580,7 +580,11 @@ input[type="radio"]{
     text-align: center;
   }
 } 
-
-
+.toggle{
+  background-color: rgba(52, 245, 198, 1);
+  float: right;
+  border-radius: 3vh;
+  padding-top: 2vh;
+}
 
 /* orders table ended */
