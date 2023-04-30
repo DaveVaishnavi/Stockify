@@ -48,7 +48,7 @@ We have tried implementing the automatic sell feature which is very crude as of 
 ![image](https://user-images.githubusercontent.com/99636505/227787642-f676c20d-b577-4e00-8658-cd9bf40feba2.png)
 
 # Django RESTFRAMEWORK endpoints
-Here are the endpoints: 
+Here are the endpoints: <br/>
 •	/buyStock: This endpoint is used to buy a stock. <br/>
 •	/sellStock: This endpoint is used to sell a stock. <br/>
 •	/getHoldings: This endpoint is used to get the holdings of a user. <br/>
@@ -62,7 +62,7 @@ Here are the endpoints:
 •	/reset-password/<uid>/<token>/: This endpoint is used to reset the password of a user. <br/>
 
 # REACT COMPONENTS
-Here are the endpoints: 
+Here are the endpoints: <br/>
 •	/ : This is the homepage component <br/>
 •	/LogIn: This is the login page component<br/>
 •	/Register: This is the signup component that would help a new user register herself on the app<br/>
